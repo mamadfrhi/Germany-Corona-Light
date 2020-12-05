@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C3402257BDC5C0081B174 /* LocationAdapter.swift */; };
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
 		875621D7257A81CE00A705D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875621D6257A81CE00A705D7 /* Assets.xcassets */; };
 		875621DA257A81CE00A705D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */; };
@@ -21,9 +22,11 @@
 		87562221257A87AB00A705D7 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562220257A87AB00A705D7 /* RulesVC.swift */; };
 		87562229257A898500A705D7 /* Light.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87562228257A898500A705D7 /* Light.storyboard */; };
 		87562239257A8B8700A705D7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562238257A8B8700A705D7 /* Notification.swift */; };
+		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		872C3402257BDC5C0081B174 /* LocationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAdapter.swift; sourceTree = "<group>"; };
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		875621CD257A81CD00A705D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		875621D6257A81CE00A705D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		87562220257A87AB00A705D7 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
 		87562228257A898500A705D7 /* Light.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Light.storyboard; sourceTree = "<group>"; };
 		87562238257A8B8700A705D7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 		8756220E257A84B500A705D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87E3B619257BD53B00F785C3 /* LocationInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				8756221B257A870100A705D7 /* LocationManager.swift */,
+				872C3402257BDC5C0081B174 /* LocationAdapter.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -259,10 +265,12 @@
 			files = (
 				87562211257A851100A705D7 /* LightVC.swift in Sources */,
 				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,
+				872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */,
 				87562205257A83A000A705D7 /* ReactiveExtensiones.swift in Sources */,
 				8756221C257A870100A705D7 /* LocationManager.swift in Sources */,
 				87562206257A83A000A705D7 /* Extensiones.swift in Sources */,
 				87562215257A853600A705D7 /* LightViewModel.swift in Sources */,
+				87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */,
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
 				87562218257A855700A705D7 /* Network.swift in Sources */,
 				87562239257A8B8700A705D7 /* Notification.swift in Sources */,

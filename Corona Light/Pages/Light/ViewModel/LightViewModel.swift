@@ -23,8 +23,8 @@ class LightViewModel {
 
 //MARK:- Location
 extension LightViewModel: LocationDelegate {
-    func didUpdateLocation(to state: String) {
-        print("Did update location at this state: \(state).\n")
+    func didUpdateLocation(to newTownName: String?) {
+        print("Did update location at this town: \(newTownName).\n")
     }
     func didNotAllowedLocationPermission() {
         print("I can't help you without location permission")
@@ -41,3 +41,6 @@ extension LightViewModel: Networkable, NetworkDelegate {
         
     }
 }
+
+
+
