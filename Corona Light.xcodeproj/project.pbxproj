@@ -8,22 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
-		875621D0257A81CD00A705D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CF257A81CD00A705D7 /* SceneDelegate.swift */; };
-		875621D2257A81CD00A705D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621D1257A81CD00A705D7 /* ViewController.swift */; };
-		875621D5257A81CD00A705D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875621D3257A81CD00A705D7 /* Main.storyboard */; };
 		875621D7257A81CE00A705D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875621D6257A81CE00A705D7 /* Assets.xcassets */; };
 		875621DA257A81CE00A705D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */; };
+		875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621FB257A831A00A705D7 /* MainCoordinator.swift */; };
+		875621FE257A831A00A705D7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621FC257A831A00A705D7 /* Coordinator.swift */; };
+		87562205257A83A000A705D7 /* ReactiveExtensiones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562203257A83A000A705D7 /* ReactiveExtensiones.swift */; };
+		87562206257A83A000A705D7 /* Extensiones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562204257A83A000A705D7 /* Extensiones.swift */; };
+		87562211257A851100A705D7 /* LightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562210257A851100A705D7 /* LightVC.swift */; };
+		87562215257A853600A705D7 /* LightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562214257A853600A705D7 /* LightViewModel.swift */; };
+		87562218257A855700A705D7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562217257A855700A705D7 /* Network.swift */; };
+		8756221C257A870100A705D7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8756221B257A870100A705D7 /* LocationManager.swift */; };
+		87562221257A87AB00A705D7 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562220257A87AB00A705D7 /* RulesVC.swift */; };
+		87562229257A898500A705D7 /* Light.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87562228257A898500A705D7 /* Light.storyboard */; };
+		87562239257A8B8700A705D7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562238257A8B8700A705D7 /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		875621CD257A81CD00A705D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		875621CF257A81CD00A705D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		875621D1257A81CD00A705D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		875621D4257A81CD00A705D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		875621D6257A81CE00A705D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		875621D9257A81CE00A705D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		875621DB257A81CE00A705D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		875621FB257A831A00A705D7 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		875621FC257A831A00A705D7 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		87562203257A83A000A705D7 /* ReactiveExtensiones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveExtensiones.swift; sourceTree = "<group>"; };
+		87562204257A83A000A705D7 /* Extensiones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensiones.swift; sourceTree = "<group>"; };
+		87562210257A851100A705D7 /* LightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightVC.swift; sourceTree = "<group>"; };
+		87562214257A853600A705D7 /* LightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModel.swift; sourceTree = "<group>"; };
+		87562217257A855700A705D7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		8756221B257A870100A705D7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		87562220257A87AB00A705D7 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
+		87562228257A898500A705D7 /* Light.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Light.storyboard; sourceTree = "<group>"; };
+		87562238257A8B8700A705D7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,119 @@
 		875621CC257A81CD00A705D7 /* Corona Light */ = {
 			isa = PBXGroup;
 			children = (
-				875621CD257A81CD00A705D7 /* AppDelegate.swift */,
-				875621CF257A81CD00A705D7 /* SceneDelegate.swift */,
-				875621D1257A81CD00A705D7 /* ViewController.swift */,
-				875621D3257A81CD00A705D7 /* Main.storyboard */,
+				87562208257A842300A705D7 /* App */,
+				8756221F257A87A000A705D7 /* Pages */,
+				875621F7257A82C800A705D7 /* Helper */,
+				875621F6257A82A700A705D7 /* Resources */,
+			);
+			path = "Corona Light";
+			sourceTree = "<group>";
+		};
+		875621F6257A82A700A705D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				875621D6257A81CE00A705D7 /* Assets.xcassets */,
 				875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */,
 				875621DB257A81CE00A705D7 /* Info.plist */,
 			);
-			path = "Corona Light";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		875621F7257A82C800A705D7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8756221A257A86E800A705D7 /* Location */,
+				8756220C257A847B00A705D7 /* Network */,
+				87562204257A83A000A705D7 /* Extensiones.swift */,
+				87562203257A83A000A705D7 /* ReactiveExtensiones.swift */,
+				87562238257A8B8700A705D7 /* Notification.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		875621FA257A830F00A705D7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				875621FC257A831A00A705D7 /* Coordinator.swift */,
+				875621FB257A831A00A705D7 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		87562208257A842300A705D7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				875621FA257A830F00A705D7 /* Coordinator */,
+				875621CD257A81CD00A705D7 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8756220A257A845900A705D7 /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				8756220E257A84B500A705D7 /* Model */,
+				8756220D257A849100A705D7 /* View */,
+				8756220B257A846200A705D7 /* ViewModel */,
+			);
+			path = Light;
+			sourceTree = "<group>";
+		};
+		8756220B257A846200A705D7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				87562214257A853600A705D7 /* LightViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8756220C257A847B00A705D7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				87562217257A855700A705D7 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8756220D257A849100A705D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87562210257A851100A705D7 /* LightVC.swift */,
+				87562228257A898500A705D7 /* Light.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8756220E257A84B500A705D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8756221A257A86E800A705D7 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				8756221B257A870100A705D7 /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		8756221F257A87A000A705D7 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				8756220A257A845900A705D7 /* Light */,
+				87562225257A87D300A705D7 /* Rules */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		87562225257A87D300A705D7 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				87562220257A87AB00A705D7 /* RulesVC.swift */,
+			);
+			path = Rules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +244,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87562229257A898500A705D7 /* Light.storyboard in Resources */,
 				875621DA257A81CE00A705D7 /* LaunchScreen.storyboard in Resources */,
 				875621D7257A81CE00A705D7 /* Assets.xcassets in Resources */,
-				875621D5257A81CD00A705D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +257,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				875621D2257A81CD00A705D7 /* ViewController.swift in Sources */,
+				87562211257A851100A705D7 /* LightVC.swift in Sources */,
+				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,
+				87562205257A83A000A705D7 /* ReactiveExtensiones.swift in Sources */,
+				8756221C257A870100A705D7 /* LocationManager.swift in Sources */,
+				87562206257A83A000A705D7 /* Extensiones.swift in Sources */,
+				87562215257A853600A705D7 /* LightViewModel.swift in Sources */,
+				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
+				87562218257A855700A705D7 /* Network.swift in Sources */,
+				87562239257A8B8700A705D7 /* Notification.swift in Sources */,
+				875621FE257A831A00A705D7 /* Coordinator.swift in Sources */,
 				875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */,
-				875621D0257A81CD00A705D7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		875621D3257A81CD00A705D7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				875621D4257A81CD00A705D7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,7 +408,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
-				INFOPLIST_FILE = "Corona Light/Info.plist";
+				INFOPLIST_FILE = "Corona Light/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Corona-Light";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,7 +428,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
-				INFOPLIST_FILE = "Corona Light/Info.plist";
+				INFOPLIST_FILE = "Corona Light/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +437,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Corona-Light";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
