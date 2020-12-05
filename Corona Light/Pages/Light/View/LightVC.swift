@@ -15,10 +15,15 @@ enum State {
 }
 
 class LightVC: UIViewController {
-    @IBOutlet weak var label: UILabel!
+    
+    var viewModel: LightViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Hello world!!")
         self.view.backgroundColor = .white
+        
+        self.viewModel = LightViewModel(network: Networking(),
+                                        locationManager: LocationManager())
     }
 }

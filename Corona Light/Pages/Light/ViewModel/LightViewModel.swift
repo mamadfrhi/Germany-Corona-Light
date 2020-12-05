@@ -7,24 +7,33 @@
 
 import Foundation
 
-class LightViewModel: Networkable,
-                      NetworkDelegate,
-                      LocationDelegate {
+class LightViewModel {
     
     //MARK:- Dependencies
-    private let api: Networkable!
+    private let network: Networkable!
+    private let locationManager: LocationManager!
     
     // Inject -> network + location manager + notification
-    init(api: Networkable) {
-        self.api = api
+    init(network: Networkable, locationManager: LocationManager) {
+        self.network = network
+        self.locationManager = locationManager
+        self.locationManager.delegate = self
     }
-    
-    //MARK:- Location
+}
+
+//MARK:- Location
+extension LightViewModel: LocationDelegate {
     func didUpdateLocation(to state: String) {
-        
+        print("Did update location at this state: \(state).\n")
     }
-    
-    //MARK:- Network
+    func didNotAllowedLocationPermission() {
+        print("I can't help you without location permission")
+        // TODO: send user to the settings app to enable location permission
+    }
+}
+
+//MARK:- Network
+extension LightViewModel: Networkable, NetworkDelegate {
     func getStats(of state: String) {
         
     }

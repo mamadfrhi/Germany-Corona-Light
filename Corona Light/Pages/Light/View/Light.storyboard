@@ -12,33 +12,12 @@
         <scene sceneID="9w8-Zj-F2r">
             <objects>
                 <viewController storyboardIdentifier="LightVC" id="dd2-d3-wlz" customClass="LightVC" customModule="Corona_Light" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="cP3-qe-4fF">
+                    <view key="view" contentMode="scaleToFill" id="cP3-qe-4fF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm LightVC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0k-rg-nU5">
-                                <rect key="frame" x="138" y="415" width="139" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="139" id="j1S-Wy-pc2"/>
-                                    <constraint firstAttribute="width" secondItem="G0k-rg-nU5" secondAttribute="height" multiplier="139:67" id="oDr-w0-Mf0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OxH-XF-sgA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="G0k-rg-nU5" firstAttribute="centerX" secondItem="cP3-qe-4fF" secondAttribute="centerX" id="BTa-3z-hHx"/>
-                            <constraint firstItem="G0k-rg-nU5" firstAttribute="leading" secondItem="OxH-XF-sgA" secondAttribute="leading" constant="138" id="FqC-Lr-HSx"/>
-                            <constraint firstItem="G0k-rg-nU5" firstAttribute="centerY" secondItem="cP3-qe-4fF" secondAttribute="centerY" id="H6C-TX-8k2"/>
-                            <constraint firstItem="G0k-rg-nU5" firstAttribute="top" secondItem="OxH-XF-sgA" secondAttribute="top" constant="371" id="MXH-o6-0cb"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="label" destination="G0k-rg-nU5" id="QKi-12-EHA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CA4-NL-ohU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
