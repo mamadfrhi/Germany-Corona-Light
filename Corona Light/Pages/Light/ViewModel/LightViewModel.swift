@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Moya
+import SwiftyJSON
 
 class LightViewModel {
     
-    //MARK:- Dependencies
+    //MARK: Dependencies
     private let network: Networkable!
     private let locationManager: LocationManager!
     
@@ -23,24 +25,15 @@ class LightViewModel {
 
 //MARK:- Location
 extension LightViewModel: LocationDelegate {
-    func didUpdateLocation(to newTownName: String?) {
-        print("Did update location at this town: \(newTownName).\n")
+    func didUpdateLocation(to newStateName: String?) {
+        print("Did update location at this town: \(String(describing: newStateName)).\n")
+        network.getStats(of: newStateName!) {
+            (incidents) in
+            print("incidents of \(newStateName!) = \(incidents!)")
+        }
     }
     func didNotAllowedLocationPermission() {
         print("I can't help you without location permission")
         // TODO: send user to the settings app to enable location permission
     }
 }
-
-//MARK:- Network
-extension LightViewModel: Networkable, NetworkDelegate {
-    func getStats(of state: String) {
-        
-    }
-    func didGetStats(numberOfDeath: Int) {
-        
-    }
-}
-
-
-

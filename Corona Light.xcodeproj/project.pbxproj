@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		87562229257A898500A705D7 /* Light.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87562228257A898500A705D7 /* Light.storyboard */; };
 		87562239257A8B8700A705D7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562238257A8B8700A705D7 /* Notification.swift */; };
 		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
+		87E7FF5E257CC5730095CDDC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		87562228257A898500A705D7 /* Light.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Light.storyboard; sourceTree = "<group>"; };
 		87562238257A8B8700A705D7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		87E7FF5D257CC5730095CDDC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.release.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +70,6 @@
 				4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */,
 				C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -163,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				87562217257A855700A705D7 /* Network.swift */,
+				87E7FF5D257CC5730095CDDC /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -342,6 +344,7 @@
 				87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */,
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
 				87562218257A855700A705D7 /* Network.swift in Sources */,
+				87E7FF5E257CC5730095CDDC /* NetworkManager.swift in Sources */,
 				87562239257A8B8700A705D7 /* Notification.swift in Sources */,
 				875621FE257A831A00A705D7 /* Coordinator.swift in Sources */,
 				875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */,

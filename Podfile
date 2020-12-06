@@ -5,5 +5,6 @@ target 'Corona Light' do
   use_frameworks!
 
 pod 'SwiftyJSON'
+pod 'Moya'
 
 end

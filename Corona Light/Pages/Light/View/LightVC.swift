@@ -23,7 +23,7 @@ class LightVC: UIViewController {
         print("Hello world!!")
         self.view.backgroundColor = .white
         
-        self.viewModel = LightViewModel(network: Networking(),
+        self.viewModel = LightViewModel(network: NetworkManager(),
                                         locationManager: LocationManager())
     }
 }
