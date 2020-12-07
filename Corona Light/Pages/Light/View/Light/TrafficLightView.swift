@@ -34,10 +34,18 @@ class TrafficLightView: UIView {
         return vw
     }()
     
-    var descriptionLabel : UILabel = {
+    // TODO: Make a function to change its text
+    let descriptionLabel : UILabel = {
         let lbl = UILabel()
         lbl.numberOfLines = 4
         return lbl
+    }()
+    
+    let rulesPageButton: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("See limitations >>", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        return btn
     }()
     
     //MARK: Size
@@ -60,6 +68,7 @@ class TrafficLightView: UIView {
         setupContentView()
         setupStackView()
         setupDescriptionLabel()
+        setupRulesPageButtton()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -111,6 +120,20 @@ class TrafficLightView: UIView {
 //            make.right.equalToSuperview().offset(-30)
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(100)
+        }
+    }
+    // RulesPageButtton
+    private func setupRulesPageButtton() {
+        self.addSubview(rulesPageButton)
+        addRulesPageButttonConstraints()
+    }
+    private func addRulesPageButttonConstraints() {
+        rulesPageButton.snp.makeConstraints { (make) in
+            make.top.equalTo(descriptionLabel.snp.bottom)
+            make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
+//            make.centerX.equalTo(contentView.snp.centerX)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
