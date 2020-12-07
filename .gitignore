@@ -101,5 +101,6 @@ DerivedData
 *.xcuserstate
 Podfile.lock
 *.xcconfig
+*.pbxproj
 
 Podfile
