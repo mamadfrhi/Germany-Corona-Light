@@ -44,6 +44,8 @@ class LightVC: UIViewController {
             .errorMessage
             .observeOn(MainScheduler.instance)
             .subscribe { (message) in
+                self.trafficLightView.currentOnlineLight = .off
+                guard let message = message.element else { return}
                 MessageView.sharedInstance.showOnView(message: message,
                                                       theme: .error)
             }

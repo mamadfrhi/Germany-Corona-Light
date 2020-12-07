@@ -19,6 +19,7 @@ enum LightColors: String, CaseIterable {
     case red = "Red"
     case yellow = "Yellow"
     case green = "Green"
+    case off
 }
 
 class LightManager {
@@ -26,7 +27,10 @@ class LightManager {
     // MARK: Variables
     var currentOnlineLight: LightColors = .green {
         didSet {
-            turnOn(lightColor: currentOnlineLight)
+            turnOffAll()
+            if currentOnlineLight != .off {
+                turnOn(lightColor: currentOnlineLight)
+            }
         }
     }
     var lightHeight: CGFloat
@@ -41,7 +45,6 @@ class LightManager {
     // TODO: Animate
     // MARK: Light Functions
     private func turnOn(lightColor: LightColors) {
-        turnOffAll()
         for light in lights {
             if light.colorName == lightColor.rawValue {
                 light.circleView.alpha = 1
