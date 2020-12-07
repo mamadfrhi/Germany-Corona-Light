@@ -34,6 +34,12 @@ class TrafficLightView: UIView {
         return vw
     }()
     
+    private var descriptionLabel : UILabel = {
+        let lbl = UILabel()
+        lbl.backgroundColor = .black
+        return lbl
+    }()
+    
     //MARK: Size
     private var stackViewHeight: CGFloat {
         return (self.frame.height * 0.6)
@@ -53,6 +59,7 @@ class TrafficLightView: UIView {
         self.backgroundColor = .purple
         setupContentView()
         setupStackView()
+        setupDescriptionLabel()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -90,6 +97,19 @@ class TrafficLightView: UIView {
         let lights = lightManager.lights
         for light in lights {
             stackView.addArrangedSubview(light.circleView)
+        }
+    }
+    // DescriptionLabel
+    private func setupDescriptionLabel() {
+        self.addSubview(descriptionLabel)
+        addDescriptionLabelConstraints()
+    }
+    private func addDescriptionLabelConstraints() {
+        descriptionLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
+            make.height.equalTo(100)
         }
     }
 }
