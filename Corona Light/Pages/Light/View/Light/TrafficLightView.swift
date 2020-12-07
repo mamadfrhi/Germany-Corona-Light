@@ -42,9 +42,10 @@ class TrafficLightView: UIView {
     }()
     
     let rulesPageButton: UIButton = {
-       let btn = UIButton()
+        let btn = UIButton(type: .system)
         btn.setTitle("See limitations >>", for: .normal)
         btn.setTitleColor(.systemBlue, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         return btn
     }()
     

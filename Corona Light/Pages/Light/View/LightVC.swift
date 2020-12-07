@@ -77,5 +77,13 @@ class LightVC: UIViewController {
                 self.trafficLightView.descriptionLabel.text = descriptionLabelText
             }
             .disposed(by: disposeBag)
+        
+        // rulesPageButton
+        trafficLightView.rulesPageButton
+            .rx.tap.subscribe { (tapped) in
+                print("")
+            }
+            .disposed(by: disposeBag)
+
     }
 }
