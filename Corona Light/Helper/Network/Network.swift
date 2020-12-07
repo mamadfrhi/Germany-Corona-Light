@@ -11,7 +11,7 @@ import Moya
 
 protocol Networkable {
     var provider: MoyaProvider<CoronaAPI> { get }
-    func getStats(of state: String, completion: @escaping (Int?)->())
+    func getStats(of state: String, completion: @escaping (Int?, String?)->())
 }
 
 enum CoronaAPI {
