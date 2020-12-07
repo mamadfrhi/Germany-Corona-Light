@@ -8,6 +8,8 @@
 
 import UIKit
 
+let numberOfLights = 4
+
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
@@ -20,8 +22,19 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let lightVC = UIStoryboard(name: "Light",
-                                   bundle: Bundle.main).instantiateViewController(identifier: "LightVC")
+        let vm = LightViewModel(network: NetworkManager(),
+                                locationManager: LocationManager())
+        
+        
+        // Making view
+        //TODO: Clean it
+        let lightHeight = CGFloat(((UIScreen.main.bounds.height * 0.6) / CGFloat(numberOfLights)) - 10)
+        let lightManager = LightManager(lightHeight: lightHeight)
+        
+        let view = TrafficLightView(frame: UIScreen.main.bounds,
+                                    lightManager: lightManager)
+        let lightVC = LightVC(viewModel: vm,
+                              trafficLightView: view)
         navigationController.pushViewController(lightVC, animated: true)
     }
 }

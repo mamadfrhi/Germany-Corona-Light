@@ -27,10 +27,10 @@ class LightViewModel {
 extension LightViewModel: LocationDelegate {
     func didUpdateLocation(to newStateName: String?) {
         print("Did update location at this town: \(String(describing: newStateName)).\n")
-        network.getStats(of: newStateName!) {
-            (incidents) in
-            print("incidents of \(newStateName!) = \(incidents!)")
-        }
+//        network.getStats(of: newStateName!) {
+//            (incidents) in
+//            print("incidents of \(newStateName!) = \(incidents!)")
+//        }
     }
     func didNotAllowedLocationPermission() {
         print("I can't help you without location permission")
