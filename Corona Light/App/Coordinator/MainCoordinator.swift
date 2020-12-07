@@ -34,7 +34,12 @@ class MainCoordinator: Coordinator {
         let view = TrafficLightView(frame: UIScreen.main.bounds,
                                     lightManager: lightManager)
         let lightVC = LightVC(viewModel: vm,
-                              trafficLightView: view)
+                              trafficLightView: view,
+                              coordinator: self)
         navigationController.pushViewController(lightVC, animated: true)
+    }
+    
+    func goToRulesPage() {
+        print("I'm going to open RulesPage")
     }
 }

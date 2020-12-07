@@ -14,12 +14,15 @@ class LightVC: UIViewController {
     //MARK: Dependencies
     private var trafficLightView: TrafficLightView
     private var viewModel: LightViewModel
+    var coordinator: MainCoordinator
     
     //MARK: LifeCycle
     init(viewModel: LightViewModel,
-         trafficLightView: TrafficLightView) {
+         trafficLightView: TrafficLightView,
+         coordinator: MainCoordinator) {
         self.viewModel = viewModel
         self.trafficLightView = trafficLightView
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         setupBindings()
     }
@@ -81,9 +84,9 @@ class LightVC: UIViewController {
         // rulesPageButton
         trafficLightView.rulesPageButton
             .rx.tap.subscribe { (tapped) in
-                print("")
+                print("Let's go to rules page!")
+                self.coordinator.goToRulesPage()
             }
             .disposed(by: disposeBag)
-
     }
 }
