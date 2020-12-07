@@ -12,7 +12,8 @@ class LocationConvertor {
     
     let geocoder = CLGeocoder()
     
-    func getTownName(from location: CLLocation ,completion: @escaping (String?) -> Void) {
+    func getTownName(from location: CLLocation,
+                     completion: @escaping (String?) -> Void) {
         // TODO: Handle errors and let user see them
         // TODO: check retain cycle
         geocoder.reverseGeocodeLocation(location) {
@@ -32,7 +33,8 @@ class LocationConvertor {
         }
     }
     
-    func getLocationInfo(from location: CLLocation ,completion: @escaping (LocationInfo?) -> Void) {
+    func getLocationInfo(from location: CLLocation,
+                         completion: @escaping (LocationInfo?) -> Void) {
         // TODO: Handle errors and let user see them
         // TODO: check retain cycle
         geocoder.reverseGeocodeLocation(location) {
@@ -48,9 +50,9 @@ class LocationConvertor {
                 completion(nil)
                 return
             }
-            let locationInfo = LocationInfo(country: placemark.country ?? "No country name",
-                                            state: placemark.administrativeArea ?? "No state name",
-                                            town: placemark.subAdministrativeArea ?? "No town name")
+            let locationInfo = LocationInfo(country: placemark.country,
+                                            state: placemark.administrativeArea,
+                                            town: placemark.subAdministrativeArea)
             completion(locationInfo)
         }
     }

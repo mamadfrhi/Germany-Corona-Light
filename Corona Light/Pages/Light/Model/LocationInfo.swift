@@ -8,7 +8,7 @@
 import Foundation
 
 struct LocationInfo {
-    let country: String
-    let state: String
-    let town: String
+    let country: String?
+    let state: String?
+    let town: String?
 }

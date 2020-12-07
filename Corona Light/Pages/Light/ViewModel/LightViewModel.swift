@@ -26,26 +26,30 @@ class LightViewModel {
     //MARK: RX
     let loading: PublishSubject<Bool> = PublishSubject()
     let errorMessage : PublishSubject<String> = PublishSubject()
-    var stateStatus : PublishSubject<LightColors> = PublishSubject()
+    let townStatus : PublishSubject<LightColors> = PublishSubject()
+    
+    let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
     
     private let disposeable = DisposeBag()
 }
 
 //MARK:- Location
 extension LightViewModel: LocationDelegate {
-    func didUpdateLocation(to newStateName: String?) {
-        print("Did update location at this town: \(String(describing: newStateName)).\n")
-        guard let stateName = newStateName else {
+    func didUpdateLocation(to locationInfo: LocationInfo?) {
+        print("Did update location at this town: \(String(describing: locationInfo?.town)).\n")
+        guard let locationInfo = locationInfo,
+              let townName = locationInfo.town else {
             self.errorMessage.onNext("I can't detect your location!")
             return
         }
-        getIncidents(of: stateName)
+        self.locationInfo.onNext(locationInfo)
+        getIncidents(of: townName)
     }
     
-    private func getIncidents(of stateName: String) {
+    private func getIncidents(of townName: String) {
         // Start request
         loading.onNext(true)
-        network.getStats(of: stateName) {
+        network.getStats(of: townName) {
             [unowned self]
             (incidents, errorMessage) in
             // Stop loading
@@ -53,8 +57,8 @@ extension LightViewModel: LocationDelegate {
             
             // Decide on result
             if let incidents = incidents {
-                print("incidents of \(stateName) = \(String(describing: incidents))")
-                setStateStatus(by: incidents)
+                print("incidents of \(townName) = \(String(describing: incidents))")
+                setTownStatus(by: incidents)
             }else {
                 // If incidents were nil
                 // There is an error
@@ -65,22 +69,22 @@ extension LightViewModel: LocationDelegate {
         }
     }
     
-    private func setStateStatus(by incidents: Int) {
+    private func setTownStatus(by incidents: Int) {
         // Green
         if incidents < 35 {
-            self.stateStatus.onNext(.green)
+            self.townStatus.onNext(.green)
         }
         // Yellow
         else if incidents >= 35 && incidents <= 50 {
-            self.stateStatus.onNext(.yellow)
+            self.townStatus.onNext(.yellow)
         }
         // Red
         else if incidents >= 35 && incidents <= 50 {
-            self.stateStatus.onNext(.red)
+            self.townStatus.onNext(.red)
         }
         // DarkRed
         else if incidents > 100 {
-            self.stateStatus.onNext(.darkRed)
+            self.townStatus.onNext(.darkRed)
         }
     }
     

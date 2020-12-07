@@ -13,7 +13,7 @@ protocol Locationable {
     func requestLocationPermission()
 }
 protocol LocationDelegate {
-    func didUpdateLocation(to newStateName: String?)
+    func didUpdateLocation(to newLocation: LocationInfo?)
     func didNotAllowedLocationPermission()
 }
 
@@ -25,10 +25,10 @@ class LocationManager: NSObject {
     private var exposedLocation: CLLocation? {
         didSet {
             guard let exposedLocation = exposedLocation else { return}
-            locationConvertor.getTownName(from: exposedLocation) {
+            locationConvertor.getLocationInfo(from: exposedLocation) {
                 [unowned self]
-                (townName) in
-                self.delegate?.didUpdateLocation(to: townName)
+                (locationInfo) in
+                self.delegate?.didUpdateLocation(to: locationInfo)
             }
         }
     }

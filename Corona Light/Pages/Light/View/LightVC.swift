@@ -51,12 +51,30 @@ class LightVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        // incidents (Main Purpose)
+        // townStatus (Main Purpose)
         viewModel
-            .stateStatus
+            .townStatus
             .observeOn(MainScheduler.instance)
             .subscribe { (statusColor) in
                 self.trafficLightView.currentOnlineLight = statusColor
+            }
+            .disposed(by: disposeBag)
+        
+        // locationInfo
+        viewModel
+            .locationInfo
+            .observeOn(MainScheduler.instance)
+            .subscribe { (locationInfo) in
+                var descriptionLabelText = "📍 Location not detected yet"
+                guard let locationInfo = locationInfo.element else {
+                    return
+                }
+                descriptionLabelText = ""
+                descriptionLabelText.append("📍 You're at\n")
+                descriptionLabelText.append("\t\(locationInfo.country ?? "")\n")
+                descriptionLabelText.append("\t\(locationInfo.state ?? "")\n")
+                descriptionLabelText.append("\t\(locationInfo.town ?? "")")
+                self.trafficLightView.descriptionLabel.text = descriptionLabelText
             }
             .disposed(by: disposeBag)
     }

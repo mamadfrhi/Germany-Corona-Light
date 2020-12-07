@@ -34,9 +34,9 @@ class TrafficLightView: UIView {
         return vw
     }()
     
-    private var descriptionLabel : UILabel = {
+    var descriptionLabel : UILabel = {
         let lbl = UILabel()
-        lbl.backgroundColor = .black
+        lbl.numberOfLines = 4
         return lbl
     }()
     
@@ -56,7 +56,7 @@ class TrafficLightView: UIView {
     init(frame: CGRect, lightManager: LightManagerable) {
         super.init(frame: frame)
         self.lightManager = lightManager
-        self.backgroundColor = .purple
+        self.backgroundColor = .white
         setupContentView()
         setupStackView()
         setupDescriptionLabel()
@@ -107,8 +107,9 @@ class TrafficLightView: UIView {
     private func addDescriptionLabelConstraints() {
         descriptionLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(30)
-            make.right.equalToSuperview().offset(-30)
+//            make.left.equalToSuperview().offset(30)
+//            make.right.equalToSuperview().offset(-30)
+            make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(100)
         }
     }
