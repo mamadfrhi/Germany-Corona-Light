@@ -53,29 +53,10 @@ class LightVC: UIViewController {
         
         // incidents (Main Purpose)
         viewModel
-            .incidentsNumber
+            .stateStatus
             .observeOn(MainScheduler.instance)
-            .subscribe { (incidentNumber) in
-                // TODO: Bind it to viewmodel
-                guard let incidents = incidentNumber.element else {
-                    return
-                }
-                // Green
-                if incidents < 35 {
-                    self.trafficLightView.currentOnlineLight = .green
-                }
-                // Yellow
-                else if incidents >= 35 && incidents <= 50 {
-                    self.trafficLightView.currentOnlineLight = .yellow
-                }
-                // Red
-                else if incidents >= 35 && incidents <= 50 {
-                    self.trafficLightView.currentOnlineLight = .red
-                }
-                // DarkRed
-                else if incidents > 100 {
-                    self.trafficLightView.currentOnlineLight = .darkRed
-                }
+            .subscribe { (statusColor) in
+                self.trafficLightView.currentOnlineLight = statusColor
             }
             .disposed(by: disposeBag)
     }

@@ -26,7 +26,7 @@ class LightViewModel {
     //MARK: RX
     let loading: PublishSubject<Bool> = PublishSubject()
     let errorMessage : PublishSubject<String> = PublishSubject()
-    let incidentsNumber : PublishSubject<Int> = PublishSubject()
+    var stateStatus : PublishSubject<LightColors> = PublishSubject()
     
     private let disposeable = DisposeBag()
 }
@@ -35,7 +35,6 @@ class LightViewModel {
 extension LightViewModel: LocationDelegate {
     func didUpdateLocation(to newStateName: String?) {
         print("Did update location at this town: \(String(describing: newStateName)).\n")
-        
         guard let stateName = newStateName else {
             self.errorMessage.onNext("I can't detect your location!")
             return
@@ -55,7 +54,7 @@ extension LightViewModel: LocationDelegate {
             // Decide on result
             if let incidents = incidents {
                 print("incidents of \(stateName) = \(String(describing: incidents))")
-                incidentsNumber.onNext(incidents)
+                setStateStatus(by: incidents)
             }else {
                 // If incidents were nil
                 // There is an error
@@ -63,6 +62,25 @@ extension LightViewModel: LocationDelegate {
                     self.errorMessage.onNext(errorMessage)
                 }
             }
+        }
+    }
+    
+    private func setStateStatus(by incidents: Int) {
+        // Green
+        if incidents < 35 {
+            self.stateStatus.onNext(.green)
+        }
+        // Yellow
+        else if incidents >= 35 && incidents <= 50 {
+            self.stateStatus.onNext(.yellow)
+        }
+        // Red
+        else if incidents >= 35 && incidents <= 50 {
+            self.stateStatus.onNext(.red)
+        }
+        // DarkRed
+        else if incidents > 100 {
+            self.stateStatus.onNext(.darkRed)
         }
     }
     
