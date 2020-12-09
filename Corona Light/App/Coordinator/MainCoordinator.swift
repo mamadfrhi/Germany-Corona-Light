@@ -41,8 +41,8 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(lightVC, animated: true)
     }
     
-    func goToRulesPage() {
-        let vc = RulesVC()
+    func showRules(for statusColor: LightColors) {
+        let vc = RulesVC(statusColor: statusColor)
         navigationController.pushViewController(vc, animated: true)
         print("I'm going to open RulesPage")
     }
