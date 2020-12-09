@@ -22,6 +22,7 @@ class LightViewModel {
         self.locationManager = locationManager
         self.locationManager.delegate = self
         setupRefreshTimer()
+        setupNotification()
     }
     
     //MARK: RX
@@ -40,6 +41,17 @@ class LightViewModel {
                 if let townName = self.locationManager.locationInfo?.town {
                     print("I'm going to refresh stats!")
                     self.getIncidents(of: townName)
+                }
+            }
+            .disposed(by: disposeable)
+    }
+    
+    private func setupNotification() {
+        townStatus.currentAndPrevious()
+            .subscribe { (current, previous) in
+                guard let previous = previous else { return}
+                if current != previous { // status changed
+                    // send notification
                 }
             }
             .disposed(by: disposeable)

@@ -21,8 +21,8 @@
 		875621DA257A81CE00A705D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */; };
 		875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621FB257A831A00A705D7 /* MainCoordinator.swift */; };
 		875621FE257A831A00A705D7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621FC257A831A00A705D7 /* Coordinator.swift */; };
-		87562205257A83A000A705D7 /* ReactiveExtensiones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562203257A83A000A705D7 /* ReactiveExtensiones.swift */; };
-		87562206257A83A000A705D7 /* Extensiones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562204257A83A000A705D7 /* Extensiones.swift */; };
+		87562205257A83A000A705D7 /* Reactive+isAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562203257A83A000A705D7 /* Reactive+isAnimating.swift */; };
+		87562206257A83A000A705D7 /* UIView+Extensiones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562204257A83A000A705D7 /* UIView+Extensiones.swift */; };
 		87562211257A851100A705D7 /* LightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562210257A851100A705D7 /* LightVC.swift */; };
 		87562215257A853600A705D7 /* LightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562214257A853600A705D7 /* LightViewModel.swift */; };
 		87562218257A855700A705D7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562217257A855700A705D7 /* Network.swift */; };
@@ -35,6 +35,7 @@
 		87C99143257E3F68003049A3 /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C99142257E3F68003049A3 /* TrafficLightView.swift */; };
 		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
 		87E7FF5E257CC5730095CDDC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* NetworkManager.swift */; };
+		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +56,8 @@
 		875621DB257A81CE00A705D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		875621FB257A831A00A705D7 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		875621FC257A831A00A705D7 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		87562203257A83A000A705D7 /* ReactiveExtensiones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveExtensiones.swift; sourceTree = "<group>"; };
-		87562204257A83A000A705D7 /* Extensiones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensiones.swift; sourceTree = "<group>"; };
+		87562203257A83A000A705D7 /* Reactive+isAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reactive+isAnimating.swift"; sourceTree = "<group>"; };
+		87562204257A83A000A705D7 /* UIView+Extensiones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensiones.swift"; sourceTree = "<group>"; };
 		87562210257A851100A705D7 /* LightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightVC.swift; sourceTree = "<group>"; };
 		87562214257A853600A705D7 /* LightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModel.swift; sourceTree = "<group>"; };
 		87562217257A855700A705D7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		87C99142257E3F68003049A3 /* TrafficLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightView.swift; sourceTree = "<group>"; };
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		87E7FF5D257CC5730095CDDC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
 		C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.release.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,11 +168,10 @@
 		875621F7257A82C800A705D7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				87F577692580C69E00FB9E09 /* Extension */,
 				8725ADE6257E7BBC00555E18 /* Views */,
 				8756221A257A86E800A705D7 /* Location */,
 				8756220C257A847B00A705D7 /* Network */,
-				87562204257A83A000A705D7 /* Extensiones.swift */,
-				87562203257A83A000A705D7 /* ReactiveExtensiones.swift */,
 				87562238257A8B8700A705D7 /* Notification.swift */,
 			);
 			path = Helper;
@@ -273,6 +274,24 @@
 				87C99142257E3F68003049A3 /* TrafficLightView.swift */,
 			);
 			path = Light;
+			sourceTree = "<group>";
+		};
+		87F577692580C69E00FB9E09 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				87562204257A83A000A705D7 /* UIView+Extensiones.swift */,
+				87F5776F2580C74E00FB9E09 /* RX */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		87F5776F2580C74E00FB9E09 /* RX */ = {
+			isa = PBXGroup;
+			children = (
+				87562203257A83A000A705D7 /* Reactive+isAnimating.swift */,
+				87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */,
+			);
+			path = RX;
 			sourceTree = "<group>";
 		};
 		CDE480D2F0811F1A74602C09 /* Frameworks */ = {
@@ -404,9 +423,9 @@
 				87C9913B257E3EC0003049A3 /* LightManager.swift in Sources */,
 				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,
 				872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */,
-				87562205257A83A000A705D7 /* ReactiveExtensiones.swift in Sources */,
+				87562205257A83A000A705D7 /* Reactive+isAnimating.swift in Sources */,
 				8756221C257A870100A705D7 /* LocationManager.swift in Sources */,
-				87562206257A83A000A705D7 /* Extensiones.swift in Sources */,
+				87562206257A83A000A705D7 /* UIView+Extensiones.swift in Sources */,
 				87562215257A853600A705D7 /* LightViewModel.swift in Sources */,
 				87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */,
 				8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */,
@@ -420,6 +439,7 @@
 				87562239257A8B8700A705D7 /* Notification.swift in Sources */,
 				875621FE257A831A00A705D7 /* Coordinator.swift in Sources */,
 				8715B824257E6C7300AE77BB /* AnimateloadingView.swift in Sources */,
+				87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */,
 				87C9913F257E3EFA003049A3 /* Light.swift in Sources */,
 				875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */,
 			);
