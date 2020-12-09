@@ -32,7 +32,7 @@ class LightViewModel {
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
 
     private func setupRefreshTimer() {
-        let tenMinutes = TimeInterval(10)
+        let tenMinutes = TimeInterval(60 * 10)
         Observable<Int>
             .timer(0, period: tenMinutes,
                    scheduler: MainScheduler.instance)
