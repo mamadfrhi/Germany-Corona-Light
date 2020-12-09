@@ -14,7 +14,7 @@ class LightVC: UIViewController {
     //MARK: Dependencies
     private var trafficLightView: TrafficLightView
     private var viewModel: LightViewModel
-    var coordinator: MainCoordinator
+    private var coordinator: MainCoordinator
     
     //MARK: LifeCycle
     init(viewModel: LightViewModel,
@@ -35,7 +35,7 @@ class LightVC: UIViewController {
     }
     
     //MARK: RX
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     private func setupBindings() {
         // loading
         viewModel.loading

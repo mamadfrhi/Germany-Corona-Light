@@ -9,7 +9,6 @@ import UIKit
 
 protocol LightManagerable {
     var lights: [Light] { get}
-    var lightHeight: CGFloat { get}
     var currentOnlineLight: LightColors { get set}
     
     func makeLights()
@@ -33,13 +32,11 @@ class LightManager {
             }
         }
     }
-    var lightHeight: CGFloat
     var lights: [Light] = []
     
     // MARK: Init
-    init(lightHeight: CGFloat) {
-        self.lightHeight = lightHeight
-        makeLights()
+    init() {
+        self.makeLights()
     }
     
     // TODO: Animate
@@ -64,8 +61,7 @@ extension LightManager: LightManagerable {
             guard let color = UIColor.init(named: stateColorName.rawValue) else {
                 continue
             }
-            let circleView = CircleView(height: lightHeight,
-                                        color: color)
+            let circleView = CircleView(color: color)
             let light = Light(circleView: circleView,
                               colorName: stateColorName.rawValue)
             lights.append(light)
@@ -76,11 +72,9 @@ extension LightManager: LightManagerable {
 
 // MARK: CircleView
 class CircleView: UIView {
-    var height: CGFloat!
     var color: UIColor!
     
-    init(height: CGFloat, color: UIColor) {
-        self.height = height
+    init(color: UIColor) {
         self.color = color
         super.init(frame: .zero)
         self.backgroundColor = color
@@ -91,12 +85,6 @@ class CircleView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        var newFrame = self.frame
-        newFrame.size.width = height
-        newFrame.size.height = height
-        self.frame = newFrame
-        
         clipsToBounds = true
         layer.cornerRadius = bounds.midX
     }

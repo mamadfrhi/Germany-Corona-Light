@@ -22,14 +22,15 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
+        goToRulesPage()
+        return
         let vm = LightViewModel(network: NetworkManager(),
                                 locationManager: LocationManager())
         
         
         // Making view
         //TODO: Clean it
-        let lightHeight = CGFloat(((UIScreen.main.bounds.height * 0.6) / CGFloat(numberOfLights)) - 10)
-        let lightManager = LightManager(lightHeight: lightHeight)
+        let lightManager = LightManager()
         
         let view = TrafficLightView(frame: UIScreen.main.bounds,
                                     lightManager: lightManager)
@@ -40,6 +41,8 @@ class MainCoordinator: Coordinator {
     }
     
     func goToRulesPage() {
+        let vc = RulesVC()
+        navigationController.pushViewController(vc, animated: true)
         print("I'm going to open RulesPage")
     }
 }

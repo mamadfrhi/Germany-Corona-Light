@@ -5,5 +5,10 @@
 //  Created by iMamad on 12/4/20.
 //
 
-import Foundation
+import UIKit
 
+class RulesVC : UIViewController {
+    override func loadView() {
+        self.view = RulesView(frame: UIScreen.main.bounds)
+    }
+}

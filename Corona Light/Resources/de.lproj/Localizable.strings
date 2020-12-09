@@ -7,20 +7,18 @@
 */
 
 // Dark Red 🔴🔴
-"darkRedStatusRules" = "- Veranstaltungen (z. B. Clubtreffen, Sportveranstaltungen, kulturelle Veranstaltungen usw.) dürfen 50 Personen nicht überschreiten\n- Schließung der Lebensmittel- / Gastronomie-Verkaufsstellen, Verbot des Alkoholverkaufs und des Alkoholkonsums in
-bestimmte öffentliche Plätze ab 21:00 Uhr";
+"darkRedStatusRules" = "Immer wichtig: Halten Sie Abstand, tragen Sie eine Maske, waschen Sie Ihre Hände und lüften Sie regelmäßig\n- Veranstaltungen (z. B. Clubtreffen, Sportveranstaltungen, kulturelle Veranstaltungen usw.) dürfen 50 Personen nicht überschreiten\n- Schließung der Lebensmittel- / Gastronomie-Verkaufsstellen, Verbot des Alkoholverkaufs und des Alkoholkonsums in bestimmte öffentliche Plätze ab 21:00 Uhr";
 
 // Red 🔴
-"redStatusRules" = "- Private Feiern und Kontakte: nicht mehr als 5 Haushalte oder fünf Personen\n- Das Tragen einer Maske ist in stark frequentierten Räumen, in Fußgängerzonen und in öffentlichen Gebäuden obligatorisch.
-für alle Klassenstufen, an Universitäten, für Teilnehmer an (Sport-) Veranstaltungen usw.\n- Ausgangssperre und Verbot des Verkaufs sowie des Konsums von Alkohol im öffentlichen Raum ab 22:00 Uhr
-Das ZUSÄTZLICHE Signal für Bayern";
+"redStatusRules" = "Immer wichtig: Halten Sie Abstand, tragen Sie eine Maske, waschen Sie Ihre Hände und lüften Sie regelmäßig\n- Private Feiern und Kontakte: nicht mehr als 5 Haushalte oder fünf Personen\n- Das Tragen einer Maske ist in stark frequentierten Räumen, in Fußgängerzonen und in öffentlichen Gebäuden obligatorisch. für alle Klassenstufen, an Universitäten, für Teilnehmer an (Sport-) Veranstaltungen usw.\n- Ausgangssperre und Verbot des Verkaufs sowie des Konsums von Alkohol im öffentlichen Raum ab 22:00 Uhr Das ZUSÄTZLICHE Signal für Bayern";
 
 // Yellow 🟡
-"yellowStatusRules" = "- Private Feiern und Kontakte: nicht mehr als zwei Haushalte oder zehn Personen\n- Das Tragen einer Maske ist in stark frequentierten Räumen, in Fußgängerzonen und in öffentlichen Gebäuden obligatorisch.
-in weiterführenden Schulen während des Unterrichts, an Universitäten, für Teilnehmer von (Sport-) Veranstaltungen usw.\n- Ausgangssperre und Verbot des Verkaufs sowie des Konsums von Alkohol im öffentlichen Raum ab 23:00 Uhr";
+"yellowStatusRules" = "Immer wichtig: Halten Sie Abstand, tragen Sie eine Maske, waschen Sie Ihre Hände und lüften Sie regelmäßig\n- Private Feiern und Kontakte: nicht mehr als zwei Haushalte oder zehn Personen\n- Das Tragen einer Maske ist in stark frequentierten Räumen, in Fußgängerzonen und in öffentlichen Gebäuden obligatorisch. in weiterführenden Schulen während des Unterrichts, an Universitäten, für Teilnehmer von (Sport-) Veranstaltungen usw.\n- Ausgangssperre und Verbot des Verkaufs sowie des Konsums von Alkohol im öffentlichen Raum ab 23:00 Uhr";
 
 // Green 🟢
-"greenStatusRules" = "- Einschränkungen des persönlichen Kontakts im öffentlichen Raum\n- Private Veranstaltungen (d. H. Hochzeiten usw.) mit maximal 100 Teilnehmern in geschlossenen Räumen
-und maximal 200 Teilnehmer im Freien\n- Das Tragen einer Maske ist obligatorisch, wenn (einschließlich, aber nicht beschränkt auf) die Nutzung öffentlicher Verkehrsmittel.
-Einkaufen, Essen und Trinken in Restaurants, Bars usw. und bei Mindestentfernung (1,5 m)
-kann nicht gehalten werden";
+"greenStatusRules" = "Immer wichtig: Halten Sie Abstand, tragen Sie eine Maske, waschen Sie Ihre Hände und lüften Sie regelmäßig\n- Einschränkungen des persönlichen Kontakts im öffentlichen Raum\n- Private Veranstaltungen (d. H. Hochzeiten usw.) mit maximal 100 Teilnehmern in geschlossenen Räumen und maximal 200 Teilnehmer im Freien\n- Das Tragen einer Maske ist obligatorisch, wenn (einschließlich, aber nicht beschränkt auf) die Nutzung öffentlicher Verkehrsmittel. Einkaufen, Essen und Trinken in Restaurants, Bars usw. und bei Mindestentfernung (1,5 m) kann nicht gehalten werden";
+
+
+// Status Label text
+"statusLabel" = "Ihr aktueller Bereich ist ";
+
