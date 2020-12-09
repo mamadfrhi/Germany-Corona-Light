@@ -19,6 +19,16 @@ specific public places form 21:00";
 // Green 🟢
 "greenStatusRules" = "Always Important: Keep your distance, wear a mask, wash your hands, air rooms regularly\n- Limitations of face-to-face contact in public spaces\n- Private events ( i.e. weddings etc. ) with a maximum of 100 participants in closed spaces and a maximum of 200 participants in the open\n- Wearing a mask is mandatory when ( including, but not limited to ) using public transportation, going shopping, eating and drinking in restaurants, bars, etc. and in case minimum distance (1.5m ) cannot be kept";
 
-
 // Status Label text
 "statusLabel" = "Your current area is ";
+
+// ------- Notification -------
+
+// Notification Button Text
+"notificationButtonText" = "Tell me about restrictions!";
+// Notification Title
+"notificationTitle" = "Status changed";
+// Notification Body
+"notificationBody" = "Tap to see restrictions ☝🏼";
+
+

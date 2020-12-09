@@ -22,3 +22,14 @@
 // Status Label text
 "statusLabel" = "Ihr aktueller Bereich ist ";
 
+
+
+
+// ------- Notification -------
+
+// Notification Button Text
+"notificationButtonText" = "Erzähl mir von Einschränkungen!";
+// Notification Title
+"notificationTitle" = "Status geändert";
+// Notification Body
+"notificationBody" = "Tippen Sie hier, um Einschränkungen anzuzeigen ☝🏼";

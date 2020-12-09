@@ -28,7 +28,7 @@
 		87562218257A855700A705D7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562217257A855700A705D7 /* Network.swift */; };
 		8756221C257A870100A705D7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8756221B257A870100A705D7 /* LocationManager.swift */; };
 		87562221257A87AB00A705D7 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562220257A87AB00A705D7 /* RulesVC.swift */; };
-		87562239257A8B8700A705D7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562238257A8B8700A705D7 /* Notification.swift */; };
+		87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562238257A8B8700A705D7 /* NotificationManager.swift */; };
 		87575EAA257F76DC00919A7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87575EAC257F76DC00919A7E /* Localizable.strings */; };
 		87C9913B257E3EC0003049A3 /* LightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913A257E3EC0003049A3 /* LightManager.swift */; };
 		87C9913F257E3EFA003049A3 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913E257E3EFA003049A3 /* Light.swift */; };
@@ -36,6 +36,7 @@
 		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
 		87E7FF5E257CC5730095CDDC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* NetworkManager.swift */; };
 		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
+		87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F57772258130CB00FB9E09 /* NotificationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +64,7 @@
 		87562217257A855700A705D7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8756221B257A870100A705D7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		87562220257A87AB00A705D7 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
-		87562238257A8B8700A705D7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		87562238257A8B8700A705D7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		87575EAB257F76DC00919A7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87575EAE257F76EC00919A7E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87C9913A257E3EC0003049A3 /* LightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightManager.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		87E7FF5D257CC5730095CDDC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
+		87F57772258130CB00FB9E09 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.release.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,7 +174,7 @@
 				8725ADE6257E7BBC00555E18 /* Views */,
 				8756221A257A86E800A705D7 /* Location */,
 				8756220C257A847B00A705D7 /* Network */,
-				87562238257A8B8700A705D7 /* Notification.swift */,
+				87F57771258130B100FB9E09 /* Notification */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -292,6 +294,15 @@
 				87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */,
 			);
 			path = RX;
+			sourceTree = "<group>";
+		};
+		87F57771258130B100FB9E09 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				87562238257A8B8700A705D7 /* NotificationManager.swift */,
+				87F57772258130CB00FB9E09 /* NotificationModel.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		CDE480D2F0811F1A74602C09 /* Frameworks */ = {
@@ -436,7 +447,8 @@
 				8715B827257E6C7300AE77BB /* loadingView.swift in Sources */,
 				87E7FF5E257CC5730095CDDC /* NetworkManager.swift in Sources */,
 				8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */,
-				87562239257A8B8700A705D7 /* Notification.swift in Sources */,
+				87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */,
+				87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */,
 				875621FE257A831A00A705D7 /* Coordinator.swift in Sources */,
 				8715B824257E6C7300AE77BB /* AnimateloadingView.swift in Sources */,
 				87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */,

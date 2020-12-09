@@ -15,23 +15,36 @@ class LightViewModel {
     //MARK: Dependencies
     private let network: Networkable
     private let locationManager: LocationManager
+    private let notificationManager: Notificationable
     
     // Inject -> network + location manager + notification
-    init(network: Networkable, locationManager: LocationManager) {
+    init(network: Networkable,
+         locationManager: LocationManager,
+         notificationManager: Notificationable) {
+        // Injecting dependencies
         self.network = network
         self.locationManager = locationManager
-        self.locationManager.delegate = self
+        self.notificationManager = notificationManager
+        locationManager.delegate = self
+        requestNotificationPermission()
+        // setup RX related
         setupRefreshTimer()
         setupNotification()
+        
+        townStatus.onNext(.darkRed)
+        townStatus.onNext(.darkRed)
     }
     
     //MARK: RX
+    // Variables
+    private let disposeable = DisposeBag()
     let loading: PublishSubject<Bool> = PublishSubject()
     let errorMessage : PublishSubject<String> = PublishSubject()
-    let townStatus : PublishSubject<LightColors> = PublishSubject()
     
+    let townStatus : PublishSubject<LightColors> = PublishSubject()
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
-
+    
+    // Setups
     private func setupRefreshTimer() {
         let tenMinutes = TimeInterval(60 * 10)
         Observable<Int>
@@ -47,17 +60,30 @@ class LightViewModel {
     }
     
     private func setupNotification() {
+        // If townStatus changed -> SEND notification to user
         townStatus.currentAndPrevious()
             .subscribe { (current, previous) in
                 guard let previous = previous else { return}
                 if current != previous { // status changed
                     // send notification
+                    print(current , previous)
+                    self.sendLocalizedNotification(at: 1)
                 }
             }
             .disposed(by: disposeable)
+        
+        
+        // Check type of injected NotificationManager is safe
+        guard let notificationManager = notificationManager as? NotificationManager
+        else { return}
+        // Notification button or banner TAPPED
+        notificationManager.notificationTapped
+            .subscribe { (val) in
+                print("Notif tapped! I'm in VM")
+                // go to rules page
+            }
+            .disposed(by: disposeable)
     }
-    
-    private let disposeable = DisposeBag()
 }
 
 //MARK:- Location
@@ -118,5 +144,16 @@ extension LightViewModel: LocationDelegate {
     func didNotAllowedLocationPermission() {
         print("I can't help you without location permission")
         // TODO: send user to the settings app to enable location permission
+    }
+}
+
+//MARK:- Notification
+extension LightViewModel: Notificationable {
+    func requestNotificationPermission() {
+        notificationManager.requestNotificationPermission()
+    }
+    
+    func sendLocalizedNotification(at timetInterval: TimeInterval) {
+        notificationManager.sendLocalizedNotification(at: timetInterval)
     }
 }

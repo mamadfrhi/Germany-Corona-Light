@@ -25,7 +25,8 @@ class MainCoordinator: Coordinator {
 //        goToRulesPage()
 //        return
         let vm = LightViewModel(network: NetworkManager(),
-                                locationManager: LocationManager())
+                                locationManager: LocationManager(),
+                                notificationManager: NotificationManager())
         
         
         // Making view
