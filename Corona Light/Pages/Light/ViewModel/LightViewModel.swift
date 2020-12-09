@@ -21,6 +21,7 @@ class LightViewModel {
         self.network = network
         self.locationManager = locationManager
         self.locationManager.delegate = self
+        setupRefreshTimer()
     }
     
     //MARK: RX
@@ -29,6 +30,20 @@ class LightViewModel {
     let townStatus : PublishSubject<LightColors> = PublishSubject()
     
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
+
+    private func setupRefreshTimer() {
+        let tenMinutes = TimeInterval(10)
+        Observable<Int>
+            .timer(0, period: tenMinutes,
+                   scheduler: MainScheduler.instance)
+            .subscribe { _ in
+                if let townName = self.locationManager.locationInfo?.town {
+                    print("I'm going to refresh stats!")
+                    self.getIncidents(of: townName)
+                }
+            }
+            .disposed(by: disposeable)
+    }
     
     private let disposeable = DisposeBag()
 }

@@ -22,8 +22,8 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        goToRulesPage()
-        return
+//        goToRulesPage()
+//        return
         let vm = LightViewModel(network: NetworkManager(),
                                 locationManager: LocationManager())
         

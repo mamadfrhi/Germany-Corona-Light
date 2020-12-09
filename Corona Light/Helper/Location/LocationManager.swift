@@ -10,6 +10,7 @@ import CoreLocation
 
 // MARK: - Protocols
 protocol Locationable {
+    var locationInfo: LocationInfo? { get set}
     func requestLocationPermission()
 }
 protocol LocationDelegate {
@@ -28,10 +29,12 @@ class LocationManager: NSObject {
             locationConvertor.getLocationInfo(from: exposedLocation) {
                 [unowned self]
                 (locationInfo) in
+                self.localLocationInfo = locationInfo
                 self.delegate?.didUpdateLocation(to: locationInfo)
             }
         }
     }
+    private var localLocationInfo : LocationInfo?
     private let locationManager = CLLocationManager()
     private let locationConvertor = LocationConvertor()
     var delegate: LocationDelegate?
@@ -44,6 +47,15 @@ class LocationManager: NSObject {
 
 // MARK: - Locationable
 extension LocationManager: Locationable {
+    var locationInfo: LocationInfo? {
+        get {
+            return localLocationInfo
+        }
+        set {
+            self.localLocationInfo = newValue
+        }
+    }
+    
     func requestLocationPermission() {
         self.locationManager.requestAlwaysAuthorization()
     }
