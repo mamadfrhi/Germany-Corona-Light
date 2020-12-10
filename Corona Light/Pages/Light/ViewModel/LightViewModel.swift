@@ -41,6 +41,8 @@ class LightViewModel {
     let townStatus : PublishSubject<LightColors> = PublishSubject()
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
     
+    let notificationTapped : PublishSubject<Bool> = PublishSubject()
+    
     // Setups
     private func setupRefreshTimer() {
         let tenMinutes = TimeInterval(60 * 10)
@@ -74,9 +76,10 @@ class LightViewModel {
         else { return}
         // Notification button or banner TAPPED
         notificationManager.notificationTapped
-            .subscribe { (val) in
+            .subscribe { _ in
                 print("Notif tapped! I'm in VM")
                 // go to rules page
+                self.notificationTapped.onNext(true)
             }
             .disposed(by: disposeable)
     }

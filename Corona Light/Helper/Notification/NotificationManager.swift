@@ -9,19 +9,21 @@ import NotificationCenter
 import RxSwift
 
 
+// MARK:- Interface
 protocol Notificationable {
     func requestNotificationPermission()
     func send(notification: Notification,
               at timetInterval: TimeInterval)
     func sendLocalizedNotification(at timetInterval: TimeInterval)
 }
-// Make functions optional
+// Make interface functions -optional-
 extension Notificationable {
     func send(notification: Notification,
               at timetInterval: TimeInterval){}
     func sendLocalizedNotification(at timetInterval: TimeInterval){}
 }
 
+// MARK:- Implementation
 class NotificationManager: NSObject {
     
     override init() {

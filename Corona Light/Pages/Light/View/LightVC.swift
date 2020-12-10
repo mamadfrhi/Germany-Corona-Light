@@ -39,9 +39,10 @@ class LightVC: UIViewController {
         viewModel.townStatus.onNext(.green)
     }
     
-    private func pushRulesPage(for statusColor: LightColors) {
-        print("I'm going to topen rules page for \(statusColor) status")
-        coordinator.pushRulesPage(for: statusColor)
+    private func pushRulesPage() {
+        if let statusColor = self.currentStatus {
+            coordinator.pushRulesPage(for: statusColor)
+        }
     }
     
     //MARK: Variable
@@ -49,6 +50,7 @@ class LightVC: UIViewController {
     // RX
     private let disposeBag = DisposeBag()
     private func setupBindings() {
+        // MARK: Binding
         // loading
         viewModel.loading
             .bind(to: self.rx.isAnimating)
@@ -95,11 +97,20 @@ class LightVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        // MARK: Navigation
+        // Notification Tapped
+        viewModel
+            .notificationTapped
+            .observeOn(MainScheduler.instance)
+            .subscribe { (event) in
+                self.pushRulesPage()
+            }
+            .disposed(by: disposeBag)
         // rulesPageButton
         trafficLightView.rulesPageButton
             .rx.tap
             .subscribe { (tapped) in
-                self.pushRulesPage(for: self.currentStatus!)
+                self.pushRulesPage()
             }
             .disposed(by: disposeBag)
     }
