@@ -32,9 +32,11 @@ class LightViewModel {
         setupNotification()
     }
     
-    // MARK: RX
-    // Variables
-    private let disposeable = DisposeBag()
+    // MARK: Variables
+    private var requestSentTime = Date()
+    private var firstRequestSent = false
+    
+    // RX
     let loading: PublishSubject<Bool> = PublishSubject()
     let errorMessage : PublishSubject<String> = PublishSubject()
     
@@ -42,6 +44,8 @@ class LightViewModel {
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
     
     let notificationTapped : PublishSubject<Bool> = PublishSubject()
+    
+    private let disposeable = DisposeBag()
     
     // Setups
     private func setupRefreshTimer() {
@@ -107,7 +111,36 @@ extension LightViewModel: LocationDelegate {
 
 //MARK:- Network
 extension LightViewModel {
+    private func timeDifferenceInSeconds(from: Date, until: Date) -> Int? {
+        let diffComponents = Calendar.current.dateComponents([.second],
+                                                             from: from,
+                                                             to: until)
+        return diffComponents.second
+    }
+    private func requestAllowed() -> Bool {
+        // Check if request 30 seconds later send
+        if !(firstRequestSent) { return true}
+        
+        let previousRequestTime = self.requestSentTime
+        let now = Date()
+        let differenceInSeconds = timeDifferenceInSeconds(from: previousRequestTime,
+                                                          until: now)
+        
+        if let seconds = differenceInSeconds, seconds > 30 {
+            return true
+        }else {
+            return false
+        }
+    }
+    
     private func getIncidents(of townName: String) {
+        
+        guard requestAllowed() == true else { return}
+        // Reset
+        firstRequestSent = true
+        requestSentTime = Date()
+        
+        
         // Call API
         loading.onNext(true)
         network.getStats(of: townName) {
