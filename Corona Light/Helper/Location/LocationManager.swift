@@ -5,8 +5,8 @@
 //  Created by iMamad on 12/4/20.
 //
 
-import Foundation
 import CoreLocation
+import RxSwift
 
 // MARK: - Protocols
 protocol Locationable {
@@ -21,27 +21,37 @@ protocol LocationDelegate {
 
 // MARK: - Location Manager
 class LocationManager: NSObject {
-    //MARK: Variables
-    // TODO: Do it with RX
-    private var exposedLocation: CLLocation? {
-        didSet {
-            guard let exposedLocation = exposedLocation else { return}
-            locationConvertor.getLocationInfo(from: exposedLocation) {
-                [unowned self]
-                (locationInfo) in
-                self.localLocationInfo = locationInfo
-                self.delegate?.didUpdateLocation(to: locationInfo)
-            }
-        }
-    }
+    
+    // MARK: Variables
     private var localLocationInfo : LocationInfo?
     private let locationManager = CLLocationManager()
     private let locationConvertor = LocationConvertor()
     var delegate: LocationDelegate?
     
+    // RX
+    let exposedLocation: PublishSubject<CLLocation?> = PublishSubject()
+    private let disposeBag = DisposeBag()
+    
     override init() {
         super.init()
         self.locationManager.delegate = self
+        setupBinding()
+    }
+    
+    private func setupBinding() {
+        // Convert location to sensible Model and call delegate
+        exposedLocation.bind { (freshLocation) in
+            guard let exposedLocation = freshLocation else { return}
+            self.locationConvertor.getLocationInfo(from: exposedLocation) {
+                [unowned self]
+                (locationInfo) in
+                // set local locationInfo
+                self.localLocationInfo = locationInfo
+                // call delegate
+                self.delegate?.didUpdateLocation(to: locationInfo)
+            }
+        }
+        .disposed(by: disposeBag)
     }
 }
 
@@ -66,7 +76,8 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
-            self.exposedLocation = locations[0]
+            let currentLocation = locations[0]
+            self.exposedLocation.onNext(currentLocation)
         }
     }
     
