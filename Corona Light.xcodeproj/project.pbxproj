@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CE5098FF135AF2C33533D1B /* Pods_Corona_Light.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */; };
-		8715B824257E6C7300AE77BB /* AnimateloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715B820257E6C7300AE77BB /* AnimateloadingView.swift */; };
-		8715B825257E6C7300AE77BB /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8715B821257E6C7300AE77BB /* LoadingView.xib */; };
 		8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715B822257E6C7300AE77BB /* LoadingViewable.swift */; };
-		8715B827257E6C7300AE77BB /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715B823257E6C7300AE77BB /* loadingView.swift */; };
 		8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8723EA1B257F85D3001DC3A5 /* RulesView.swift */; };
 		8725ADE3257E6F2000555E18 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8725ADE1257E6F1F00555E18 /* MessageView.xib */; };
 		8725ADE4257E6F2000555E18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8725ADE2257E6F1F00555E18 /* MessageView.swift */; };
@@ -43,10 +40,7 @@
 /* Begin PBXFileReference section */
 		4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.debug.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.debug.xcconfig"; sourceTree = "<group>"; };
 		7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corona_Light.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8715B820257E6C7300AE77BB /* AnimateloadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateloadingView.swift; sourceTree = "<group>"; };
-		8715B821257E6C7300AE77BB /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		8715B822257E6C7300AE77BB /* LoadingViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewable.swift; sourceTree = "<group>"; };
-		8715B823257E6C7300AE77BB /* loadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
 		8723EA1B257F85D3001DC3A5 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		8725ADE1257E6F1F00555E18 /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
 		8725ADE2257E6F1F00555E18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -103,10 +97,7 @@
 		8715B81F257E6C7300AE77BB /* LoadingView */ = {
 			isa = PBXGroup;
 			children = (
-				8715B820257E6C7300AE77BB /* AnimateloadingView.swift */,
-				8715B821257E6C7300AE77BB /* LoadingView.xib */,
 				8715B822257E6C7300AE77BB /* LoadingViewable.swift */,
-				8715B823257E6C7300AE77BB /* loadingView.swift */,
 			);
 			path = LoadingView;
 			sourceTree = "<group>";
@@ -377,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				87575EAA257F76DC00919A7E /* Localizable.strings in Resources */,
-				8715B825257E6C7300AE77BB /* LoadingView.xib in Resources */,
 				8725ADE3257E6F2000555E18 /* MessageView.xib in Resources */,
 				875621DA257A81CE00A705D7 /* LaunchScreen.storyboard in Resources */,
 				875621D7257A81CE00A705D7 /* Assets.xcassets in Resources */,
@@ -448,13 +438,11 @@
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
 				8725ADE4257E6F2000555E18 /* MessageView.swift in Sources */,
 				87562218257A855700A705D7 /* Network.swift in Sources */,
-				8715B827257E6C7300AE77BB /* loadingView.swift in Sources */,
 				87E7FF5E257CC5730095CDDC /* NetworkManager.swift in Sources */,
 				8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */,
 				87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */,
 				87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */,
 				875621FE257A831A00A705D7 /* Coordinator.swift in Sources */,
-				8715B824257E6C7300AE77BB /* AnimateloadingView.swift in Sources */,
 				87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */,
 				87C9913F257E3EFA003049A3 /* Light.swift in Sources */,
 				875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */,

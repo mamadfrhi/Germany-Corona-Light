@@ -6,14 +6,11 @@
 //  Copyright © 2018 Storm. All rights reserved.
 //
 
-import Foundation
-
-
 import UIKit
 import RxSwift
 import RxCocoa
 
-extension UIViewController: loadingViewable {}
+extension UIViewController: LoadingViewable {}
 
 extension Reactive where Base: UIViewController {
 
