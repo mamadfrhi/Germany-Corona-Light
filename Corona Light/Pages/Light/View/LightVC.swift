@@ -34,7 +34,19 @@ class LightVC: UIViewController {
         self.view = trafficLightView
     }
     
-    //MARK: RX
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.townStatus.onNext(.green)
+    }
+    
+    private func pushRulesPage(for statusColor: LightColors) {
+        print("I'm going to topen rules page for \(statusColor) status")
+        coordinator.pushRulesPage(for: statusColor)
+    }
+    
+    //MARK: Variable
+    private var currentStatus: LightColors?
+    // RX
     private let disposeBag = DisposeBag()
     private func setupBindings() {
         // loading
@@ -59,7 +71,9 @@ class LightVC: UIViewController {
             .townStatus
             .observeOn(MainScheduler.instance)
             .subscribe { (statusColor) in
-                self.trafficLightView.currentOnlineLight = statusColor
+                guard let statusColorElement = statusColor.element else { return}
+                self.trafficLightView.currentOnlineLight = statusColorElement
+                self.currentStatus = statusColorElement
             }
             .disposed(by: disposeBag)
         
@@ -83,9 +97,9 @@ class LightVC: UIViewController {
         
         // rulesPageButton
         trafficLightView.rulesPageButton
-            .rx.tap.subscribe { (tapped) in
-                print("Let's go to rules page!")
-                self.coordinator.goToRulesPage()
+            .rx.tap
+            .subscribe { (tapped) in
+                self.pushRulesPage(for: self.currentStatus!)
             }
             .disposed(by: disposeBag)
     }

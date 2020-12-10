@@ -12,7 +12,7 @@ import RxCocoa
 
 class LightViewModel {
     
-    //MARK: Dependencies
+    // MARK: Dependencies
     private let network: Networkable
     private let locationManager: LocationManager
     private let notificationManager: Notificationable
@@ -30,12 +30,9 @@ class LightViewModel {
         // setup RX related
         setupRefreshTimer()
         setupNotification()
-        
-        townStatus.onNext(.darkRed)
-        townStatus.onNext(.darkRed)
     }
     
-    //MARK: RX
+    // MARK: RX
     // Variables
     private let disposeable = DisposeBag()
     let loading: PublishSubject<Bool> = PublishSubject()
@@ -66,7 +63,6 @@ class LightViewModel {
                 guard let previous = previous else { return}
                 if current != previous { // status changed
                     // send notification
-                    print(current , previous)
                     self.sendLocalizedNotification(at: 1)
                 }
             }
@@ -96,11 +92,20 @@ extension LightViewModel: LocationDelegate {
             return
         }
         self.locationInfo.onNext(locationInfo)
+        // Call API
         getIncidents(of: townName)
     }
     
+    func didNotAllowedLocationPermission() {
+        print("I can't help you without location permission")
+        // TODO: send user to the settings app to enable location permission
+    }
+}
+
+//MARK:- Network
+extension LightViewModel {
     private func getIncidents(of townName: String) {
-        // Start request
+        // Call API
         loading.onNext(true)
         network.getStats(of: townName) {
             [unowned self]
@@ -139,11 +144,6 @@ extension LightViewModel: LocationDelegate {
         else if incidents > 100 {
             self.townStatus.onNext(.darkRed)
         }
-    }
-    
-    func didNotAllowedLocationPermission() {
-        print("I can't help you without location permission")
-        // TODO: send user to the settings app to enable location permission
     }
 }
 
