@@ -9,8 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
-
 class LightVC: UIViewController {
     
     //MARK: Dependencies
@@ -59,8 +57,18 @@ class LightVC: UIViewController {
             .subscribe { (message) in
                 self.trafficLightView.currentOnlineLight = .off
                 guard let message = message.element else { return}
-                MessageView.sharedInstance.showOnView(message: message,
-                                                      theme: .error)
+                Toast.shared.showIn(body: message)
+            }
+            .disposed(by: disposeBag)
+        
+        // serious error
+        viewModel
+            .seriousErrorMessage
+            .observeOn(MainScheduler.instance)
+            .subscribe { (message) in
+                guard let message = message.element else { return}
+                Toast.shared.showModal(description: message)
+                self.seriousError(occured: true)
             }
             .disposed(by: disposeBag)
         
@@ -72,6 +80,7 @@ class LightVC: UIViewController {
                 guard let statusColorElement = statusColor.element else { return}
                 self.trafficLightView.currentOnlineLight = statusColorElement
                 self.currentStatus = statusColorElement
+                self.seriousError(occured: false)
             }
             .disposed(by: disposeBag)
         
@@ -109,5 +118,10 @@ class LightVC: UIViewController {
                 self.pushRulesPage()
             }
             .disposed(by: disposeBag)
+    }
+    // TODO: ADD RETRY Button
+    private func seriousError(occured: Bool) {
+        self.trafficLightView.descriptionLabel.isHidden = occured
+        self.trafficLightView.rulesPageButton.isHidden = occured
     }
 }

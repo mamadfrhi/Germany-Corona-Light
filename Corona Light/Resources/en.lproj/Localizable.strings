@@ -22,6 +22,9 @@ specific public places form 21:00";
 // Status Label text
 "statusLabel" = "Your current area is ";
 
+// Location Permission Alert
+"locationPermissionAlert" = "I can't help you without location permission. Go to this address and make enable it.\n\nSettings > Privacy > Corona Light > Always";
+
 // ------- Notification -------
 
 // Notification Button Text

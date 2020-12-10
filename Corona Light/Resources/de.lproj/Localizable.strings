@@ -22,6 +22,8 @@
 // Status Label text
 "statusLabel" = "Ihr aktueller Bereich ist ";
 
+// Location Permission Alert
+"locationPermissionAlert" = "Ich kann dir nicht ohne Standortgenehmigung helfen. Gehen Sie zu dieser Adresse und aktivieren Sie sie.\n\nEinstellungen> Datenschutz >Corona Light > Immer";
 
 
 

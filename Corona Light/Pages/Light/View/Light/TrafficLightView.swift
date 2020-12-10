@@ -61,7 +61,7 @@ class TrafficLightView: UIView {
         return lightWithMarginSpace
     }
     
-    //MARK: Init
+    // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.lightManager = LightManager()
@@ -75,7 +75,7 @@ class TrafficLightView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Setup
+    // MARK: Setup
     // ContentView
     private func setupContentView() {
         self.addSubview(self.contentView)

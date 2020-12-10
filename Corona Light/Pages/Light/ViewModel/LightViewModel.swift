@@ -39,6 +39,7 @@ class LightViewModel {
     // RX
     let loading: PublishSubject<Bool> = PublishSubject()
     let errorMessage : PublishSubject<String> = PublishSubject()
+    let seriousErrorMessage : PublishSubject<String> = PublishSubject()
     
     let townStatus : PublishSubject<LightColors> = PublishSubject()
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
@@ -51,7 +52,8 @@ class LightViewModel {
     private func setupRefreshTimer() {
         let tenMinutes = TimeInterval(60 * 10)
         Observable<Int>
-            .timer(0, period: tenMinutes,
+            .timer(0,
+                   period: tenMinutes,
                    scheduler: MainScheduler.instance)
             .subscribe { _ in
                 if let townName = self.locationManager.locationInfo?.town {
@@ -104,8 +106,10 @@ extension LightViewModel: LocationDelegate {
     }
     
     func didNotAllowedLocationPermission() {
-        print("I can't help you without location permission")
+        let message = NSLocalizedString("locationPermissionAlert",
+                                   comment: "Location permission message")
         // TODO: send user to the settings app to enable location permission
+        seriousErrorMessage.onNext(message)
     }
 }
 
