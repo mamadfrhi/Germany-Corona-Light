@@ -11,7 +11,7 @@ import SnapKit
 class RulesView: UIView {
     
     // MARK: Views
-    let statusLight = CircleView(color: .red)
+    let statusLight = CircleView(color: .darkGray)
     
     let statusLabel : UILabel = {
         let lbl = UILabel()
