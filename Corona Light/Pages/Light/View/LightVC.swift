@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
+
 class LightVC: UIViewController {
     
     //MARK: Dependencies
@@ -18,11 +20,10 @@ class LightVC: UIViewController {
     
     //MARK: LifeCycle
     init(viewModel: LightViewModel,
-         trafficLightView: TrafficLightView,
          coordinator: MainCoordinator) {
         self.viewModel = viewModel
-        self.trafficLightView = trafficLightView
         self.coordinator = coordinator
+        self.trafficLightView = TrafficLightView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
         setupBindings()
     }
@@ -32,11 +33,6 @@ class LightVC: UIViewController {
     
     override func loadView() {
         self.view = trafficLightView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        viewModel.townStatus.onNext(.green)
     }
     
     private func pushRulesPage() {

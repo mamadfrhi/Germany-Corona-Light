@@ -16,6 +16,7 @@
 		8725ADE3257E6F2000555E18 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8725ADE1257E6F1F00555E18 /* MessageView.xib */; };
 		8725ADE4257E6F2000555E18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8725ADE2257E6F1F00555E18 /* MessageView.swift */; };
 		872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C3402257BDC5C0081B174 /* LocationAdapter.swift */; };
+		87442A60258221F0004461B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87442A5F258221F0004461B8 /* Constants.swift */; };
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
 		875621D7257A81CE00A705D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875621D6257A81CE00A705D7 /* Assets.xcassets */; };
 		875621DA257A81CE00A705D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */; };
@@ -50,6 +51,7 @@
 		8725ADE1257E6F1F00555E18 /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
 		8725ADE2257E6F1F00555E18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		872C3402257BDC5C0081B174 /* LocationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAdapter.swift; sourceTree = "<group>"; };
+		87442A5F258221F0004461B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		875621CD257A81CD00A705D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		875621D6257A81CE00A705D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				8756221A257A86E800A705D7 /* Location */,
 				8756220C257A847B00A705D7 /* Network */,
 				87F57771258130B100FB9E09 /* Notification */,
+				87442A5F258221F0004461B8 /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87442A60258221F0004461B8 /* Constants.swift in Sources */,
 				87562211257A851100A705D7 /* LightVC.swift in Sources */,
 				87C9913B257E3EC0003049A3 /* LightManager.swift in Sources */,
 				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,

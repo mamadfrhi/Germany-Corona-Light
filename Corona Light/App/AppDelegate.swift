@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator?.start()
 
         // create a basic UIWindow and activate it
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: screenBounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         return true

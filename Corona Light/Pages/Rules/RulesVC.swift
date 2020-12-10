@@ -16,7 +16,7 @@ class RulesVC : UIViewController {
     // MARK: Lifecycle
     init(statusColor: LightColors) {
         self.statusColor = statusColor
-        self.rulesView = RulesView(frame: UIScreen.main.bounds)
+        self.rulesView = RulesView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
         // Setups
         setupLightColor()

@@ -22,21 +22,10 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-//        goToRulesPage()
-//        return
         let vm = LightViewModel(network: NetworkManager(),
                                 locationManager: LocationManager(),
                                 notificationManager: NotificationManager())
-        
-        
-        // Making view
-        //TODO: Clean it
-        let lightManager = LightManager()
-        
-        let view = TrafficLightView(frame: UIScreen.main.bounds,
-                                    lightManager: lightManager)
         let lightVC = LightVC(viewModel: vm,
-                              trafficLightView: view,
                               coordinator: self)
         navigationController.pushViewController(lightVC, animated: true)
     }

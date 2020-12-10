@@ -62,9 +62,9 @@ class TrafficLightView: UIView {
     }
     
     //MARK: Init
-    init(frame: CGRect, lightManager: LightManagerable) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.lightManager = lightManager
+        self.lightManager = LightManager()
         self.backgroundColor = .white
         setupContentView()
         setupStackView()

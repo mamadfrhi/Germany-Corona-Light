@@ -53,7 +53,7 @@ extension RulesView {
         addStatusViewConstraints()
     }
     private func addStatusViewConstraints() {
-        let circleViewWidths = UIScreen.main.bounds.size.width * 0.3
+        let circleViewWidths = screenBounds.size.width * 0.3
         statusLight.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(30)
             make.size.equalTo(circleViewWidths)
