@@ -38,7 +38,7 @@ class LightViewModel {
     
     // RX
     let loading: PublishSubject<Bool> = PublishSubject()
-    let errorMessage : PublishSubject<String> = PublishSubject()
+    let networkError : PublishSubject<NetworkError> = PublishSubject()
     let locationError : PublishSubject<LocationError> = PublishSubject()
     
     let townStatus : PublishSubject<LightColors> = PublishSubject()
@@ -153,20 +153,19 @@ extension LightViewModel {
         loading.onNext(true)
         network.getStats(of: townName) {
             [unowned self]
-            (incidents, errorMessage) in
+            (incidents, networkError) in
             // Stop loading
             self.loading.onNext(false)
             
-            // Decide on result
+            // Handle Errors
+            if let networkError = networkError {
+                self.networkError.onNext(networkError)
+                return
+            }
+            
+            // Result
             if let incidents = incidents {
-                print("incidents of \(townName) = \(String(describing: incidents))")
                 setTownStatus(by: incidents)
-            }else {
-                // If incidents were nil
-                // There is an error
-                if let errorMessage = errorMessage {
-                    self.errorMessage.onNext(errorMessage)
-                }
             }
         }
     }
@@ -206,21 +205,23 @@ enum LocationError {
     case locationNotAllowedError
     case outOfBavariaError
     case badLocationError
-    
-    var description: String {
+}
+
+extension LocationError: LocalizedError {
+    var errorDescription: String? {
         switch self {
         case .locationNotAllowedError:
             let message = NSLocalizedString("locationPermissionAlert",
                                             comment: "Location permission message")
             return message
         case .outOfBavariaError:
-            return "The call failed with HTTP code ."
+            let message = NSLocalizedString("locationOutOfBavariaError",
+                                            comment: "Location permission message")
+            return message
         case .badLocationError:
-            return "The server responded with message\"."
+            let message = NSLocalizedString("locationDetectionError",
+                                            comment: "Location permission message")
+            return message
         }
     }
-}
-
-enum ServerError {
-    
 }

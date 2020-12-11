@@ -5,15 +5,14 @@
 //  Created by iMamad on 12/6/20.
 //
 
-import Foundation
-import Moya
 import SwiftyJSON
+import Moya
 
 struct NetworkManager: Networkable {
     var provider = MoyaProvider<CoronaAPI>()
     
-    func getStats(of state: String, completion: @escaping (Int?, String?) -> ()) {
-        print("I'm sending request!")
+    func getStats(of state: String, completion: @escaping (Int?, NetworkError?) -> ()) {
+        
         provider.request(.getStatsOf(state: state)) {
             (result) in
             switch result {
@@ -23,14 +22,12 @@ struct NetworkManager: Networkable {
                 if let incidents = feature["attributes"]["cases7_per_100k"].int {
                     completion(incidents, nil)
                 }else {
-                    let errorMessage = NSLocalizedString("serverDataError",
-                                                         comment: "")
-                    completion(nil, errorMessage)
+                    completion(nil, .serverDataError)
                 }
                 
             case .failure(let failure):
                 let errorDescription = failure.localizedDescription
-                completion(nil, errorDescription)
+                completion(nil, .requestError(errorDescription))
             }
         }
     }
