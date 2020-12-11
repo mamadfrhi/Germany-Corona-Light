@@ -59,14 +59,12 @@ class LightVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        // Server Error
+        // Network Error
         viewModel
             .networkError
             .observeOn(MainScheduler.instance)
-            .subscribe { (message) in
-                self.trafficLightView.currentOnlineLight = .off
-//                guard let message = message.element else { return}
-//                Toast.shared.showIn(body: message)
+            .subscribe { (networkError) in
+                self.handle(networkError: networkError)
             }
             .disposed(by: disposeBag)
         
@@ -117,8 +115,15 @@ class LightVC: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-    
-    // TODO: Clean it with State Design Pattern
+}
+
+// MARK:- State Handler
+// TODO: Clean it with State Design Pattern
+// Detected states:
+// Location Error State - Network Error State- Normal State
+// Detected Variabels:
+// descriptionLabel.isHidden - rulesButton.isHidden - message - status
+extension LightVC {
     private func handle(locationError: LocationError) {
         let localizedErrorMessage = locationError.errorDescription
             ?? "An error releated to location services occured!"
@@ -132,6 +137,19 @@ class LightVC: UIViewController {
             self.trafficLightView.descriptionLabel.isHidden = false
             self.trafficLightView.descriptionLabel.text = localizedErrorMessage
         }
+        self.trafficLightView.rulesPageButton.isHidden = true
+    }
+    
+    private func handle(networkError: NetworkError) {
+        let localizedErrorMessage = networkError.errorDescription
+            ?? "An error releated to location services occured!"
+        switch networkError {
+        case .requestError:
+            Toast.shared.showIn(body: localizedErrorMessage)
+        case .serverDataError:
+            Toast.shared.showIn(body: localizedErrorMessage)
+        }
+        self.trafficLightView.currentOnlineLight = .off
         self.trafficLightView.rulesPageButton.isHidden = true
     }
 }
