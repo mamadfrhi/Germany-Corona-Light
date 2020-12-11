@@ -37,7 +37,7 @@ class TrafficLightView: UIView {
     // TODO: Make a function to change its text
     let descriptionLabel : UILabel = {
         let lbl = UILabel()
-        lbl.numberOfLines = 4
+        lbl.numberOfLines = 0
         return lbl
     }()
     

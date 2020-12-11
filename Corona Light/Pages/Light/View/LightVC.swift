@@ -50,41 +50,39 @@ class LightVC: UIViewController {
             .bind(to: self.rx.isAnimating)
             .disposed(by: disposeBag)
         
-        // error
-        viewModel
-            .errorMessage
-            .observeOn(MainScheduler.instance)
-            .subscribe { (message) in
-                self.trafficLightView.currentOnlineLight = .off
-                guard let message = message.element else { return}
-                Toast.shared.showIn(body: message)
-            }
-            .disposed(by: disposeBag)
-        
-        // location error
+        // Location Error
         viewModel
             .locationError
             .observeOn(MainScheduler.instance)
             .subscribe { (locationError) in
-                guard let locationError = locationError.element else { return}
-                Toast.shared.showModal(description: locationError.description)
-                self.seriousError(occured: true)
+                self.handle(locationError: locationError)
             }
             .disposed(by: disposeBag)
         
-        // townStatus (Main Purpose)
+        // Server Error
+        viewModel
+            .networkError
+            .observeOn(MainScheduler.instance)
+            .subscribe { (message) in
+                self.trafficLightView.currentOnlineLight = .off
+//                guard let message = message.element else { return}
+//                Toast.shared.showIn(body: message)
+            }
+            .disposed(by: disposeBag)
+        
+        // Town Status (Main Purpose)
         viewModel
             .townStatus
             .observeOn(MainScheduler.instance)
             .subscribe { (statusColor) in
                 guard let statusColorElement = statusColor.element else { return}
                 self.trafficLightView.currentOnlineLight = statusColorElement
+                self.trafficLightView.descriptionLabel.isHidden = false
                 self.currentStatus = statusColorElement
-                self.seriousError(occured: false)
             }
             .disposed(by: disposeBag)
         
-        // locationInfo
+        // Location Info
         viewModel
             .locationInfo
             .observeOn(MainScheduler.instance)
@@ -111,7 +109,7 @@ class LightVC: UIViewController {
                 self.pushRulesPage()
             }
             .disposed(by: disposeBag)
-        // rulesPageButton
+        // Rules Page Button
         trafficLightView.rulesPageButton
             .rx.tap
             .subscribe { (tapped) in
@@ -119,9 +117,21 @@ class LightVC: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-    // TODO: ADD RETRY Button
-    private func seriousError(occured: Bool) {
-        self.trafficLightView.descriptionLabel.isHidden = occured
-        self.trafficLightView.rulesPageButton.isHidden = occured
+    
+    // TODO: Clean it with State Design Pattern
+    private func handle(locationError: LocationError) {
+        let localizedErrorMessage = locationError.errorDescription
+            ?? "An error releated to location services occured!"
+        
+        switch locationError {
+        case .locationNotAllowedError:
+            Toast.shared.showModal(description: localizedErrorMessage)
+            self.trafficLightView.descriptionLabel.isHidden = true
+        case .outOfBavariaError, .badLocationError:
+            Toast.shared.showIn(body: localizedErrorMessage)
+            self.trafficLightView.descriptionLabel.isHidden = false
+            self.trafficLightView.descriptionLabel.text = localizedErrorMessage
+        }
+        self.trafficLightView.rulesPageButton.isHidden = true
     }
 }
