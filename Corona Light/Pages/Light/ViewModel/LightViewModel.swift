@@ -108,7 +108,6 @@ extension LightViewModel: LocationDelegate {
     func didNotAllowedLocationPermission() {
         let message = NSLocalizedString("locationPermissionAlert",
                                    comment: "Location permission message")
-        // TODO: send user to the settings app to enable location permission
         seriousErrorMessage.onNext(message)
     }
 }
