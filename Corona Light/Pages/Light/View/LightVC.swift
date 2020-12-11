@@ -45,11 +45,16 @@ class LightVC: UIViewController {
     private var currentStatus: LightColors = .off
     // RX
     private let disposeBag = DisposeBag()
+    // Bindings
     private func setupBindings() {
-        // MARK: Binding
-        // loading
         viewModel.loading
-            .bind(to: self.rx.isAnimating)
+            .bind(onNext: { (loading) in
+                // Just show loading view for first request
+                // prevent showing for next refreshal requests
+                if self.currentStatus == .off {
+                    self.rx.isAnimating.onNext(loading)
+                }
+            })
             .disposed(by: disposeBag)
         
         // Town Status (Main Purpose)
@@ -60,6 +65,7 @@ class LightVC: UIViewController {
                 guard let statusColorElement = statusColor.element else { return}
                 self.trafficLightView.currentOnlineLight = statusColorElement
                 self.trafficLightView.descriptionLabel.isHidden = false
+                self.trafficLightView.retryButton.isHidden = true
                 self.currentStatus = statusColorElement
             }
             .disposed(by: disposeBag)
@@ -148,6 +154,7 @@ class LightVC: UIViewController {
 // Detected Variabels:
 // descriptionLabel.isHidden - rulesButton.isHidden - message - status
 extension LightVC {
+    // Location Error Handling
     private func handle(locationError: LocationError) {
         let localizedErrorMessage = locationError.errorDescription
             ?? "An error releated to location services occured!"
@@ -156,24 +163,29 @@ extension LightVC {
         case .locationNotAllowedError:
             Toast.shared.showModal(description: localizedErrorMessage)
             self.trafficLightView.descriptionLabel.isHidden = true
+            
         case .outOfBavariaError, .badLocationError:
             Toast.shared.showIn(body: localizedErrorMessage)
             self.trafficLightView.descriptionLabel.isHidden = false
             self.trafficLightView.descriptionLabel.text = localizedErrorMessage
         }
+        
         self.trafficLightView.rulesPageButton.isHidden = true
         self.trafficLightView.retryButton.isHidden = false
     }
     
+    // Network Error Handling
     private func handle(networkError: NetworkError) {
         let localizedErrorMessage = networkError.errorDescription
             ?? "An error releated to location services occured!"
         switch networkError {
         case .requestError:
             Toast.shared.showIn(body: localizedErrorMessage)
+            
         case .serverDataError:
             Toast.shared.showIn(body: localizedErrorMessage)
         }
+        
         self.trafficLightView.currentOnlineLight = .off
         self.trafficLightView.rulesPageButton.isHidden = true
         self.trafficLightView.retryButton.isHidden = false
