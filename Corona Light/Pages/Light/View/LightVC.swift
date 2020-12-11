@@ -24,6 +24,8 @@ class LightVC: UIViewController {
         self.trafficLightView = TrafficLightView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
         setupBindings()
+        setupErrorBindings()
+        setupNavigationBindings()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -34,13 +36,13 @@ class LightVC: UIViewController {
     }
     
     private func pushRulesPage() {
-        if let statusColor = self.currentStatus {
-            coordinator.pushRulesPage(for: statusColor)
+        if self.currentStatus != .off {
+            coordinator.pushRulesPage(for: self.currentStatus)
         }
     }
     
     //MARK: Variable
-    private var currentStatus: LightColors?
+    private var currentStatus: LightColors = .off
     // RX
     private let disposeBag = DisposeBag()
     private func setupBindings() {
@@ -48,24 +50,6 @@ class LightVC: UIViewController {
         // loading
         viewModel.loading
             .bind(to: self.rx.isAnimating)
-            .disposed(by: disposeBag)
-        
-        // Location Error
-        viewModel
-            .locationError
-            .observeOn(MainScheduler.instance)
-            .subscribe { (locationError) in
-                self.handle(locationError: locationError)
-            }
-            .disposed(by: disposeBag)
-        
-        // Network Error
-        viewModel
-            .networkError
-            .observeOn(MainScheduler.instance)
-            .subscribe { (networkError) in
-                self.handle(networkError: networkError)
-            }
             .disposed(by: disposeBag)
         
         // Town Status (Main Purpose)
@@ -96,6 +80,53 @@ class LightVC: UIViewController {
                 descriptionLabelText.append("\t\(locationInfo.town ?? "")")
                 self.trafficLightView.descriptionLabel.text = descriptionLabelText
             }
+            .disposed(by: disposeBag) 
+    }
+    
+    private func setupErrorBindings() {
+        // Location Error
+        viewModel
+            .locationError
+            .observeOn(MainScheduler.instance)
+            .subscribe { (locationError) in
+                self.handle(locationError: locationError)
+            }
+            .disposed(by: disposeBag)
+        
+        // Network Error
+        viewModel
+            .networkError
+            .observeOn(MainScheduler.instance)
+            .subscribe { (networkError) in
+                if self.currentStatus == .off,
+                   let networkError = networkError.element {
+                    // It remains previous state
+                    // if now a network error occured
+                    self.handle(networkError: networkError)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupNavigationBindings() {
+        
+        // Light View Tap Gesture
+        // Tap gesture added on contentView & stackView
+        trafficLightView.stackViewTapGesture
+            .rx
+            .event
+            .bind { (event) in
+                print("LightView Tapped!")
+                self.pushRulesPage()
+            }
+            .disposed(by: disposeBag)
+        
+        // Rules Page Button
+        trafficLightView.rulesPageButton
+            .rx.tap
+            .subscribe { (tapped) in
+                self.pushRulesPage()
+            }
             .disposed(by: disposeBag)
         
         // MARK: Navigation
@@ -104,13 +135,6 @@ class LightVC: UIViewController {
             .notificationTapped
             .observeOn(MainScheduler.instance)
             .subscribe { (event) in
-                self.pushRulesPage()
-            }
-            .disposed(by: disposeBag)
-        // Rules Page Button
-        trafficLightView.rulesPageButton
-            .rx.tap
-            .subscribe { (tapped) in
                 self.pushRulesPage()
             }
             .disposed(by: disposeBag)

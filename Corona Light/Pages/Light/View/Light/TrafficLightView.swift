@@ -58,6 +58,8 @@ class TrafficLightView: UIView {
         return btn
     }()
     
+    let stackViewTapGesture = UITapGestureRecognizer()
+    
     //MARK: Size
     private var stackViewHeight: CGFloat {
         return (self.frame.height * 0.6)
@@ -102,6 +104,7 @@ class TrafficLightView: UIView {
     // StackView
     private func setupStackView() {
         self.contentView.addSubview(stackView)
+        stackView.addGestureRecognizer(stackViewTapGesture)
         addStackViewConstraints()
         addLightsToStackView()
     }
