@@ -15,7 +15,7 @@ protocol Locationable {
 }
 protocol LocationDelegate {
     func didUpdateLocation(to newLocation: LocationInfo?)
-    func didNotAllowedLocationPermission()
+    func didNotAllowedLocationServices()
 }
 
 
@@ -96,7 +96,7 @@ extension LocationManager: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             
         case .restricted, .denied:
-            delegate?.didNotAllowedLocationPermission()
+            delegate?.didNotAllowedLocationServices()
             
         @unknown default:
             fatalError("Unknow location permission")

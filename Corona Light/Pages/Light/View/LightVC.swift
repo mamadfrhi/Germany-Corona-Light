@@ -61,13 +61,13 @@ class LightVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        // serious error
+        // location error
         viewModel
-            .seriousErrorMessage
+            .locationError
             .observeOn(MainScheduler.instance)
-            .subscribe { (message) in
-                guard let message = message.element else { return}
-                Toast.shared.showModal(description: message)
+            .subscribe { (locationError) in
+                guard let locationError = locationError.element else { return}
+                Toast.shared.showModal(description: locationError.description)
                 self.seriousError(occured: true)
             }
             .disposed(by: disposeBag)

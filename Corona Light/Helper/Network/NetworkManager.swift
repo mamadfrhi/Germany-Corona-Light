@@ -23,7 +23,9 @@ struct NetworkManager: Networkable {
                 if let incidents = feature["attributes"]["cases7_per_100k"].int {
                     completion(incidents, nil)
                 }else {
-                    completion(nil, "Crorona statstics of your state isn't there on the server!")
+                    let errorMessage = NSLocalizedString("serverDataError",
+                                                         comment: "")
+                    completion(nil, errorMessage)
                 }
                 
             case .failure(let failure):

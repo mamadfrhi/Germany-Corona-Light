@@ -22,10 +22,17 @@
 // Status Label text
 "statusLabel" = "Ihr aktueller Bereich ist ";
 
+// serverDataError
+"serverDataError" = "Corona-Statistiken Ihres Staates sind nicht auf dem Server vorhanden!";
+
+// ------- Location -------
+
 // Location Permission Alert
 "locationPermissionAlert" = "Ich kann dir nicht ohne Standortgenehmigung helfen. Gehen Sie zu dieser Adresse und erlauben Sie mir, den Rest zu erledigen.\n\nEinstellungen> Datenschutz> Ortungsdienste> Corona Light> Immer";
-
-
+// OutOfBavariaError
+"locationOutOfBavariaError" = "Diese App wurde für den Freistaat Bayern entwickelt.\nEs kann Ihnen an diesem aktuellen Standort nicht helfen.";
+// Location Detenction Errpr
+"locationDetectionError" = "Ich kann Ihren Standort nicht erkennen!";
 
 // ------- Notification -------
 
