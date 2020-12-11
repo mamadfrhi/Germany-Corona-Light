@@ -23,11 +23,13 @@ struct NetworkManager: Networkable {
                     completion(incidents, nil)
                 }else {
                     completion(nil, .serverDataError)
+                    print("Server Error Occured.")
                 }
                 
             case .failure(let failure):
                 let errorDescription = failure.localizedDescription
                 completion(nil, .requestError(errorDescription))
+                print("Network Error Occured.")
             }
         }
     }

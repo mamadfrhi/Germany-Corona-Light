@@ -13,6 +13,7 @@
 		872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C3402257BDC5C0081B174 /* LocationAdapter.swift */; };
 		872D34BB258360740083305D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34BA258360740083305D /* NetworkError.swift */; };
 		872D34BE258365820083305D /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34BD258365820083305D /* LocationError.swift */; };
+		872D34C1258376980083305D /* UIView+blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34C0258376980083305D /* UIView+blink.swift */; };
 		87442A60258221F0004461B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87442A5F258221F0004461B8 /* Constants.swift */; };
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
 		875621D7257A81CE00A705D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875621D6257A81CE00A705D7 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		872C3402257BDC5C0081B174 /* LocationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAdapter.swift; sourceTree = "<group>"; };
 		872D34BA258360740083305D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		872D34BD258365820083305D /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
+		872D34C0258376980083305D /* UIView+blink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+blink.swift"; sourceTree = "<group>"; };
 		87442A5F258221F0004461B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		875621CD257A81CD00A705D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,15 @@
 				8715B81F257E6C7300AE77BB /* LoadingView */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		872D34C3258376A40083305D /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				87562204257A83A000A705D7 /* UIView+Extensiones.swift */,
+				872D34C0258376980083305D /* UIView+blink.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		875621C1257A81CC00A705D7 = {
@@ -278,7 +289,7 @@
 		87F577692580C69E00FB9E09 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				87562204257A83A000A705D7 /* UIView+Extensiones.swift */,
+				872D34C3258376A40083305D /* UIView */,
 				87F5776F2580C74E00FB9E09 /* RX */,
 			);
 			path = Extension;
@@ -440,6 +451,7 @@
 				8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */,
 				87C99143257E3F68003049A3 /* TrafficLightView.swift in Sources */,
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
+				872D34C1258376980083305D /* UIView+blink.swift in Sources */,
 				87562218257A855700A705D7 /* Network.swift in Sources */,
 				87E7FF5E257CC5730095CDDC /* NetworkManager.swift in Sources */,
 				8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */,

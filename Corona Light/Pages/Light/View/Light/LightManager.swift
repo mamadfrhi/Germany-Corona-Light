@@ -24,11 +24,12 @@ enum LightColors: String, CaseIterable {
 class LightManager {
     //TODO: Do it with RX
     // MARK: Variables
-    var currentOnlineLight: LightColors = .green {
+    var currentOnlineLight: LightColors = .off {
         didSet {
-            turnOffAll()
             if currentOnlineLight != .off {
                 turnOn(lightColor: currentOnlineLight)
+            } else {
+                blinkAllLights()
             }
         }
     }
@@ -42,15 +43,24 @@ class LightManager {
     // TODO: Animate
     // MARK: Light Functions
     private func turnOn(lightColor: LightColors) {
-        for light in lights {
+        lights.forEach { (light) in
             if light.colorName == lightColor.rawValue {
-                light.circleView.alpha = 1
+                UIView.animate(withDuration: 1) {
+                    light.circleView.alpha = 1
+                    light.circleView.transform = CGAffineTransform(scaleX: 1.03, y: 1.03)
+                }
+            }else {
+                UIView.animate(withDuration: 0.8) {
+                    light.circleView.alpha = 0.3
+                    light.circleView.transform = .identity
+                }
             }
         }
     }
-    private func turnOffAll() {
+    private func blinkAllLights() {
         lights.forEach { (light) in
-            light.circleView.alpha = 0.3
+            light.circleView.transform = .identity
+            light.circleView.blink()
         }
     }
 }

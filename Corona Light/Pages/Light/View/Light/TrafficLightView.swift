@@ -12,7 +12,7 @@ class TrafficLightView: UIView {
     
     // MARK: Dependency
     private var lightManager: LightManagerable!
-    var currentOnlineLight: LightColors = .green{
+    var currentOnlineLight: LightColors = .off{
         willSet {
             lightManager.currentOnlineLight = newValue
         }
