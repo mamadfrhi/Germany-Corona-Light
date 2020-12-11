@@ -138,6 +138,7 @@ extension LightVC {
             self.trafficLightView.descriptionLabel.text = localizedErrorMessage
         }
         self.trafficLightView.rulesPageButton.isHidden = true
+        self.trafficLightView.retryButton.isHidden = false
     }
     
     private func handle(networkError: NetworkError) {
@@ -151,5 +152,6 @@ extension LightVC {
         }
         self.trafficLightView.currentOnlineLight = .off
         self.trafficLightView.rulesPageButton.isHidden = true
+        self.trafficLightView.retryButton.isHidden = false
     }
 }

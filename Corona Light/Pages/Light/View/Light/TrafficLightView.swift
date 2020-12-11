@@ -49,6 +49,15 @@ class TrafficLightView: UIView {
         return btn
     }()
     
+    let retryButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.isHidden = true
+        btn.setTitle("Retry!", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        return btn
+    }()
+    
     //MARK: Size
     private var stackViewHeight: CGFloat {
         return (self.frame.height * 0.6)
@@ -70,6 +79,7 @@ class TrafficLightView: UIView {
         setupStackView()
         setupDescriptionLabel()
         setupRulesPageButtton()
+        setupRetryButtton()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -134,6 +144,19 @@ class TrafficLightView: UIView {
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
 //            make.centerX.equalTo(contentView.snp.centerX)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+    // RetryButtton
+    private func setupRetryButtton() {
+        self.addSubview(retryButton)
+        addRetryButttonConstraints()
+    }
+    private func addRetryButttonConstraints() {
+        retryButton.snp.makeConstraints { (make) in
+            make.top.equalTo(descriptionLabel.snp.bottom)
+            make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
     }
