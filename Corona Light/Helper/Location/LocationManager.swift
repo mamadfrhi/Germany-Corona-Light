@@ -12,6 +12,19 @@ import RxSwift
 protocol Locationable {
     var locationInfo: LocationInfo? { get set}
     func requestLocationPermission()
+    func startUpdatingLocation()
+}
+// Make optionals
+extension Locationable {
+    func requestLocationPermission() {}
+    var locationInfo: LocationInfo? {
+        get {
+            return LocationInfo(country: nil, state: nil, town: nil)
+        }
+        set {
+            return
+        }
+    }
 }
 protocol LocationDelegate {
     func didUpdateLocation(to newLocation: LocationInfo?)
@@ -34,13 +47,14 @@ class LocationManager: NSObject {
     
     override init() {
         super.init()
-        self.locationManager.delegate = self
         setupBinding()
+        self.locationManager.delegate = self
     }
     
     private func setupBinding() {
         // Convert location to sensible Model and call delegate
-        exposedLocation.bind { (freshLocation) in
+        exposedLocation.bind {
+            (freshLocation) in
             guard let exposedLocation = freshLocation else { return}
             self.locationConvertor.getLocationInfo(from: exposedLocation) {
                 [unowned self]
@@ -68,6 +82,10 @@ extension LocationManager: Locationable {
     
     func requestLocationPermission() {
         self.locationManager.requestAlwaysAuthorization()
+    }
+    
+    func startUpdatingLocation() {
+        self.locationManager.startUpdatingLocation()
     }
 }
 
@@ -103,6 +121,3 @@ extension LocationManager: CLLocationManagerDelegate {
         }
     }
 }
-
-
-

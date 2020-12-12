@@ -19,8 +19,6 @@ struct NetworkAdapter: NetworkAdaptable {
         
         provider.request(.getStatsOf(state: state)) {
             (result) in
-            completion(nil, .serverDataError)
-            return
             switch result {
             case let .success(response):
                 let json = JSON(response.data)

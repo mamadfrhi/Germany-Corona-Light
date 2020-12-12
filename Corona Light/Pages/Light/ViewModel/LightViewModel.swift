@@ -90,9 +90,30 @@ class LightViewModel {
             }
             .disposed(by: disposeable)
     }
+    
+    // Function
+    private func setTownStatus(by incidents: Int) {
+        // Green
+        if incidents < 35 {
+            self.townStatus.onNext(.green)
+        }
+        // Yellow
+        else if incidents >= 35 && incidents <= 50 {
+            self.townStatus.onNext(.yellow)
+        }
+        // Red
+        else if incidents >= 35 && incidents <= 50 {
+            self.townStatus.onNext(.red)
+        }
+        // DarkRed
+        else if incidents > 100 {
+            self.townStatus.onNext(.darkRed)
+        }
+    }
 }
 
 //MARK:- Location
+// Location Delegate
 extension LightViewModel: LocationDelegate {
     func didUpdateLocation(to locationInfo: LocationInfo?) {
         print("Did update location at this town: \(String(describing: locationInfo?.town)).\n")
@@ -116,6 +137,12 @@ extension LightViewModel: LocationDelegate {
     
     func didNotAllowedLocationServices() {
         locationError.onNext(.locationNotAllowedError)
+    }
+}
+// Locationable
+extension LightViewModel: Locationable {
+    func startUpdatingLocation() {
+        locationManager.startUpdatingLocation()
     }
 }
 
@@ -144,22 +171,11 @@ extension LightViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
         self.requestSentTime = Date()
     }
     
-    private func setTownStatus(by incidents: Int) {
-        // Green
-        if incidents < 35 {
-            self.townStatus.onNext(.green)
-        }
-        // Yellow
-        else if incidents >= 35 && incidents <= 50 {
-            self.townStatus.onNext(.yellow)
-        }
-        // Red
-        else if incidents >= 35 && incidents <= 50 {
-            self.townStatus.onNext(.red)
-        }
-        // DarkRed
-        else if incidents > 100 {
-            self.townStatus.onNext(.darkRed)
+    func retryRequest() {
+        if let townName = self.locationManager.locationInfo?.town {
+            let longTimeAgo = Date(timeIntervalSince1970: 1)
+            self.getIncidents(of: townName,
+                              previousRequestTime: longTimeAgo)
         }
     }
 }

@@ -95,13 +95,8 @@ class LightVC: UIViewController {
             .rx.tap
             .subscribe { _ in
                 self.viewModel.startUpdatingLocation()
-                self.viewModel.locationInfo.currentAndPrevious()
-                    .subscribe { (current, _) in
-                        let nimsatpish = Date(timeIntervalSince1970: 1)
-                        self.viewModel.getIncidents(of: current.town!,
-                                                    previousRequestTime: nimsatpish)
-                    }
-                    .disposed(by: self.disposeBag)
+                // Fresh request
+                self.viewModel.retryRequest()
             }
             .disposed(by: disposeBag)
 
