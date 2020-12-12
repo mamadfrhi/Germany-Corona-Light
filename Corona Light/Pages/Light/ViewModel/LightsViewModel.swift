@@ -12,10 +12,13 @@ import RxCocoa
 
 class LightsViewModel {
     
+    //MARK:-
     // MARK: Dependencies
+    //MARK:-
     private var api: CoronaNetworkable
     private let locationManager: LocationManager
     private let notificationManager: Notificationable
+    
     
     // Inject -> network + location manager + notification
     init(coronaNetworking: CoronaNetworkable,
@@ -34,23 +37,31 @@ class LightsViewModel {
         setupNotification()
     }
     
+    //MARK:-
     // MARK: Variables
+    //MARK:-
     private var requestSentTime: Date?
     private var firstRequestSent = false
     
-    // RX
+    //MARK:-
+    // MARK: RX Variables
+    //MARK:-
+    
+    // UI
     let loading: PublishSubject<Bool> = PublishSubject()
     let networkError : PublishSubject<NetworkError> = PublishSubject()
     let locationError : PublishSubject<LocationError> = PublishSubject()
+    let notificationTapped : PublishSubject<Bool> = PublishSubject()
     
+    // Logic
     let townStatus : PublishSubject<StatusColors> = PublishSubject()
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
     
-    let notificationTapped : PublishSubject<Bool> = PublishSubject()
-    
     private let disposeable = DisposeBag()
     
-    // Setups
+    //MARK:-
+    // MARK: RX Setups
+    //MARK:-
     private func setupRefreshTimer() {
         let tenMinutes = TimeInterval(60 * 10)
         Observable<Int>
@@ -113,7 +124,10 @@ class LightsViewModel {
     }
 }
 
+//MARK:-
 //MARK:- Location
+//MARK:-
+
 // Location Delegate
 extension LightsViewModel: LocationDelegate {
     func didUpdateLocation(to locationInfo: LocationInfo?) {
@@ -140,6 +154,7 @@ extension LightsViewModel: LocationDelegate {
         locationError.onNext(.locationNotAllowedError)
     }
 }
+
 // Locationable
 extension LightsViewModel: Locationable {
     func startUpdatingLocation() {
@@ -147,7 +162,9 @@ extension LightsViewModel: Locationable {
     }
 }
 
+//MARK:-
 //MARK:- Network
+//MARK:-
 
 extension LightsViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
     func getIncidents(of townName: String,
