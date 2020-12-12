@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class RulesView: UIView {
+class RulesView : UIView {
     
     // MARK: Views
     private let myMaskView = MaskView(statusColor: .green)
@@ -36,26 +36,43 @@ class RulesView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        setupMaskView()
-        setupInfoLabel()
-        setupRulesTextView()
+        // Template methode
+        self.setupView()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Functions
     func set(statusColor: StatusColors) {
         myMaskView.setColor(statusColor: statusColor)
     }
 }
 
-// MARK: Setup
-extension RulesView {
-    // Mask View
-    private func setupMaskView() {
+// MARK:-
+// MARK: Template Functions
+// MARK:-
+extension RulesView : CodeView {
+    
+    func buildViewHierachy() {
         self.addSubview(myMaskView)
-        setupMaskViewConstraints()
+        self.addSubview(statusLabel)
+        self.addSubview(rulesTextView)
     }
+    
+    func setupConstraints() {
+        setupMaskViewConstraints()
+        addInfoLabelConstraints()
+        addTextViewConstraints()
+    }
+}
+
+// MARK:-
+// MARK: Setup Constraints Functions
+// MARK:-
+extension RulesView {
+    
+    // Mask View
     private func setupMaskViewConstraints() {
         myMaskView.snp.makeConstraints { (make) in
             let viewWidth = screenBounds.size.width * 0.3
@@ -66,10 +83,6 @@ extension RulesView {
     }
     
     // Info Label
-    private func setupInfoLabel() {
-        self.addSubview(statusLabel)
-        addInfoLabelConstraints()
-    }
     private func addInfoLabelConstraints() {
         statusLabel.snp.makeConstraints { (make) in
             make.top.equalTo(myMaskView.snp.bottom).offset(10)
@@ -79,10 +92,6 @@ extension RulesView {
     }
     
     // Rules Text View
-    private func setupRulesTextView() {
-        self.addSubview(rulesTextView)
-        addTextViewConstraints()
-    }
     private func addTextViewConstraints() {
         rulesTextView.snp.makeConstraints { (make) in
             make.top.equalTo(statusLabel.snp.bottom).offset(20)
@@ -92,3 +101,4 @@ extension RulesView {
         }
     }
 }
+    

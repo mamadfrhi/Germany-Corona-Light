@@ -76,21 +76,18 @@ class LightsView: UIView {
         super.init(frame: frame)
         self.lightManager = LightsManager()
         self.backgroundColor = .white
+        // Template methode
         self.setupView()
-//        setupContentView()
-//        setupStackView()
-//        setupDescriptionLabel()
-//        setupRulesPageButtton()
-//        setupRetryButtton()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
+// MARK:-
+// MARK: Template Functions
+// MARK:-
 extension LightsView : CodeView {
-    
-    // MARK: Template Functions
     
     func buildViewHierachy() {
         self.addSubview(self.contentView)
@@ -115,8 +112,20 @@ extension LightsView : CodeView {
         stackView.addGestureRecognizer(stackViewTapGesture)
     }
     
+    // MARK: Additional Configuration Functions
     
-    // MARK: Setup Constraints Functions
+    private func addLightsToStackView(){
+        let lights = lightManager.lights
+        for light in lights {
+            stackView.addArrangedSubview(light.circleView)
+        }
+    }
+}
+
+// MARK:-
+// MARK: Setup Constraints Functions
+// MARK:-
+extension LightsView {
     
     // Content View
     private func setupContentViewConstraints() {
@@ -163,15 +172,6 @@ extension LightsView : CodeView {
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
-        }
-    }
-    
-    // MARK: Additional Configuration Functions
-    
-    private func addLightsToStackView(){
-        let lights = lightManager.lights
-        for light in lights {
-            stackView.addArrangedSubview(light.circleView)
         }
     }
 }

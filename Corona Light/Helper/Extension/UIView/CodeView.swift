@@ -23,4 +23,6 @@ extension CodeView {
         setupConstraints()
         setupAdditionalConfiguration()
     }
+    // make it optional
+    func setupAdditionalConfiguration(){}
 }
