@@ -43,7 +43,7 @@
 		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
 		87E7FF5E257CC5730095CDDC /* CoronaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */; };
 		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
-		87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F57772258130CB00FB9E09 /* NotificationModel.swift */; };
+		87F57773258130CB00FB9E09 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F57772258130CB00FB9E09 /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +87,7 @@
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaAPI.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
-		87F57772258130CB00FB9E09 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		87F57772258130CB00FB9E09 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.release.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,14 +219,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		8756220A257A845900A705D7 /* Light */ = {
+		8756220A257A845900A705D7 /* Lights */ = {
 			isa = PBXGroup;
 			children = (
 				8756220E257A84B500A705D7 /* Model */,
 				8756220D257A849100A705D7 /* View */,
 				8756220B257A846200A705D7 /* ViewModel */,
 			);
-			path = Light;
+			path = Lights;
 			sourceTree = "<group>";
 		};
 		8756220B257A846200A705D7 /* ViewModel */ = {
@@ -261,6 +261,7 @@
 		8756220E257A84B500A705D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87F57772258130CB00FB9E09 /* Notification.swift */,
 				87E3B619257BD53B00F785C3 /* LocationInfo.swift */,
 				87C9913E257E3EFA003049A3 /* Light.swift */,
 			);
@@ -280,7 +281,7 @@
 		8756221F257A87A000A705D7 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				8756220A257A845900A705D7 /* Light */,
+				8756220A257A845900A705D7 /* Lights */,
 				87562225257A87D300A705D7 /* Rules */,
 			);
 			path = Pages;
@@ -337,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				87562238257A8B8700A705D7 /* NotificationManager.swift */,
-				87F57772258130CB00FB9E09 /* NotificationModel.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -491,7 +491,7 @@
 				87CEDC7F258527970087113C /* LocationErrorState.swift in Sources */,
 				8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */,
 				87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */,
-				87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */,
+				87F57773258130CB00FB9E09 /* Notification.swift in Sources */,
 				875621FE257A831A00A705D7 /* Coordinator.swift in Sources */,
 				87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */,
 				87C9913F257E3EFA003049A3 /* Light.swift in Sources */,

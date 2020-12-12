@@ -1,5 +1,5 @@
 //
-//  NotificationModel.swift
+//  Notification.swift
 //  Corona Light
 //
 //  Created by iMamad on 12/9/20.

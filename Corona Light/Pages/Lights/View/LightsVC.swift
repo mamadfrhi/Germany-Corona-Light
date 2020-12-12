@@ -165,7 +165,6 @@ class LightsVC : UIViewController {
             .rx
             .event
             .bind { _ in
-                print("LightView Tapped!")
                 self.pushRulesPage()
             }
             .disposed(by: disposeBag)

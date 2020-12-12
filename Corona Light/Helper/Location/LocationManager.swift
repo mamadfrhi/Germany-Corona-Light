@@ -38,7 +38,7 @@ class LocationManager: NSObject {
     // MARK: Variables
     private var localLocationInfo : LocationInfo?
     private let locationManager = CLLocationManager()
-    private let locationConvertor = LocationConvertor()
+    private let locationConvertor = LocationAdapter()
     var delegate: LocationDelegate?
     
     // RX

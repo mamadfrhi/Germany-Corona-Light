@@ -14,7 +14,6 @@ class MainCoordinator : Coordinator {
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
-        
         self.navigationController = navigationController
         navigationController.navigationBar.barTintColor = .systemBlue
         navigationController

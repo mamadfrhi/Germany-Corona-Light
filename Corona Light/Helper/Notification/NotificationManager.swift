@@ -23,7 +23,7 @@ extension Notificationable {
     func sendLocalizedNotification(at timetInterval: TimeInterval){}
 }
 
-// MARK:- Implementation
+// MARK:- NotificationManager
 class NotificationManager: NSObject {
     
     override init() {
@@ -51,7 +51,9 @@ class NotificationManager: NSObject {
     }
 }
 
+// MARK:-
 // MARK: NotificationDelegate implementation (native delegate)
+// MARK:-
 extension NotificationManager: UNUserNotificationCenterDelegate {
     // User tapped the banner or notification's category
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -71,7 +73,9 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     }
 }
 
+// MARK:-
 // MARK: Notificationable implementation
+// MARK:-
 extension NotificationManager: Notificationable {
     // Interface functions
     func requestNotificationPermission() {

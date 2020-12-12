@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class LocationConvertor {
+class LocationAdapter {
     
     let geocoder = CLGeocoder()
     

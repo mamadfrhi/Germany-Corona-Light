@@ -10,3 +10,11 @@ import UIKit
 
 let screenBounds = UIScreen.main.bounds
 typealias Parameter = [String : Any]
+
+enum StatusColors: String, CaseIterable {
+    case darkRed = "DarkRed"
+    case red = "Red"
+    case yellow = "Yellow"
+    case green = "Green"
+    case off
+}

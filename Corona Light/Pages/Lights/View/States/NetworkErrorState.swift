@@ -12,13 +12,19 @@ protocol NetworkErrorStateable {
 }
 class NewtorkErrorState: NetworkErrorStateable {
     
+    // MARK: Variables
+    
     private let lightsView: LightsView
     private var localizedErrorMessage: String? = nil
     private var networkError: NetworkError? = nil
 
+    // MARK: Init
+    
     init(lightsView: LightsView) {
         self.lightsView = lightsView
     }
+    
+    // MARK: Functions
     
     func setNewtorkErrorState(networkError: NetworkError) {
         // Setup

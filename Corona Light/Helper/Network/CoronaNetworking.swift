@@ -57,7 +57,10 @@ class CoronaNetworking : CoronaNetworkable {
             }
         }
     }
+}
 
+// MARK: Time related functions
+extension CoronaNetworking {
     private func timeDifferenceInSeconds(from: Date,
                                          until: Date) -> Int? {
         let diffComponents = Calendar.current.dateComponents([.second],

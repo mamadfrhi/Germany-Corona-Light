@@ -13,13 +13,6 @@ protocol LightManagerable {
     
     func makeLights()
 }
-enum StatusColors: String, CaseIterable {
-    case darkRed = "DarkRed"
-    case red = "Red"
-    case yellow = "Yellow"
-    case green = "Green"
-    case off
-}
 
 class LightsManager {
     

@@ -12,13 +12,19 @@ protocol LocationErrorStateable {
 }
 class LocationErrorState: LocationErrorStateable {
     
+    // MARK: Variables
+    
     private let lightsView: LightsView
     private var localizedErrorMessage: String? = nil
     private var locationError: LocationError? = nil
 
+    // MARK: Init
+    
     init(lightsView: LightsView) {
         self.lightsView = lightsView
     }
+    
+    // MARK: Functions
     
     func setLocationErrorState(locationError: LocationError) {
         // Setup
@@ -63,3 +69,6 @@ class LocationErrorState: LocationErrorStateable {
         }
     }
 }
+
+// TODO: Add template design pattern
+// for all 3 states handling

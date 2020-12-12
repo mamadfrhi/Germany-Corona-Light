@@ -19,6 +19,7 @@ class LightsView: UIView {
     }
     
     //MARK: Views
+    let stackViewTapGesture = UITapGestureRecognizer()
     private var stackView : UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = .clear
@@ -40,6 +41,8 @@ class LightsView: UIView {
         return lbl
     }()
     
+    // Buttons
+    
     let rulesPageButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("See limitations >>", for: .normal)
@@ -56,8 +59,6 @@ class LightsView: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         return btn
     }()
-    
-    let stackViewTapGesture = UITapGestureRecognizer()
     
     //MARK: Size
     private var stackViewHeight: CGFloat {

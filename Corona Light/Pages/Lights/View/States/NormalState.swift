@@ -18,6 +18,8 @@ class NormalState: NormalStateable {
         self.lightsView = lightsView
     }
     
+    // MARK: Functions
+    
     func setNormlaState() {
         // Perform changes
         handleGeneralViews()
