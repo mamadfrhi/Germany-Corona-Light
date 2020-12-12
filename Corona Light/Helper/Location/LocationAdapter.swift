@@ -8,12 +8,13 @@
 import Foundation
 import CoreLocation
 
+internal
 class LocationAdapter {
     
     let geocoder = CLGeocoder()
     
-    func getTownName(from location: CLLocation,
-                     completion: @escaping (String?) -> Void) {
+    private func getTownName(from location: CLLocation,
+                             completion: @escaping (String?) -> Void) {
         
         geocoder.reverseGeocodeLocation(location) {
             placemarks, error in

@@ -9,11 +9,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+internal
 class LightsVC : UIViewController {
     
     //MARK: Dependencies
     
-    var lightsView: LightsView
+    private var lightsView: LightsView
     private var viewModel: LightsViewModel
     private var coordinator: MainCoordinator
     

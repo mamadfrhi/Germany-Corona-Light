@@ -15,6 +15,7 @@ protocol CoronaServiceAdaptable {
 }
 
 // CoronaAPI = adapter
+internal
 struct CoronaAPI : CoronaServiceAdaptable {
     var provider = MoyaProvider<CoronaService>()
     

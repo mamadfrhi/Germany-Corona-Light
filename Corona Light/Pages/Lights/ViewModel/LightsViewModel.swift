@@ -10,9 +10,9 @@ import Moya
 import RxSwift
 import RxCocoa
 
+internal
 class LightsViewModel {
     
-
     // MARK:- Dependencies
     
     private var api: CoronaNetworkable

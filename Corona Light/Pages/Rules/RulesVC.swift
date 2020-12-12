@@ -7,6 +7,7 @@
 
 import UIKit
 
+internal
 class RulesVC : UIViewController {
     
     // MARK: Dependencies

@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+internal
 class LightsView: UIView {
     
     // MARK: Dependency
@@ -64,7 +65,7 @@ class LightsView: UIView {
     private var stackViewHeight: CGFloat {
         return (self.frame.height * 0.6)
     }
-    private var singleLightHeight: CGFloat {
+    private var singleLightSize: CGFloat {
         let lighCount = CGFloat(4)
         let marginValue = CGFloat( 5 + 5)
         let lightSpace = stackViewHeight / lighCount
@@ -132,7 +133,7 @@ extension LightsView {
     private func setupContentViewConstraints() {
         contentView.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(30)
-            make.width.equalTo(self.singleLightHeight + 50 + 50)
+            make.width.equalTo(self.singleLightSize + 50 + 50)
             make.height.equalTo(self.stackViewHeight + 20 + 20)
             make.centerX.equalToSuperview()
         }
@@ -141,7 +142,7 @@ extension LightsView {
     private func setupStackViewConstraints() {
         stackView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(20)
-            make.width.equalTo(self.singleLightHeight)
+            make.width.equalTo(self.singleLightSize)
             make.height.equalTo(self.stackViewHeight)
             make.centerX.equalToSuperview()
         }
@@ -174,6 +175,8 @@ extension LightsView {
         }
     }
     
+    // Change Description Label constraints
+    // to better showing erro messages (prevent clips)
     func setupDescriptionLabelErrorConstraints() {
         self.descriptionLabel.snp.remakeConstraints { (make) in
             descriptionLabel.snp.makeConstraints { (make) in

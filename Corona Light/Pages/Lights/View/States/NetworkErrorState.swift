@@ -10,6 +10,8 @@ import Foundation
 protocol NetworkErrorStateable {
     func setNewtorkErrorState(networkError: NetworkError)
 }
+
+internal
 class NewtorkErrorState: NetworkErrorStateable {
     
     // MARK: Variables

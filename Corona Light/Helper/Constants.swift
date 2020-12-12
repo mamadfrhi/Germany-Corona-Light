@@ -8,9 +8,11 @@
 import UIKit
 
 
-let screenBounds = UIScreen.main.bounds
-typealias Parameter = [String : Any]
 
+internal let screenBounds = UIScreen.main.bounds
+internal typealias Parameter = [String : Any]
+
+internal
 enum StatusColors: String, CaseIterable {
     case darkRed = "DarkRed"
     case red = "Red"

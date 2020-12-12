@@ -14,6 +14,7 @@ protocol LightManagerable {
     func makeLights()
 }
 
+internal
 class LightsManager {
     
     // MARK: Variables
@@ -56,6 +57,8 @@ class LightsManager {
         }
     }
 }
+
+//LightManagerable
 extension LightsManager: LightManagerable {
     func makeLights(){
         var lights : [Light] = []

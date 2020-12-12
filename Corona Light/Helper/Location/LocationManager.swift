@@ -33,6 +33,7 @@ protocol LocationDelegate {
 
 
 // MARK: - Location Manager
+internal
 class LocationManager: NSObject {
     
     // MARK: Variables
