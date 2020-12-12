@@ -8,17 +8,23 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
+class MainCoordinator : Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         navigationController.navigationBar.barTintColor = .systemBlue
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController
+            .navigationBar
+            .titleTextAttributes
+            = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController.navigationBar.tintColor = .white
     }
     
+    // MARK:-
+    // MARK: Coordinate functions
+    // MARK:-
     func start() {
         let net = CoronaNetworking(coronaService: NetworkAdapter())
         let vm = LightsViewModel(network: net,
@@ -28,10 +34,8 @@ class MainCoordinator: Coordinator {
                               coordinator: self)
         navigationController.pushViewController(lightVC, animated: true)
     }
-    
     func pushRulesPage(for statusColor: StatusColors) {
         let vc = RulesVC(statusColor: statusColor)
         navigationController.pushViewController(vc, animated: true)
-        print("I'm going to open RulesPage")
     }
 }
