@@ -10,11 +10,11 @@ import UIKit
 class RulesVC : UIViewController {
     
     // MARK: Dependencies
-    private var statusColor: LightColors
+    private var statusColor: StatusColors
     private var rulesView: RulesView
     
     // MARK: Lifecycle
-    init(statusColor: LightColors) {
+    init(statusColor: StatusColors) {
         self.statusColor = statusColor
         self.rulesView = RulesView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)

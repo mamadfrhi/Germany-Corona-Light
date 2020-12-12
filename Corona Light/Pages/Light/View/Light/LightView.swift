@@ -1,5 +1,5 @@
 //
-//  TrafficLight.swift
+//  LightView.swift
 //  Corona Light
 //
 //  Created by iMamad on 12/7/20.
@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class TrafficLightView: UIView {
+class LightView: UIView {
     
     // MARK: Dependency
     private var lightManager: LightManagerable!
-    var currentOnlineLight: LightColors = .off{
+    var currentOnlineLight: StatusColors = .off{
         willSet {
             lightManager.currentOnlineLight = newValue
         }
@@ -34,7 +34,6 @@ class TrafficLightView: UIView {
         return vw
     }()
     
-    // TODO: Make a function to change its text
     let descriptionLabel : UILabel = {
         let lbl = UILabel()
         lbl.numberOfLines = 0
@@ -75,7 +74,7 @@ class TrafficLightView: UIView {
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.lightManager = LightManager()
+        self.lightManager = LightsManager()
         self.backgroundColor = .white
         setupContentView()
         setupStackView()

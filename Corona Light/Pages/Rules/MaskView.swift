@@ -12,7 +12,7 @@ import UIKit
 class MaskView: UIView {
     
     // Variables
-    private var statusColor: LightColors {
+    private var statusColor: StatusColors {
         willSet {
             self.statusColor = newValue
             self.statusLight.backgroundColor = UIColor(named: newValue.rawValue)
@@ -28,7 +28,7 @@ class MaskView: UIView {
     }()
     
     // Init
-    init(statusColor: LightColors) {
+    init(statusColor: StatusColors) {
         self.statusColor = statusColor
         let color = UIColor(named: statusColor.rawValue)!
         self.statusLight = CircleView(color: color)
@@ -43,7 +43,7 @@ class MaskView: UIView {
     }
     
     // Function
-    func setColor(statusColor: LightColors) {
+    func setColor(statusColor: StatusColors) {
         self.statusColor = statusColor
         animateStatusLight()
     }

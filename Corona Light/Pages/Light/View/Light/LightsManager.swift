@@ -1,5 +1,5 @@
 //
-//  LightManager.swift
+//  LightsManager.swift
 //  Corona Light
 //
 //  Created by iMamad on 12/7/20.
@@ -9,11 +9,11 @@ import UIKit
 
 protocol LightManagerable {
     var lights: [Light] { get}
-    var currentOnlineLight: LightColors { get set}
+    var currentOnlineLight: StatusColors { get set}
     
     func makeLights()
 }
-enum LightColors: String, CaseIterable {
+enum StatusColors: String, CaseIterable {
     case darkRed = "DarkRed"
     case red = "Red"
     case yellow = "Yellow"
@@ -21,10 +21,10 @@ enum LightColors: String, CaseIterable {
     case off
 }
 
-class LightManager {
-    //TODO: Do it with RX
+class LightsManager {
+    
     // MARK: Variables
-    var currentOnlineLight: LightColors = .off {
+    var currentOnlineLight: StatusColors = .off {
         didSet {
             if currentOnlineLight != .off {
                 turnOn(lightColor: currentOnlineLight)
@@ -40,9 +40,8 @@ class LightManager {
         self.makeLights()
     }
     
-    // TODO: Animate
     // MARK: Light Functions
-    private func turnOn(lightColor: LightColors) {
+    private func turnOn(lightColor: StatusColors) {
         lights.forEach { (light) in
             if light.colorName == lightColor.rawValue {
                 UIView.animate(withDuration: 1) {
@@ -64,10 +63,10 @@ class LightManager {
         }
     }
 }
-extension LightManager: LightManagerable {
+extension LightsManager: LightManagerable {
     func makeLights(){
         var lights : [Light] = []
-        for stateColorName in LightColors.allCases {
+        for stateColorName in StatusColors.allCases {
             guard let color = UIColor.init(named: stateColorName.rawValue) else {
                 continue
             }

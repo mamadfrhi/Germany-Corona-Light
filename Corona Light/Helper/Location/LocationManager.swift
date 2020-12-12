@@ -102,7 +102,7 @@ extension LocationManager: CLLocationManagerDelegate {
     // It executes automatically
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {
-        // TODO: Handle different permission states
+
         switch status {
         
         case .notDetermined:

@@ -14,8 +14,7 @@ class LocationConvertor {
     
     func getTownName(from location: CLLocation,
                      completion: @escaping (String?) -> Void) {
-        // TODO: Handle errors and let user see them
-        // TODO: check retain cycle
+        
         geocoder.reverseGeocodeLocation(location) {
             placemarks, error in
             guard error == nil else {
@@ -35,8 +34,7 @@ class LocationConvertor {
     
     func getLocationInfo(from location: CLLocation,
                          completion: @escaping (LocationInfo?) -> Void) {
-        // TODO: Handle errors and let user see them
-        // TODO: check retain cycle
+        
         geocoder.reverseGeocodeLocation(location) {
             placemarks, error in
             guard error == nil else {

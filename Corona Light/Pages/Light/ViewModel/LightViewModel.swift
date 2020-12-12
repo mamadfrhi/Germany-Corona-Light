@@ -42,7 +42,7 @@ class LightViewModel {
     let networkError : PublishSubject<NetworkError> = PublishSubject()
     let locationError : PublishSubject<LocationError> = PublishSubject()
     
-    let townStatus : PublishSubject<LightColors> = PublishSubject()
+    let townStatus : PublishSubject<StatusColors> = PublishSubject()
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
     
     let notificationTapped : PublishSubject<Bool> = PublishSubject()

@@ -29,7 +29,7 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(lightVC, animated: true)
     }
     
-    func pushRulesPage(for statusColor: LightColors) {
+    func pushRulesPage(for statusColor: StatusColors) {
         let vc = RulesVC(statusColor: statusColor)
         navigationController.pushViewController(vc, animated: true)
         print("I'm going to open RulesPage")

@@ -12,7 +12,7 @@ import RxCocoa
 class LightVC: UIViewController {
     
     //MARK: Dependencies
-    private var trafficLightView: TrafficLightView
+    private var trafficLightView: LightView
     private var viewModel: LightViewModel
     private var coordinator: MainCoordinator
     
@@ -21,7 +21,7 @@ class LightVC: UIViewController {
          coordinator: MainCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        self.trafficLightView = TrafficLightView(frame: screenBounds)
+        self.trafficLightView = LightView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
         setupBindings()
         setupErrorBindings()
@@ -43,7 +43,7 @@ class LightVC: UIViewController {
     }
     
     //MARK: Variable
-    private var currentStatus: LightColors = .off
+    private var currentStatus: StatusColors = .off
     // RX
     private let disposeBag = DisposeBag()
     // Bindings

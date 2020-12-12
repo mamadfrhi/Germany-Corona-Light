@@ -44,7 +44,7 @@ class RulesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(statusColor: LightColors) {
+    func set(statusColor: StatusColors) {
         myMaskView.setColor(statusColor: statusColor)
     }
 }
