@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CE5098FF135AF2C33533D1B /* Pods_Corona_Light.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */; };
 		8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715B822257E6C7300AE77BB /* LoadingViewable.swift */; };
+		871E1F0F2583CBB9005FEE0A /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E1F0E2583CBB9005FEE0A /* MaskView.swift */; };
 		8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8723EA1B257F85D3001DC3A5 /* RulesView.swift */; };
 		872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C3402257BDC5C0081B174 /* LocationAdapter.swift */; };
 		872D34BB258360740083305D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34BA258360740083305D /* NetworkError.swift */; };
@@ -29,6 +30,7 @@
 		87562221257A87AB00A705D7 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562220257A87AB00A705D7 /* RulesVC.swift */; };
 		87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562238257A8B8700A705D7 /* NotificationManager.swift */; };
 		87575EAA257F76DC00919A7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87575EAC257F76DC00919A7E /* Localizable.strings */; };
+		8760F9132583C37500787E1D /* CALayer+animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760F9122583C37500787E1D /* CALayer+animation.swift */; };
 		87B836CD2582510300EA1943 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B836CC2582510300EA1943 /* Toast.swift */; };
 		87C9913B257E3EC0003049A3 /* LightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913A257E3EC0003049A3 /* LightManager.swift */; };
 		87C9913F257E3EFA003049A3 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913E257E3EFA003049A3 /* Light.swift */; };
@@ -43,6 +45,7 @@
 		4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.debug.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.debug.xcconfig"; sourceTree = "<group>"; };
 		7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corona_Light.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8715B822257E6C7300AE77BB /* LoadingViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewable.swift; sourceTree = "<group>"; };
+		871E1F0E2583CBB9005FEE0A /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		8723EA1B257F85D3001DC3A5 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		872C3402257BDC5C0081B174 /* LocationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAdapter.swift; sourceTree = "<group>"; };
 		872D34BA258360740083305D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		87562238257A8B8700A705D7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		87575EAB257F76DC00919A7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87575EAE257F76EC00919A7E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8760F9122583C37500787E1D /* CALayer+animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+animation.swift"; sourceTree = "<group>"; };
 		87B836CC2582510300EA1943 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		87C9913A257E3EC0003049A3 /* LightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightManager.swift; sourceTree = "<group>"; };
 		87C9913E257E3EFA003049A3 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			children = (
 				87562204257A83A000A705D7 /* UIView+Extensiones.swift */,
 				872D34C0258376980083305D /* UIView+blink.swift */,
+				8760F9122583C37500787E1D /* CALayer+animation.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 			children = (
 				87562220257A87AB00A705D7 /* RulesVC.swift */,
 				8723EA1B257F85D3001DC3A5 /* RulesView.swift */,
+				871E1F0E2583CBB9005FEE0A /* MaskView.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 				87562215257A853600A705D7 /* LightViewModel.swift in Sources */,
 				872D34BB258360740083305D /* NetworkError.swift in Sources */,
 				87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */,
+				871E1F0F2583CBB9005FEE0A /* MaskView.swift in Sources */,
 				8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */,
 				87C99143257E3F68003049A3 /* TrafficLightView.swift in Sources */,
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
@@ -460,6 +467,7 @@
 				875621FE257A831A00A705D7 /* Coordinator.swift in Sources */,
 				87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */,
 				87C9913F257E3EFA003049A3 /* Light.swift in Sources */,
+				8760F9132583C37500787E1D /* CALayer+animation.swift in Sources */,
 				87B836CD2582510300EA1943 /* Toast.swift in Sources */,
 				875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */,
 			);

@@ -82,7 +82,11 @@ extension LightManager: LightManagerable {
 
 // MARK: CircleView
 class CircleView: UIView {
-    var color: UIColor!
+    var color: UIColor! {
+        didSet {
+            self.backgroundColor = color
+        }
+    }
     
     init(color: UIColor) {
         self.color = color

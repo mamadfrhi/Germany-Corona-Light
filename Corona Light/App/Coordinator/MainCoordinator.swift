@@ -8,8 +8,6 @@
 
 import UIKit
 
-let numberOfLights = 4
-
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
@@ -22,12 +20,12 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vm = LightViewModel(network: NetworkManager(),
-                                locationManager: LocationManager(),
-                                notificationManager: NotificationManager())
-        let lightVC = LightVC(viewModel: vm,
-                              coordinator: self)
-        navigationController.pushViewController(lightVC, animated: true)
+//        let vm = LightViewModel(network: NetworkManager(),
+//                                locationManager: LocationManager(),
+//                                notificationManager: NotificationManager())
+//        let lightVC = LightVC(viewModel: vm,
+//                              coordinator: self)
+        navigationController.pushViewController(RulesVC(statusColor: .red), animated: true)
     }
     
     func pushRulesPage(for statusColor: LightColors) {

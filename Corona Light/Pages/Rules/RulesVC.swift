@@ -29,10 +29,12 @@ class RulesVC : UIViewController {
     
     override func loadView() {
         self.view = rulesView
+        self.title = "Restrictions"
     }
     
     // MARK: Setups
     private func setupRulesLabelText() {
+        rulesView.rulesTextView.layer.bottomAnimation(duration: 3)
         switch statusColor {
         case .darkRed:
             let rulesText = NSLocalizedString("darkRedStatusRules",
@@ -49,6 +51,7 @@ class RulesVC : UIViewController {
         case .green:
             let rulesText = NSLocalizedString("greenStatusRules",
                                               comment: "Green Status Rules")
+            
             rulesView.rulesTextView.text = rulesText
         case .off:
             break
@@ -56,7 +59,9 @@ class RulesVC : UIViewController {
     }
     
     private func setupStatusLabel() {
+        rulesView.statusLabel.layer.leftAnimation(duration: 3)
         if var labelText = rulesView.statusLabel.text{
+            // add name of color end of string
             labelText += statusColor.rawValue
             rulesView.statusLabel.text = labelText
         }
@@ -65,13 +70,13 @@ class RulesVC : UIViewController {
     private func setupLightColor() {
         switch statusColor {
         case .darkRed:
-            rulesView.statusLight.backgroundColor = UIColor(named: "DarkRed")
+            rulesView.set(statusColor: .darkRed)
         case .red:
-            rulesView.statusLight.backgroundColor = UIColor(named: "Red")
+            rulesView.set(statusColor: .red)
         case .yellow:
-            rulesView.statusLight.backgroundColor = UIColor(named: "Yellow")
+            rulesView.set(statusColor: .yellow)
         case .green:
-            rulesView.statusLight.backgroundColor = UIColor(named: "Green")
+            rulesView.set(statusColor: .green)
         case .off:
             break
         }
