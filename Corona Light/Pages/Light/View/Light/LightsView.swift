@@ -76,23 +76,50 @@ class LightsView: UIView {
         super.init(frame: frame)
         self.lightManager = LightsManager()
         self.backgroundColor = .white
-        setupContentView()
-        setupStackView()
-        setupDescriptionLabel()
-        setupRulesPageButtton()
-        setupRetryButtton()
+        self.setupView()
+//        setupContentView()
+//        setupStackView()
+//        setupDescriptionLabel()
+//        setupRulesPageButtton()
+//        setupRetryButtton()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension LightsView : CodeView {
     
-    // MARK: Setup
-    // ContentView
-    private func setupContentView() {
+    // MARK: Template Functions
+    
+    func buildViewHierachy() {
         self.addSubview(self.contentView)
-        addContentViewConstraints()
+        self.contentView.addSubview(stackView)
+        self.addSubview(descriptionLabel)
+        self.addSubview(rulesPageButton)
+        self.addSubview(retryButton)
     }
-    private func addContentViewConstraints() {
+    
+    func setupConstraints() {
+        setupContentViewConstraints()
+        setupStackViewConstraints()
+        setupDescriptionLabelConstraints()
+        setupRulesPageButttonConstraints()
+        setupRulesPageButttonConstraints()
+        setupRetryButttonConstraints()
+    }
+    
+    func setupAdditionalConfiguration() {
+        addLightsToStackView()
+        // Gesture on lights' stack view
+        stackView.addGestureRecognizer(stackViewTapGesture)
+    }
+    
+    
+    // MARK: Setup Constraints Functions
+    
+    // Content View
+    private func setupContentViewConstraints() {
         contentView.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(30)
             make.width.equalTo(self.singleLightHeight + 50 + 50)
@@ -100,14 +127,8 @@ class LightsView: UIView {
             make.centerX.equalToSuperview()
         }
     }
-    // StackView
-    private func setupStackView() {
-        self.contentView.addSubview(stackView)
-        stackView.addGestureRecognizer(stackViewTapGesture)
-        addStackViewConstraints()
-        addLightsToStackView()
-    }
-    private func addStackViewConstraints() {
+    // Stack View
+    private func setupStackViewConstraints() {
         stackView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(20)
             make.width.equalTo(self.singleLightHeight)
@@ -115,18 +136,8 @@ class LightsView: UIView {
             make.centerX.equalToSuperview()
         }
     }
-    private func addLightsToStackView(){
-        let lights = lightManager.lights
-        for light in lights {
-            stackView.addArrangedSubview(light.circleView)
-        }
-    }
-    // DescriptionLabel
-    private func setupDescriptionLabel() {
-        self.addSubview(descriptionLabel)
-        addDescriptionLabelConstraints()
-    }
-    private func addDescriptionLabelConstraints() {
+    // Description Label
+    private func setupDescriptionLabelConstraints() {
         descriptionLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.bottom).offset(20)
 //            make.left.equalToSuperview().offset(30)
@@ -135,12 +146,8 @@ class LightsView: UIView {
             make.height.equalTo(100)
         }
     }
-    // RulesPageButtton
-    private func setupRulesPageButtton() {
-        self.addSubview(rulesPageButton)
-        addRulesPageButttonConstraints()
-    }
-    private func addRulesPageButttonConstraints() {
+    // Rules Page Button
+    private func setupRulesPageButttonConstraints() {
         rulesPageButton.snp.makeConstraints { (make) in
             make.top.equalTo(descriptionLabel.snp.bottom)
             make.left.equalToSuperview().offset(30)
@@ -149,17 +156,22 @@ class LightsView: UIView {
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
     }
-    // RetryButtton
-    private func setupRetryButtton() {
-        self.addSubview(retryButton)
-        addRetryButttonConstraints()
-    }
-    private func addRetryButttonConstraints() {
+    // Retry Buttton
+    private func setupRetryButttonConstraints() {
         retryButton.snp.makeConstraints { (make) in
             make.top.equalTo(descriptionLabel.snp.bottom)
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+    
+    // MARK: Additional Configuration Functions
+    
+    private func addLightsToStackView(){
+        let lights = lightManager.lights
+        for light in lights {
+            stackView.addArrangedSubview(light.circleView)
         }
     }
 }

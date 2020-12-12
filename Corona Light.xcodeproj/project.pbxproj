@@ -292,8 +292,8 @@
 		87C99139257E3EA9003049A3 /* Light */ = {
 			isa = PBXGroup;
 			children = (
-				87C9913A257E3EC0003049A3 /* LightsManager.swift */,
 				87C99142257E3F68003049A3 /* LightsView.swift */,
+				87C9913A257E3EC0003049A3 /* LightsManager.swift */,
 			);
 			path = Light;
 			sourceTree = "<group>";
