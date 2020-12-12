@@ -10,7 +10,7 @@ import Moya
 import RxSwift
 import RxCocoa
 
-class LightViewModel {
+class LightsViewModel {
     
     // MARK: Dependencies
     private var api: CoronaNetworkable
@@ -114,7 +114,7 @@ class LightViewModel {
 
 //MARK:- Location
 // Location Delegate
-extension LightViewModel: LocationDelegate {
+extension LightsViewModel: LocationDelegate {
     func didUpdateLocation(to locationInfo: LocationInfo?) {
         print("Did update location at this town: \(String(describing: locationInfo?.town)).\n")
         
@@ -140,7 +140,7 @@ extension LightViewModel: LocationDelegate {
     }
 }
 // Locationable
-extension LightViewModel: Locationable {
+extension LightsViewModel: Locationable {
     func startUpdatingLocation() {
         locationManager.startUpdatingLocation()
     }
@@ -148,7 +148,7 @@ extension LightViewModel: Locationable {
 
 //MARK:- Network
 
-extension LightViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
+extension LightsViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
     func getIncidents(of townName: String,
                       previousRequestTime: Date?) {
         self.api.getIncidents(of: townName,
@@ -181,7 +181,7 @@ extension LightViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
 }
 
 //MARK:- Notification
-extension LightViewModel: Notificationable {
+extension LightsViewModel: Notificationable {
     func requestNotificationPermission() {
         notificationManager.requestNotificationPermission()
     }

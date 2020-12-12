@@ -21,10 +21,10 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let net = CoronaNetworking(coronaService: NetworkAdapter())
-        let vm = LightViewModel(network: net,
+        let vm = LightsViewModel(network: net,
                                 locationManager: LocationManager(),
                                 notificationManager: NotificationManager())
-        let lightVC = LightVC(viewModel: vm,
+        let lightVC = LightsVC(viewModel: vm,
                               coordinator: self)
         navigationController.pushViewController(lightVC, animated: true)
     }

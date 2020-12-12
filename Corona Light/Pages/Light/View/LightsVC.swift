@@ -9,19 +9,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LightVC: UIViewController {
+class LightsVC: UIViewController {
     
     //MARK: Dependencies
-    private var trafficLightView: LightView
-    private var viewModel: LightViewModel
+    private var trafficLightView: LightsView
+    private var viewModel: LightsViewModel
     private var coordinator: MainCoordinator
     
     //MARK: LifeCycle
-    init(viewModel: LightViewModel,
+    init(viewModel: LightsViewModel,
          coordinator: MainCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        self.trafficLightView = LightView(frame: screenBounds)
+        self.trafficLightView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
         setupBindings()
         setupErrorBindings()
@@ -168,7 +168,7 @@ class LightVC: UIViewController {
 // Location Error State - Network Error State- Normal State
 // Detected Variabels:
 // descriptionLabel.isHidden - rulesButton.isHidden - message - status
-extension LightVC {
+extension LightsVC {
     // Location Error Handling
     private func handle(locationError: LocationError) {
         let localizedErrorMessage = locationError.errorDescription

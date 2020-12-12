@@ -1,5 +1,5 @@
 //
-//  LightView.swift
+//  LightsView.swift
 //  Corona Light
 //
 //  Created by iMamad on 12/7/20.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LightView: UIView {
+class LightsView: UIView {
     
     // MARK: Dependency
     private var lightManager: LightManagerable!

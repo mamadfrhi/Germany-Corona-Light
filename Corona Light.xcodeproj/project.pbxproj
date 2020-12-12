@@ -24,8 +24,8 @@
 		875621FE257A831A00A705D7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621FC257A831A00A705D7 /* Coordinator.swift */; };
 		87562205257A83A000A705D7 /* Reactive+isAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562203257A83A000A705D7 /* Reactive+isAnimating.swift */; };
 		87562206257A83A000A705D7 /* UIView+Extensiones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562204257A83A000A705D7 /* UIView+Extensiones.swift */; };
-		87562211257A851100A705D7 /* LightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562210257A851100A705D7 /* LightVC.swift */; };
-		87562215257A853600A705D7 /* LightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562214257A853600A705D7 /* LightViewModel.swift */; };
+		87562211257A851100A705D7 /* LightsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562210257A851100A705D7 /* LightsVC.swift */; };
+		87562215257A853600A705D7 /* LightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562214257A853600A705D7 /* LightsViewModel.swift */; };
 		87562218257A855700A705D7 /* CoronaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562217257A855700A705D7 /* CoronaService.swift */; };
 		8756221C257A870100A705D7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8756221B257A870100A705D7 /* LocationManager.swift */; };
 		87562221257A87AB00A705D7 /* RulesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562220257A87AB00A705D7 /* RulesVC.swift */; };
@@ -35,7 +35,7 @@
 		87B836CD2582510300EA1943 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B836CC2582510300EA1943 /* Toast.swift */; };
 		87C9913B257E3EC0003049A3 /* LightsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913A257E3EC0003049A3 /* LightsManager.swift */; };
 		87C9913F257E3EFA003049A3 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913E257E3EFA003049A3 /* Light.swift */; };
-		87C99143257E3F68003049A3 /* LightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C99142257E3F68003049A3 /* LightView.swift */; };
+		87C99143257E3F68003049A3 /* LightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C99142257E3F68003049A3 /* LightsView.swift */; };
 		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
 		87E7FF5E257CC5730095CDDC /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* NetworkAdapter.swift */; };
 		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
@@ -63,8 +63,8 @@
 		875621FC257A831A00A705D7 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		87562203257A83A000A705D7 /* Reactive+isAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reactive+isAnimating.swift"; sourceTree = "<group>"; };
 		87562204257A83A000A705D7 /* UIView+Extensiones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensiones.swift"; sourceTree = "<group>"; };
-		87562210257A851100A705D7 /* LightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightVC.swift; sourceTree = "<group>"; };
-		87562214257A853600A705D7 /* LightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModel.swift; sourceTree = "<group>"; };
+		87562210257A851100A705D7 /* LightsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsVC.swift; sourceTree = "<group>"; };
+		87562214257A853600A705D7 /* LightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsViewModel.swift; sourceTree = "<group>"; };
 		87562217257A855700A705D7 /* CoronaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaService.swift; sourceTree = "<group>"; };
 		8756221B257A870100A705D7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		87562220257A87AB00A705D7 /* RulesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesVC.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 		87B836CC2582510300EA1943 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		87C9913A257E3EC0003049A3 /* LightsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsManager.swift; sourceTree = "<group>"; };
 		87C9913E257E3EFA003049A3 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
-		87C99142257E3F68003049A3 /* LightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightView.swift; sourceTree = "<group>"; };
+		87C99142257E3F68003049A3 /* LightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsView.swift; sourceTree = "<group>"; };
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		87E7FF5D257CC5730095CDDC /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		8756220B257A846200A705D7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				87562214257A853600A705D7 /* LightViewModel.swift */,
+				87562214257A853600A705D7 /* LightsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				87C99139257E3EA9003049A3 /* Light */,
-				87562210257A851100A705D7 /* LightVC.swift */,
+				87562210257A851100A705D7 /* LightsVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				87C9913A257E3EC0003049A3 /* LightsManager.swift */,
-				87C99142257E3F68003049A3 /* LightView.swift */,
+				87C99142257E3F68003049A3 /* LightsView.swift */,
 			);
 			path = Light;
 			sourceTree = "<group>";
@@ -446,7 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87442A60258221F0004461B8 /* Constants.swift in Sources */,
-				87562211257A851100A705D7 /* LightVC.swift in Sources */,
+				87562211257A851100A705D7 /* LightsVC.swift in Sources */,
 				87C9913B257E3EC0003049A3 /* LightsManager.swift in Sources */,
 				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,
 				872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */,
@@ -454,13 +454,13 @@
 				8756221C257A870100A705D7 /* LocationManager.swift in Sources */,
 				872D34BE258365820083305D /* LocationError.swift in Sources */,
 				87562206257A83A000A705D7 /* UIView+Extensiones.swift in Sources */,
-				87562215257A853600A705D7 /* LightViewModel.swift in Sources */,
+				87562215257A853600A705D7 /* LightsViewModel.swift in Sources */,
 				872D34BB258360740083305D /* NetworkError.swift in Sources */,
 				87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */,
 				87164CF42584ADA800DE56E3 /* CoronaNetworkable.swift in Sources */,
 				871E1F0F2583CBB9005FEE0A /* MaskView.swift in Sources */,
 				8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */,
-				87C99143257E3F68003049A3 /* LightView.swift in Sources */,
+				87C99143257E3F68003049A3 /* LightsView.swift in Sources */,
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
 				872D34C1258376980083305D /* UIView+blink.swift in Sources */,
 				87562218257A855700A705D7 /* CoronaService.swift in Sources */,
