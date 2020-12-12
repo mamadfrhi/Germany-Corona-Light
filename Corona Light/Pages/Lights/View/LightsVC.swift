@@ -48,7 +48,7 @@ class LightsVC : UIViewController {
     
     override func loadView() {
         self.view = lightsView
-        self.title = "Corona Status"
+        self.title = "coronaStatus".localized()
     }
     
     private func pushRulesPage() {
@@ -105,7 +105,9 @@ class LightsVC : UIViewController {
                     return
                 }
                 descriptionLabelText = ""
-                descriptionLabelText.append("📍 You're at\n")
+                descriptionLabelText.append("📍 ")
+                let youAreAt = "youAreAt".localized() + "\n"
+                descriptionLabelText.append(youAreAt)
                 descriptionLabelText.append("\t\(locationInfo.country ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.state ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.town ?? "")")

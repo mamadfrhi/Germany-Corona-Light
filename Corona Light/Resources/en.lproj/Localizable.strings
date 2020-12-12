@@ -19,6 +19,15 @@ specific public places form 21:00";
 // Green 🟢
 "greenStatusRules" = "Always Important: Keep your distance, wear a mask, wash your hands, air rooms regularly\n\n- Limitations of face-to-face contact in public spaces\n\n- Private events ( i.e. weddings etc. ) with a maximum of 100 participants in closed spaces and a maximum of 200 participants in the open\n\n- Wearing a mask is mandatory when ( including, but not limited to ) using public transportation, going shopping, eating and drinking in restaurants, bars, etc. and in case minimum distance (1.5m ) cannot be kept";
 
+// ------- General -------
+
+// ViewController Titles
+"coronaStatus" = "Corona Status";
+"restrictions" = "Restrictions";
+
+"youAreAt" = "You're at";
+"seeLimitations" = "See limitations >>";
+
 // Status Label text
 "statusLabel" = "Your current area is ";
 
@@ -27,6 +36,8 @@ specific public places form 21:00";
 
 // ------- Location -------
 
+// Targeted State Name
+"stateName" = "Bavaria";
 // Location Permission Alert
 "locationPermissionAlert" = "I can't help you without location permission. Go to this address and allow me to do the rest.\n\nSettings > Privacy > Location Services > Corona Light > Always";
 // Location Out Of Bavaria Error

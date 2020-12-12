@@ -18,6 +18,14 @@
 // Green 🟢
 "greenStatusRules" = "Immer wichtig: Halten Sie Abstand, tragen Sie eine Maske, waschen Sie Ihre Hände und lüften Sie regelmäßig\n\n- Einschränkungen des persönlichen Kontakts im öffentlichen Raum\n\n- Private Veranstaltungen (d. H. Hochzeiten usw.) mit maximal 100 Teilnehmern in geschlossenen Räumen und maximal 200 Teilnehmer im Freien\n\n- Das Tragen einer Maske ist obligatorisch, wenn (einschließlich, aber nicht beschränkt auf) die Nutzung öffentlicher Verkehrsmittel. Einkaufen, Essen und Trinken in Restaurants, Bars usw. und bei Mindestentfernung (1,5 m) kann nicht gehalten werden";
 
+// ------- General -------
+
+// ViewController Titles
+"coronaStatus" = "Coronavirus-Status";
+"restrictions" = "Beschränkungen";
+
+"youAreAt" = "Du bist bei";
+"seeLimitations" = "siehe Einschränkungen >>";
 
 // Status Label text
 "statusLabel" = "Ihr aktueller Bereich ist ";
@@ -27,6 +35,8 @@
 
 // ------- Location -------
 
+// Targeted State Name
+"stateName" = "Bayern";
 // Location Permission Alert
 "locationPermissionAlert" = "Ich kann dir nicht ohne Standortgenehmigung helfen. Gehen Sie zu dieser Adresse und erlauben Sie mir, den Rest zu erledigen.\n\nEinstellungen> Datenschutz> Ortungsdienste> Corona Light> Immer";
 // OutOfBavariaError

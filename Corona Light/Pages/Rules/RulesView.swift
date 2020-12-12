@@ -15,8 +15,7 @@ class RulesView : UIView {
 
     let statusLabel : UILabel = {
         let lbl = UILabel()
-        lbl.text = NSLocalizedString("statusLabel",
-                                     comment: "statusLabel text")
+        lbl.text = "statusLabel".localized()
         lbl.numberOfLines = 2
         lbl.textAlignment = .center
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
@@ -25,8 +24,7 @@ class RulesView : UIView {
     
     let rulesTextView : UITextView = {
         let txtView = UITextView()
-        txtView.text = NSLocalizedString("redStatusRules",
-                                     comment: "statusLabel text")
+        txtView.text = "redStatusRules".localized()
         txtView.textAlignment = .justified
         txtView.font = UIFont.italicSystemFont(ofSize: 18)
         return txtView

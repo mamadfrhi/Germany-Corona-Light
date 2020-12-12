@@ -40,10 +40,8 @@ class NotificationManager: NSObject {
     
     private var localizedNotification : Notification {
         get {
-            let title = NSLocalizedString("notificationTitle",
-                                          comment: "Notification title")
-            let body = NSLocalizedString("notificationBody",
-                                          comment: "Notification body")
+            let title = "notificationTitle".localized()
+            let body = "notificationBody".localized()
             let notification = Notification(title: title,
                                             body: body)
             return notification
@@ -120,8 +118,7 @@ extension NotificationManager: Notificationable {
         return content
     }
     private func registerCategories() {
-        let notificationButtonText = NSLocalizedString("notificationButtonText",
-                                                       comment: "Title of notification action!")
+        let notificationButtonText = "notificationButtonText".localized()
         let show = UNNotificationAction(identifier: "show",
                                         title: notificationButtonText,
                                         options: .foreground)

@@ -43,6 +43,12 @@ class NewtorkErrorState: NetworkErrorStateable {
     private func handleGeneralViews() {
         // Handle Views
         self.lightsView.currentOnlineLight = .off
+        
+        self.lightsView.setupDescriptionLabelErrorConstraints()
+        self.lightsView.descriptionLabel.text = localizedErrorMessage
+    }
+    private func handleButtons() {
+        // Buttons
         self.lightsView.rulesPageButton.isHidden = true
         self.lightsView.retryButton.isHidden = false
     }

@@ -33,6 +33,7 @@
 		87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87562238257A8B8700A705D7 /* NotificationManager.swift */; };
 		87575EAA257F76DC00919A7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87575EAC257F76DC00919A7E /* Localizable.strings */; };
 		8760F9132583C37500787E1D /* CALayer+animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760F9122583C37500787E1D /* CALayer+animation.swift */; };
+		8775F7AD2585476800EB42A6 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8775F7AC2585476800EB42A6 /* String+localized.swift */; };
 		87B836CD2582510300EA1943 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B836CC2582510300EA1943 /* Toast.swift */; };
 		87C9913B257E3EC0003049A3 /* LightsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913A257E3EC0003049A3 /* LightsManager.swift */; };
 		87C9913F257E3EFA003049A3 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913E257E3EFA003049A3 /* Light.swift */; };
@@ -76,6 +77,7 @@
 		87575EAB257F76DC00919A7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87575EAE257F76EC00919A7E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8760F9122583C37500787E1D /* CALayer+animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+animation.swift"; sourceTree = "<group>"; };
+		8775F7AC2585476800EB42A6 /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		87B836CC2582510300EA1943 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		87C9913A257E3EC0003049A3 /* LightsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsManager.swift; sourceTree = "<group>"; };
 		87C9913E257E3EFA003049A3 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 			children = (
 				872D34C3258376A40083305D /* UIView */,
 				87F5776F2580C74E00FB9E09 /* RX */,
+				8775F7AC2585476800EB42A6 /* String+localized.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */,
 				87562205257A83A000A705D7 /* Reactive+isAnimating.swift in Sources */,
 				87CEDC8225852B380087113C /* NetworkErrorState.swift in Sources */,
+				8775F7AD2585476800EB42A6 /* String+localized.swift in Sources */,
 				87CEDC8525852ECE0087113C /* NormalState.swift in Sources */,
 				8756221C257A870100A705D7 /* LocationManager.swift in Sources */,
 				872D34BE258365820083305D /* LocationError.swift in Sources */,

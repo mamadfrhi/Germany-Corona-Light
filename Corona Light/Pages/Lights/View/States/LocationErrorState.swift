@@ -44,6 +44,8 @@ class LocationErrorState: LocationErrorStateable {
     private func handleGeneralViews() {
         // Handle Views
         self.lightsView.currentOnlineLight = .off
+        
+        self.lightsView.setupDescriptionLabelErrorConstraints()
         self.lightsView.descriptionLabel.text = localizedErrorMessage
     }
     private func handleButtons() {

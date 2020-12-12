@@ -29,7 +29,7 @@ class RulesVC : UIViewController {
     
     override func loadView() {
         self.view = rulesView
-        self.title = "Restrictions"
+        self.title = "restrictions".localized()
     }
     
     // MARK: Setups
@@ -37,20 +37,16 @@ class RulesVC : UIViewController {
         rulesView.rulesTextView.layer.bottomAnimation(duration: 3)
         switch statusColor {
         case .darkRed:
-            let rulesText = NSLocalizedString("darkRedStatusRules",
-                                              comment: "Dark Red Status Rules")
+            let rulesText = "darkRedStatusRules".localized()
             rulesView.rulesTextView.text = rulesText
         case .red:
-            let rulesText = NSLocalizedString("redStatusRules",
-                                              comment: "Red Status Rules")
+            let rulesText = "redStatusRules".localized()
             rulesView.rulesTextView.text = rulesText
         case .yellow:
-            let rulesText = NSLocalizedString("yellowStatusRules",
-                                              comment: "Yellow Status Rules")
+            let rulesText = "yellowStatusRules".localized()
             rulesView.rulesTextView.text = rulesText
         case .green:
-            let rulesText = NSLocalizedString("greenStatusRules",
-                                              comment: "Green Status Rules")
+            let rulesText = "greenStatusRules".localized()
             
             rulesView.rulesTextView.text = rulesText
         case .off:

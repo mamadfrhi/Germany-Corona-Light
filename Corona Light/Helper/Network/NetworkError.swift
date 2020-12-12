@@ -16,8 +16,7 @@ extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .serverDataError:
-            let message = NSLocalizedString("serverDataError",
-                                            comment: "")
+            let message = "serverDataError".localized()
             return message
         case .requestError(let message):
             return message

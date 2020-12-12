@@ -45,7 +45,7 @@ class LightsView: UIView {
     
     let rulesPageButton: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("See limitations >>", for: .normal)
+        btn.setTitle("seeLimitations".localized(), for: .normal)
         btn.setTitleColor(.systemBlue, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         return btn
@@ -147,11 +147,9 @@ extension LightsView {
         }
     }
     // Description Label
-    private func setupDescriptionLabelConstraints() {
+    func setupDescriptionLabelConstraints() {
         descriptionLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.bottom).offset(20)
-//            make.left.equalToSuperview().offset(30)
-//            make.right.equalToSuperview().offset(-30)
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(100)
         }
@@ -173,6 +171,17 @@ extension LightsView {
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+    
+    func setupDescriptionLabelErrorConstraints() {
+        self.descriptionLabel.snp.remakeConstraints { (make) in
+            descriptionLabel.snp.makeConstraints { (make) in
+                make.top.equalTo(contentView.snp.bottom).offset(20)
+                make.left.equalToSuperview().offset(30)
+                make.right.equalToSuperview().offset(-30)
+                make.height.equalTo(100)
+            }
         }
     }
 }

@@ -138,7 +138,9 @@ extension LightsViewModel: LocationDelegate {
             self.locationError.onNext(.badLocationError)
             return
         }
-        guard stateName == "Bavaria" else {
+        
+        let localizedStateName = "stateName".localized()
+        guard stateName == localizedStateName else {
             self.locationError.onNext(.outOfBavariaError)
             return
         }

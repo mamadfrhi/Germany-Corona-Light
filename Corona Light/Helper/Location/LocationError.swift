@@ -17,16 +17,13 @@ extension LocationError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .locationNotAllowedError:
-            let message = NSLocalizedString("locationPermissionAlert",
-                                            comment: "Location permission message")
+            let message = "locationPermissionAlert".localized()
             return message
         case .outOfBavariaError:
-            let message = NSLocalizedString("locationOutOfBavariaError",
-                                            comment: "Location permission message")
+            let message = "locationOutOfBavariaError".localized()
             return message
         case .badLocationError:
-            let message = NSLocalizedString("locationDetectionError",
-                                            comment: "Location permission message")
+            let message = "locationDetectionError".localized()
             return message
         }
     }
