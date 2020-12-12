@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Template Design Pattern
+// *** Template Design Pattern ***
 // For adding custom uiviews
 
 protocol CodeView {

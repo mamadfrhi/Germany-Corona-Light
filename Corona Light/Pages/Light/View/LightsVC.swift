@@ -11,37 +11,43 @@ import RxCocoa
 
 class LightsVC : UIViewController {
     
-    //MARK:-
     //MARK: Dependencies
-    //MARK:-
     
-    private var trafficLightView: LightsView
+    var lightsView: LightsView
     private var viewModel: LightsViewModel
     private var coordinator: MainCoordinator
     
-    //MARK:-
+    //MARK: States
+    private var locationErrorStateable: LocationErrorStateable?
+    private var networkErrorStateable: NetworkErrorStateable?
+    private var normalStateable: NormalStateable?
+    
+    
     //MARK: Lifecycle
-    //MARK:-
     
     init(viewModel: LightsViewModel,
          coordinator: MainCoordinator) {
         
         self.viewModel = viewModel
         self.coordinator = coordinator
-        self.trafficLightView = LightsView(frame: screenBounds)
+        self.lightsView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
         
+        
+        
         // Setups
+        setupStates()
         setupGeneralBindings()
         setupErrorBindings()
         setupNavigationBindings()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
-        self.view = trafficLightView
+        self.view = lightsView
         self.title = "Corona Status"
     }
     
@@ -51,15 +57,14 @@ class LightsVC : UIViewController {
         }
     }
     
-    //MARK:-
+    
     //MARK: Variable
-    //MARK:-
+    
     private var currentStatus: StatusColors = .off
     private let disposeBag = DisposeBag()
     
-    //MARK:-
+    
     //MARK: RX Binding
-    //MARK:-
     // Bindings
     private func setupGeneralBindings() {
         
@@ -81,15 +86,11 @@ class LightsVC : UIViewController {
             .townStatus
             .observeOn(MainScheduler.instance)
             .subscribe { (statusColor) in
-                guard let statusColorElement = statusColor.element else { return}
-                
-                self.trafficLightView.descriptionLabel.isHidden = false
-                // Buttons
-                self.trafficLightView.rulesPageButton.isHidden = false
-                self.trafficLightView.retryButton.isHidden = true
-                
-                self.trafficLightView.currentOnlineLight = statusColorElement
+                guard let statusColorElement = statusColor.element
+                else { return }
+                self.lightsView.currentOnlineLight = statusColorElement
                 self.currentStatus = statusColorElement
+                self.setNormlaState()
             }
             .disposed(by: disposeBag)
         
@@ -108,13 +109,13 @@ class LightsVC : UIViewController {
                 descriptionLabelText.append("\t\(locationInfo.country ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.state ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.town ?? "")")
-                self.trafficLightView.descriptionLabel.text = descriptionLabelText
+                self.lightsView.descriptionLabel.text = descriptionLabelText
             }
             .disposed(by: disposeBag)
         
         
         // Retry Button
-        trafficLightView.retryButton
+        lightsView.retryButton
             .rx.tap
             .subscribe { _ in
                 // Trig locaiton manager
@@ -123,7 +124,7 @@ class LightsVC : UIViewController {
                 self.viewModel.retryRequest()
             }
             .disposed(by: disposeBag)
-
+        
     }
     
     private func setupErrorBindings() {
@@ -134,7 +135,7 @@ class LightsVC : UIViewController {
             .locationError
             .observeOn(MainScheduler.instance)
             .subscribe { (locationError) in
-                self.handle(locationError: locationError)
+                self.setLocationErrorState(locationError: locationError)
             }
             .disposed(by: disposeBag)
         
@@ -144,14 +145,13 @@ class LightsVC : UIViewController {
             .networkError
             .observeOn(MainScheduler.instance)
             .subscribe { (networkError) in
-                self.trafficLightView.rulesPageButton.isHidden = true
-                self.trafficLightView.retryButton.isHidden = false
                 
                 // if recently a network error occured
                 // It remains previous state
                 if self.currentStatus == .off,
                    let networkError = networkError.element {
-                    self.handle(networkError: networkError)
+                    self.networkErrorStateable?
+                        .setNewtorkErrorState(networkError: networkError)
                 }
             }
             .disposed(by: disposeBag)
@@ -161,10 +161,10 @@ class LightsVC : UIViewController {
         
         // Light View Tap Gesture
         // Tap gesture added on contentView & stackView
-        trafficLightView.stackViewTapGesture
+        lightsView.stackViewTapGesture
             .rx
             .event
-            .bind { (event) in
+            .bind { _ in
                 print("LightView Tapped!")
                 self.pushRulesPage()
             }
@@ -172,9 +172,9 @@ class LightsVC : UIViewController {
         
         
         // Rules Page Button
-        trafficLightView.rulesPageButton
+        lightsView.rulesPageButton
             .rx.tap
-            .subscribe { (tapped) in
+            .subscribe { _ in
                 self.pushRulesPage()
             }
             .disposed(by: disposeBag)
@@ -184,64 +184,57 @@ class LightsVC : UIViewController {
         viewModel
             .notificationTapped
             .observeOn(MainScheduler.instance)
-            .subscribe { (event) in
+            .subscribe { _ in
                 self.pushRulesPage()
             }
             .disposed(by: disposeBag)
     }
 }
 
-// MARK:- State Handler
-// TODO: Clean it with State Design Pattern
-// Detected states:
-// Location Error State - Network Error State- Normal State
-// Detected Variabels:
-// descriptionLabel.isHidden - rulesButton.isHidden - message - status
+// MARK:-
+// MARK: States
+// MARK:-
+
+//MARK: State Setups
 extension LightsVC {
-    
-    // Location Error Handling
-    private func handle(locationError: LocationError) {
+    // It calls from init
+    private func setupStates() {
+        // States
+        // Location Error State
+        self.locationErrorStateable =
+            LocationErrorState(lightsView: self.lightsView)
         
-        let localizedErrorMessage = locationError.errorDescription
-            ?? "An error releated to location services occured!"
+        // Network Error State
+        self.networkErrorStateable =
+            NewtorkErrorState(lightsView: self.lightsView)
         
-        // Show Error Messsage to user
-        switch locationError {
-        case .locationNotAllowedError:
-            // Show modal message
-            // It's a serious problem
-            Toast.shared.showModal(description: localizedErrorMessage)
-            
-        case .outOfBavariaError, .badLocationError:
-            // Show simple message view
-            Toast.shared.showIn(body: localizedErrorMessage)
-        }
-        
-        // Handle Views
-        self.trafficLightView.currentOnlineLight = .off
-        self.trafficLightView.descriptionLabel.text = localizedErrorMessage
-        // Buttons
-        self.trafficLightView.rulesPageButton.isHidden = true
-        self.trafficLightView.retryButton.isHidden = false
+        // Normal State
+        self.normalStateable =
+            NormalState(lightsView: self.lightsView)
     }
-    
-    // Network Error Handling
-    private func handle(networkError: NetworkError) {
-        
-        let localizedErrorMessage =
-            networkError.errorDescription
-            ?? "An error releated to network or server occured!"
-        
-        switch networkError {
-        case .requestError:
-            Toast.shared.showIn(body: localizedErrorMessage)
-            
-        case .serverDataError:
-            Toast.shared.showIn(body: localizedErrorMessage)
-        }
-        
-        self.trafficLightView.currentOnlineLight = .off
-        self.trafficLightView.rulesPageButton.isHidden = true
-        self.trafficLightView.retryButton.isHidden = false
+}
+
+//MARK: State Setters
+// Location Error Stateable
+extension LightsVC : LocationErrorStateable {
+    func setLocationErrorState(locationError: LocationError) {
+        self.locationErrorStateable?
+            .setLocationErrorState(locationError: locationError)
+    }
+}
+
+// Network Error Stateable
+extension LightsVC : NetworkErrorStateable {
+    func setNewtorkErrorState(networkError: NetworkError) {
+        self.networkErrorStateable?
+            .setNewtorkErrorState(networkError: networkError)
+    }
+}
+
+// Normal Stateable
+extension LightsVC : NormalStateable {
+    func setNormlaState() {
+        self.normalStateable?
+            .setNormlaState()
     }
 }

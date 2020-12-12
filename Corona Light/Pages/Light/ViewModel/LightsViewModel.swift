@@ -12,11 +12,11 @@ import RxCocoa
 
 class LightsViewModel {
     
-    //MARK:-
-    // MARK: Dependencies
-    //MARK:-
+
+    // MARK:- Dependencies
+    
     private var api: CoronaNetworkable
-    private let locationManager: LocationManager
+    private let locationManager: Locationable
     private let notificationManager: Notificationable
     
     
@@ -37,15 +37,14 @@ class LightsViewModel {
         setupNotification()
     }
     
-    //MARK:-
-    // MARK: Variables
-    //MARK:-
+    
+    // MARK:- Variables
+    
     private var requestSentTime: Date?
     private var firstRequestSent = false
     
-    //MARK:-
-    // MARK: RX Variables
-    //MARK:-
+
+    // MARK:- RX Variables
     
     // UI
     let loading: PublishSubject<Bool> = PublishSubject()
@@ -59,9 +58,9 @@ class LightsViewModel {
     
     private let disposeable = DisposeBag()
     
-    //MARK:-
-    // MARK: RX Setups
-    //MARK:-
+
+    // MARK:- RX Setups
+    
     private func setupRefreshTimer() {
         let tenMinutes = TimeInterval(60 * 10)
         Observable<Int>
@@ -125,7 +124,7 @@ class LightsViewModel {
 }
 
 //MARK:-
-//MARK:- Location
+//MARK: Location
 //MARK:-
 
 // Location Delegate
@@ -163,15 +162,28 @@ extension LightsViewModel: Locationable {
 }
 
 //MARK:-
-//MARK:- Network
+//MARK: Network
 //MARK:-
 
-extension LightsViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
+// Corona Networkable
+extension LightsViewModel: CoronaNetworkable {
     func getIncidents(of townName: String,
                       previousRequestTime: Date?) {
         self.api.getIncidents(of: townName,
                               previousRequestTime: previousRequestTime)
     }
+    
+    func retryRequest() {
+        if let townName = self.locationManager.locationInfo?.town {
+            let longTimeAgo = Date(timeIntervalSince1970: 1)
+            self.getIncidents(of: townName,
+                              previousRequestTime: longTimeAgo)
+        }
+    }
+}
+
+// Corona Networkable Delegate
+extension LightsViewModel: CoronaNetworkableDelegate {
     func isLoading(loading: Bool) {
         self.loading.onNext(loading)
     }
@@ -188,17 +200,12 @@ extension LightsViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
         // reset
         self.requestSentTime = Date()
     }
-    
-    func retryRequest() {
-        if let townName = self.locationManager.locationInfo?.town {
-            let longTimeAgo = Date(timeIntervalSince1970: 1)
-            self.getIncidents(of: townName,
-                              previousRequestTime: longTimeAgo)
-        }
-    }
 }
 
-//MARK:- Notification
+//MARK:-
+//MARK: Notification
+//MARK:-
+
 extension LightsViewModel: Notificationable {
     func requestNotificationPermission() {
         notificationManager.requestNotificationPermission()

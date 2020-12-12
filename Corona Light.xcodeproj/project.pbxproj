@@ -37,6 +37,9 @@
 		87C9913B257E3EC0003049A3 /* LightsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913A257E3EC0003049A3 /* LightsManager.swift */; };
 		87C9913F257E3EFA003049A3 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913E257E3EFA003049A3 /* Light.swift */; };
 		87C99143257E3F68003049A3 /* LightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C99142257E3F68003049A3 /* LightsView.swift */; };
+		87CEDC7F258527970087113C /* LocationErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEDC7E258527970087113C /* LocationErrorState.swift */; };
+		87CEDC8225852B380087113C /* NetworkErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEDC8125852B380087113C /* NetworkErrorState.swift */; };
+		87CEDC8525852ECE0087113C /* NormalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEDC8425852ECE0087113C /* NormalState.swift */; };
 		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
 		87E7FF5E257CC5730095CDDC /* CoronaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */; };
 		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
@@ -78,6 +81,9 @@
 		87C9913A257E3EC0003049A3 /* LightsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsManager.swift; sourceTree = "<group>"; };
 		87C9913E257E3EFA003049A3 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		87C99142257E3F68003049A3 /* LightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsView.swift; sourceTree = "<group>"; };
+		87CEDC7E258527970087113C /* LocationErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrorState.swift; sourceTree = "<group>"; };
+		87CEDC8125852B380087113C /* NetworkErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorState.swift; sourceTree = "<group>"; };
+		87CEDC8425852ECE0087113C /* NormalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalState.swift; sourceTree = "<group>"; };
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaAPI.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		8725ADE6257E7BBC00555E18 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8747136E2584CE4A0012E3B3 /* CodeView.swift */,
 				8725ADE0257E6F1F00555E18 /* MessageView */,
 				8715B81F257E6C7300AE77BB /* LoadingView */,
 			);
@@ -137,7 +144,6 @@
 				87562204257A83A000A705D7 /* UIView+Extensiones.swift */,
 				872D34C0258376980083305D /* UIView+blink.swift */,
 				8760F9122583C37500787E1D /* CALayer+animation.swift */,
-				8747136E2584CE4A0012E3B3 /* CodeView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 		8756220D257A849100A705D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				87CEDC7D258527880087113C /* States */,
 				87C99139257E3EA9003049A3 /* Light */,
 				87562210257A851100A705D7 /* LightsVC.swift */,
 			);
@@ -296,6 +303,16 @@
 				87C9913A257E3EC0003049A3 /* LightsManager.swift */,
 			);
 			path = Light;
+			sourceTree = "<group>";
+		};
+		87CEDC7D258527880087113C /* States */ = {
+			isa = PBXGroup;
+			children = (
+				87CEDC7E258527970087113C /* LocationErrorState.swift */,
+				87CEDC8125852B380087113C /* NetworkErrorState.swift */,
+				87CEDC8425852ECE0087113C /* NormalState.swift */,
+			);
+			path = States;
 			sourceTree = "<group>";
 		};
 		87F577692580C69E00FB9E09 /* Extension */ = {
@@ -455,6 +472,8 @@
 				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,
 				872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */,
 				87562205257A83A000A705D7 /* Reactive+isAnimating.swift in Sources */,
+				87CEDC8225852B380087113C /* NetworkErrorState.swift in Sources */,
+				87CEDC8525852ECE0087113C /* NormalState.swift in Sources */,
 				8756221C257A870100A705D7 /* LocationManager.swift in Sources */,
 				872D34BE258365820083305D /* LocationError.swift in Sources */,
 				87562206257A83A000A705D7 /* UIView+Extensiones.swift in Sources */,
@@ -469,6 +488,7 @@
 				872D34C1258376980083305D /* UIView+blink.swift in Sources */,
 				87562218257A855700A705D7 /* CoronaService.swift in Sources */,
 				87E7FF5E257CC5730095CDDC /* CoronaAPI.swift in Sources */,
+				87CEDC7F258527970087113C /* LocationErrorState.swift in Sources */,
 				8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */,
 				87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */,
 				87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */,
