@@ -7,24 +7,31 @@
 
 import Foundation
 
+// Interface
 protocol CoronaNetworkable {
     func getIncidents(of townName: String,
                       previousRequestTime: Date?)
 }
+// Delegate
 protocol CoronaNetworkableDelegate {
     func isLoading(loading: Bool)
     func raisedNetworkError(error: NetworkError)
     func didGet(incidents: Int)
 }
 
-class CoronaNetworking: CoronaNetworkable {
-    var delegate: CoronaNetworkableDelegate?
-    private var _api : NetworkAdaptable
+// Implementation
+class CoronaNetworking : CoronaNetworkable {
     
-    init(coronaService: NetworkAdaptable) {
-        self._api = coronaService
+    // MARK: Variables
+    private var _api : CoronaAPI
+    var delegate: CoronaNetworkableDelegate?
+    
+    // MARK: Init
+    init(coronaAPI: CoronaAPI) {
+        self._api = coronaAPI
     }
     
+    // MARK: Functions
     func getIncidents(of townName: String,
                       previousRequestTime: Date?) {
         guard requestAllowed(previousRequstTime: previousRequestTime,
@@ -50,15 +57,19 @@ class CoronaNetworking: CoronaNetworkable {
             }
         }
     }
-    
-    private func timeDifferenceInSeconds(from: Date, until: Date) -> Int? {
+
+    private func timeDifferenceInSeconds(from: Date,
+                                         until: Date) -> Int? {
         let diffComponents = Calendar.current.dateComponents([.second],
                                                              from: from,
                                                              to: until)
         return diffComponents.second
     }
+    
     // Check if request 30 seconds later send
-    private func requestAllowed(previousRequstTime: Date?, currentTime: Date) -> Bool {
+    private func requestAllowed(previousRequstTime: Date?,
+                                currentTime: Date) -> Bool {
+        
         // If previousTime is nil -> it's first request -> return true
         guard let previousRequestTime = previousRequstTime
         else { return true}

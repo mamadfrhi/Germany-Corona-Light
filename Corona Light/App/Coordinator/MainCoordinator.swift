@@ -9,10 +9,12 @@
 import UIKit
 
 class MainCoordinator : Coordinator {
+    
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
+        
         self.navigationController = navigationController
         navigationController.navigationBar.barTintColor = .systemBlue
         navigationController
@@ -26,14 +28,20 @@ class MainCoordinator : Coordinator {
     // MARK: Coordinate functions
     // MARK:-
     func start() {
-        let net = CoronaNetworking(coronaService: NetworkAdapter())
-        let vm = LightsViewModel(network: net,
-                                locationManager: LocationManager(),
-                                notificationManager: NotificationManager())
-        let lightVC = LightsVC(viewModel: vm,
-                              coordinator: self)
-        navigationController.pushViewController(lightVC, animated: true)
+        
+        // Fire up networking
+        // It made from CoronaAPI = Adapter of moya
+        let networking = CoronaNetworking(coronaAPI: CoronaAPI())
+        // Fire up ViewModel
+        let viewModel = LightsViewModel(coronaNetworking: networking,
+                                        locationManager: LocationManager(),
+                                        notificationManager: NotificationManager())
+        let lightsVC = LightsVC(viewModel: viewModel,
+                               coordinator: self)
+        // Show VC
+        navigationController.pushViewController(lightsVC, animated: true)
     }
+    
     func pushRulesPage(for statusColor: StatusColors) {
         let vc = RulesVC(statusColor: statusColor)
         navigationController.pushViewController(vc, animated: true)

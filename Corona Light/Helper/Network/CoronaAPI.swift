@@ -8,11 +8,14 @@
 import SwiftyJSON
 import Moya
 
-protocol NetworkAdaptable {
+
+protocol CoronaServiceAdaptable {
     var provider: MoyaProvider<CoronaService> { get }
     func getStats(of state: String, completion: @escaping (Int?, NetworkError?)->())
 }
-struct NetworkAdapter: NetworkAdaptable {
+
+// CoronaAPI = adapter
+struct CoronaAPI : CoronaServiceAdaptable {
     var provider = MoyaProvider<CoronaService>()
     
     func getStats(of state: String, completion: @escaping (Int?, NetworkError?) -> ()) {
@@ -23,7 +26,8 @@ struct NetworkAdapter: NetworkAdaptable {
             case let .success(response):
                 let json = JSON(response.data)
                 let feature = json["features"][0]
-                if let incidents = feature["attributes"]["cases7_per_100k"].int {
+                if let incidents =
+                    feature["attributes"]["cases7_per_100k"].int {
                     completion(incidents, nil)
                 }else {
                     completion(nil, .serverDataError)

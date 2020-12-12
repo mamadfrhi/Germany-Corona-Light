@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CE5098FF135AF2C33533D1B /* Pods_Corona_Light.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */; };
 		8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715B822257E6C7300AE77BB /* LoadingViewable.swift */; };
-		87164CF42584ADA800DE56E3 /* CoronaNetworkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87164CF32584ADA800DE56E3 /* CoronaNetworkable.swift */; };
+		87164CF42584ADA800DE56E3 /* CoronaNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87164CF32584ADA800DE56E3 /* CoronaNetworking.swift */; };
 		871E1F0F2583CBB9005FEE0A /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E1F0E2583CBB9005FEE0A /* MaskView.swift */; };
 		8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8723EA1B257F85D3001DC3A5 /* RulesView.swift */; };
 		872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C3402257BDC5C0081B174 /* LocationAdapter.swift */; };
@@ -38,7 +38,7 @@
 		87C9913F257E3EFA003049A3 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9913E257E3EFA003049A3 /* Light.swift */; };
 		87C99143257E3F68003049A3 /* LightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C99142257E3F68003049A3 /* LightsView.swift */; };
 		87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E3B619257BD53B00F785C3 /* LocationInfo.swift */; };
-		87E7FF5E257CC5730095CDDC /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* NetworkAdapter.swift */; };
+		87E7FF5E257CC5730095CDDC /* CoronaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */; };
 		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
 		87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F57772258130CB00FB9E09 /* NotificationModel.swift */; };
 /* End PBXBuildFile section */
@@ -47,7 +47,7 @@
 		4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.debug.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.debug.xcconfig"; sourceTree = "<group>"; };
 		7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corona_Light.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8715B822257E6C7300AE77BB /* LoadingViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewable.swift; sourceTree = "<group>"; };
-		87164CF32584ADA800DE56E3 /* CoronaNetworkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaNetworkable.swift; sourceTree = "<group>"; };
+		87164CF32584ADA800DE56E3 /* CoronaNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaNetworking.swift; sourceTree = "<group>"; };
 		871E1F0E2583CBB9005FEE0A /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		8723EA1B257F85D3001DC3A5 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		872C3402257BDC5C0081B174 /* LocationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAdapter.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		87C9913E257E3EFA003049A3 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		87C99142257E3F68003049A3 /* LightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsView.swift; sourceTree = "<group>"; };
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
-		87E7FF5D257CC5730095CDDC /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
+		87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaAPI.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
 		87F57772258130CB00FB9E09 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.release.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.release.xcconfig"; sourceTree = "<group>"; };
@@ -235,8 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				87562217257A855700A705D7 /* CoronaService.swift */,
-				87E7FF5D257CC5730095CDDC /* NetworkAdapter.swift */,
-				87164CF32584ADA800DE56E3 /* CoronaNetworkable.swift */,
+				87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */,
+				87164CF32584ADA800DE56E3 /* CoronaNetworking.swift */,
 				872D34BA258360740083305D /* NetworkError.swift */,
 			);
 			path = Network;
@@ -461,14 +461,14 @@
 				87562215257A853600A705D7 /* LightsViewModel.swift in Sources */,
 				872D34BB258360740083305D /* NetworkError.swift in Sources */,
 				87E3B61A257BD53B00F785C3 /* LocationInfo.swift in Sources */,
-				87164CF42584ADA800DE56E3 /* CoronaNetworkable.swift in Sources */,
+				87164CF42584ADA800DE56E3 /* CoronaNetworking.swift in Sources */,
 				871E1F0F2583CBB9005FEE0A /* MaskView.swift in Sources */,
 				8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */,
 				87C99143257E3F68003049A3 /* LightsView.swift in Sources */,
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
 				872D34C1258376980083305D /* UIView+blink.swift in Sources */,
 				87562218257A855700A705D7 /* CoronaService.swift in Sources */,
-				87E7FF5E257CC5730095CDDC /* NetworkAdapter.swift in Sources */,
+				87E7FF5E257CC5730095CDDC /* CoronaAPI.swift in Sources */,
 				8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */,
 				87562239257A8B8700A705D7 /* NotificationManager.swift in Sources */,
 				87F57773258130CB00FB9E09 /* NotificationModel.swift in Sources */,

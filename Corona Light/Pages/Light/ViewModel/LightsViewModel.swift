@@ -18,15 +18,16 @@ class LightsViewModel {
     private let notificationManager: Notificationable
     
     // Inject -> network + location manager + notification
-    init(network: CoronaNetworkable,
+    init(coronaNetworking: CoronaNetworkable,
          locationManager: LocationManager,
          notificationManager: Notificationable) {
         // Injecting dependencies
-        self.api = network
+        self.api = coronaNetworking
         self.locationManager = locationManager
         self.notificationManager = notificationManager
+        // Delegates conformation
         locationManager.delegate = self
-        (network as! CoronaNetworking).delegate = self
+        (coronaNetworking as? CoronaNetworking)?.delegate = self
         requestNotificationPermission()
         // setup RX related
         setupRefreshTimer()
