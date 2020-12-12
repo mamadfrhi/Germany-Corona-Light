@@ -8,13 +8,19 @@
 import SwiftyJSON
 import Moya
 
-struct NetworkManager: Networkable {
-    var provider = MoyaProvider<CoronaAPI>()
+protocol NetworkAdaptable {
+    var provider: MoyaProvider<CoronaService> { get }
+    func getStats(of state: String, completion: @escaping (Int?, NetworkError?)->())
+}
+struct NetworkAdapter: NetworkAdaptable {
+    var provider = MoyaProvider<CoronaService>()
     
     func getStats(of state: String, completion: @escaping (Int?, NetworkError?) -> ()) {
         
         provider.request(.getStatsOf(state: state)) {
             (result) in
+            completion(nil, .serverDataError)
+            return
             switch result {
             case let .success(response):
                 let json = JSON(response.data)

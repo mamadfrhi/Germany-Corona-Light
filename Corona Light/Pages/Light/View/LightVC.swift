@@ -33,6 +33,7 @@ class LightVC: UIViewController {
     
     override func loadView() {
         self.view = trafficLightView
+        self.title = "Corona Status"
     }
     
     private func pushRulesPage() {
@@ -65,6 +66,7 @@ class LightVC: UIViewController {
                 guard let statusColorElement = statusColor.element else { return}
                 self.trafficLightView.currentOnlineLight = statusColorElement
                 self.trafficLightView.descriptionLabel.isHidden = false
+                self.trafficLightView.rulesPageButton.isHidden = false
                 self.trafficLightView.retryButton.isHidden = true
                 self.currentStatus = statusColorElement
             }
@@ -75,7 +77,7 @@ class LightVC: UIViewController {
             .locationInfo
             .observeOn(MainScheduler.instance)
             .subscribe { (locationInfo) in
-                var descriptionLabelText = "📍 Location not detected yet"
+                var descriptionLabelText = ""
                 guard let locationInfo = locationInfo.element else {
                     return
                 }
@@ -86,7 +88,23 @@ class LightVC: UIViewController {
                 descriptionLabelText.append("\t\(locationInfo.town ?? "")")
                 self.trafficLightView.descriptionLabel.text = descriptionLabelText
             }
-            .disposed(by: disposeBag) 
+            .disposed(by: disposeBag)
+        
+        // Retry Button
+        trafficLightView.retryButton
+            .rx.tap
+            .subscribe { _ in
+                self.viewModel.startUpdatingLocation()
+                self.viewModel.locationInfo.currentAndPrevious()
+                    .subscribe { (current, _) in
+                        let nimsatpish = Date(timeIntervalSince1970: 1)
+                        self.viewModel.getIncidents(of: current.town!,
+                                                    previousRequestTime: nimsatpish)
+                    }
+                    .disposed(by: self.disposeBag)
+            }
+            .disposed(by: disposeBag)
+
     }
     
     private func setupErrorBindings() {
@@ -104,10 +122,12 @@ class LightVC: UIViewController {
             .networkError
             .observeOn(MainScheduler.instance)
             .subscribe { (networkError) in
+                self.trafficLightView.rulesPageButton.isHidden = true
+                self.trafficLightView.retryButton.isHidden = false
                 if self.currentStatus == .off,
+                   // It remains previous state
+                   // if now a network error occured
                    let networkError = networkError.element {
-                    // It remains previous state
-                    // if now a network error occured
                     self.handle(networkError: networkError)
                 }
             }
@@ -159,25 +179,32 @@ extension LightVC {
         let localizedErrorMessage = locationError.errorDescription
             ?? "An error releated to location services occured!"
         
+        // Show Error Messsage to user
         switch locationError {
         case .locationNotAllowedError:
+            // Show modal message
+            // It's serious problem
             Toast.shared.showModal(description: localizedErrorMessage)
-            self.trafficLightView.descriptionLabel.isHidden = true
             
         case .outOfBavariaError, .badLocationError:
+            // Show simple message view
             Toast.shared.showIn(body: localizedErrorMessage)
-            self.trafficLightView.descriptionLabel.isHidden = false
-            self.trafficLightView.descriptionLabel.text = localizedErrorMessage
         }
         
+        // Handle Views
+        self.trafficLightView.currentOnlineLight = .off
+        self.trafficLightView.descriptionLabel.text = localizedErrorMessage
+        // Buttons
         self.trafficLightView.rulesPageButton.isHidden = true
         self.trafficLightView.retryButton.isHidden = false
     }
     
     // Network Error Handling
     private func handle(networkError: NetworkError) {
-        let localizedErrorMessage = networkError.errorDescription
+        let localizedErrorMessage =
+            networkError.errorDescription
             ?? "An error releated to location services occured!"
+        
         switch networkError {
         case .requestError:
             Toast.shared.showIn(body: localizedErrorMessage)

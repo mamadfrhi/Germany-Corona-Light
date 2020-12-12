@@ -9,17 +9,13 @@ import Foundation
 import SwiftyJSON
 import Moya
 
-protocol Networkable {
-    var provider: MoyaProvider<CoronaAPI> { get }
-    func getStats(of state: String, completion: @escaping (Int?, NetworkError?)->())
-}
 
-enum CoronaAPI {
+enum CoronaService {
     case getStatsOf(state: String)
 }
 typealias Parameter = [String : Any]
 
-extension CoronaAPI: TargetType {
+extension CoronaService: TargetType {
     var baseURL: URL {
         return URL(string: "https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query")!
     }

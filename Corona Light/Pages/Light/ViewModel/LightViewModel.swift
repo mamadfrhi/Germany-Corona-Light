@@ -13,19 +13,20 @@ import RxCocoa
 class LightViewModel {
     
     // MARK: Dependencies
-    private let network: Networkable
+    private var api: CoronaNetworkable
     private let locationManager: LocationManager
     private let notificationManager: Notificationable
     
     // Inject -> network + location manager + notification
-    init(network: Networkable,
+    init(network: CoronaNetworkable,
          locationManager: LocationManager,
          notificationManager: Notificationable) {
         // Injecting dependencies
-        self.network = network
+        self.api = network
         self.locationManager = locationManager
         self.notificationManager = notificationManager
         locationManager.delegate = self
+        (network as! CoronaNetworking).delegate = self
         requestNotificationPermission()
         // setup RX related
         setupRefreshTimer()
@@ -33,7 +34,7 @@ class LightViewModel {
     }
     
     // MARK: Variables
-    private var requestSentTime = Date()
+    private var requestSentTime: Date?
     private var firstRequestSent = false
     
     // RX
@@ -58,7 +59,7 @@ class LightViewModel {
             .subscribe { _ in
                 if let townName = self.locationManager.locationInfo?.town {
                     print("I'm going to refresh stats!")
-                    self.getIncidents(of: townName)
+                    self.getIncidents(of: townName, previousRequestTime: self.requestSentTime)
                 }
             }
             .disposed(by: disposeable)
@@ -109,7 +110,8 @@ extension LightViewModel: LocationDelegate {
         
         self.locationInfo.onNext(locationInfo)
         // Call API
-        getIncidents(of: townName)
+        self.getIncidents(of: townName,
+                          previousRequestTime: self.requestSentTime)
     }
     
     func didNotAllowedLocationServices() {
@@ -118,56 +120,28 @@ extension LightViewModel: LocationDelegate {
 }
 
 //MARK:- Network
-extension LightViewModel {
-    private func timeDifferenceInSeconds(from: Date, until: Date) -> Int? {
-        let diffComponents = Calendar.current.dateComponents([.second],
-                                                             from: from,
-                                                             to: until)
-        return diffComponents.second
+
+extension LightViewModel: CoronaNetworkable, CoronaNetworkableDelegate {
+    func getIncidents(of townName: String,
+                      previousRequestTime: Date?) {
+        self.api.getIncidents(of: townName,
+                              previousRequestTime: previousRequestTime)
     }
-    private func requestAllowed() -> Bool {
-        // Check if request 30 seconds later send
-        if !(firstRequestSent) { return true}
-        
-        let previousRequestTime = self.requestSentTime
-        let now = Date()
-        let differenceInSeconds = timeDifferenceInSeconds(from: previousRequestTime,
-                                                          until: now)
-        
-        if let seconds = differenceInSeconds, seconds > 30 {
-            return true
-        }else {
-            return false
-        }
+    func isLoading(loading: Bool) {
+        self.loading.onNext(loading)
     }
     
-    private func getIncidents(of townName: String) {
-        
-        guard requestAllowed() == true else { return}
-        // Reset
-        firstRequestSent = true
-        requestSentTime = Date()
-        
-        
-        // Call API
-        loading.onNext(true)
-        network.getStats(of: townName) {
-            [unowned self]
-            (incidents, networkError) in
-            // Stop loading
-            self.loading.onNext(false)
-            
-            // Handle Errors
-            if let networkError = networkError {
-                self.networkError.onNext(networkError)
-                return
-            }
-            
-            // Result
-            if let incidents = incidents {
-                setTownStatus(by: incidents)
-            }
-        }
+    func raisedNetworkError(error: NetworkError) {
+        self.networkError.onNext(error)
+        // reset
+        self.requestSentTime = Date()
+    }
+    
+    func didGet(incidents: Int) {
+        // Result
+        setTownStatus(by: incidents)
+        // reset
+        self.requestSentTime = Date()
     }
     
     private func setTownStatus(by incidents: Int) {

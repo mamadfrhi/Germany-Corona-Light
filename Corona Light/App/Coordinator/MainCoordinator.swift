@@ -20,12 +20,13 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-//        let vm = LightViewModel(network: NetworkManager(),
-//                                locationManager: LocationManager(),
-//                                notificationManager: NotificationManager())
-//        let lightVC = LightVC(viewModel: vm,
-//                              coordinator: self)
-        navigationController.pushViewController(RulesVC(statusColor: .red), animated: true)
+        let net = CoronaNetworking(coronaService: NetworkAdapter())
+        let vm = LightViewModel(network: net,
+                                locationManager: LocationManager(),
+                                notificationManager: NotificationManager())
+        let lightVC = LightVC(viewModel: vm,
+                              coordinator: self)
+        navigationController.pushViewController(lightVC, animated: true)
     }
     
     func pushRulesPage(for statusColor: LightColors) {
