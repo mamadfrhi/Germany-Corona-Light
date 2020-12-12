@@ -9,21 +9,30 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LightsVC: UIViewController {
+class LightsVC : UIViewController {
     
+    //MARK:-
     //MARK: Dependencies
+    //MARK:-
+    
     private var trafficLightView: LightsView
     private var viewModel: LightsViewModel
     private var coordinator: MainCoordinator
     
-    //MARK: LifeCycle
+    //MARK:-
+    //MARK: Lifecycle
+    //MARK:-
+    
     init(viewModel: LightsViewModel,
          coordinator: MainCoordinator) {
+        
         self.viewModel = viewModel
         self.coordinator = coordinator
         self.trafficLightView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
-        setupBindings()
+        
+        // Setups
+        setupGeneralBindings()
         setupErrorBindings()
         setupNavigationBindings()
     }
@@ -42,12 +51,20 @@ class LightsVC: UIViewController {
         }
     }
     
+    //MARK:-
     //MARK: Variable
+    //MARK:-
     private var currentStatus: StatusColors = .off
-    // RX
     private let disposeBag = DisposeBag()
+    
+    //MARK:-
+    //MARK: RX Binding
+    //MARK:-
     // Bindings
-    private func setupBindings() {
+    private func setupGeneralBindings() {
+        
+        
+        // Loading
         viewModel.loading
             .bind(onNext: { (loading) in
                 // Just show loading view for first request
@@ -58,19 +75,24 @@ class LightsVC: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        
         // Town Status (Main Purpose)
         viewModel
             .townStatus
             .observeOn(MainScheduler.instance)
             .subscribe { (statusColor) in
                 guard let statusColorElement = statusColor.element else { return}
-                self.trafficLightView.currentOnlineLight = statusColorElement
+                
                 self.trafficLightView.descriptionLabel.isHidden = false
+                // Buttons
                 self.trafficLightView.rulesPageButton.isHidden = false
                 self.trafficLightView.retryButton.isHidden = true
+                
+                self.trafficLightView.currentOnlineLight = statusColorElement
                 self.currentStatus = statusColorElement
             }
             .disposed(by: disposeBag)
+        
         
         // Location Info
         viewModel
@@ -90,10 +112,12 @@ class LightsVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        
         // Retry Button
         trafficLightView.retryButton
             .rx.tap
             .subscribe { _ in
+                // Trig locaiton manager
                 self.viewModel.startUpdatingLocation()
                 // Fresh request
                 self.viewModel.retryRequest()
@@ -103,6 +127,8 @@ class LightsVC: UIViewController {
     }
     
     private func setupErrorBindings() {
+        
+        
         // Location Error
         viewModel
             .locationError
@@ -112,6 +138,7 @@ class LightsVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        
         // Network Error
         viewModel
             .networkError
@@ -119,9 +146,10 @@ class LightsVC: UIViewController {
             .subscribe { (networkError) in
                 self.trafficLightView.rulesPageButton.isHidden = true
                 self.trafficLightView.retryButton.isHidden = false
+                
+                // if recently a network error occured
+                // It remains previous state
                 if self.currentStatus == .off,
-                   // It remains previous state
-                   // if now a network error occured
                    let networkError = networkError.element {
                     self.handle(networkError: networkError)
                 }
@@ -142,6 +170,7 @@ class LightsVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        
         // Rules Page Button
         trafficLightView.rulesPageButton
             .rx.tap
@@ -150,7 +179,7 @@ class LightsVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        // MARK: Navigation
+        
         // Notification Tapped
         viewModel
             .notificationTapped
@@ -169,8 +198,10 @@ class LightsVC: UIViewController {
 // Detected Variabels:
 // descriptionLabel.isHidden - rulesButton.isHidden - message - status
 extension LightsVC {
+    
     // Location Error Handling
     private func handle(locationError: LocationError) {
+        
         let localizedErrorMessage = locationError.errorDescription
             ?? "An error releated to location services occured!"
         
@@ -178,7 +209,7 @@ extension LightsVC {
         switch locationError {
         case .locationNotAllowedError:
             // Show modal message
-            // It's serious problem
+            // It's a serious problem
             Toast.shared.showModal(description: localizedErrorMessage)
             
         case .outOfBavariaError, .badLocationError:
@@ -196,9 +227,10 @@ extension LightsVC {
     
     // Network Error Handling
     private func handle(networkError: NetworkError) {
+        
         let localizedErrorMessage =
             networkError.errorDescription
-            ?? "An error releated to location services occured!"
+            ?? "An error releated to network or server occured!"
         
         switch networkError {
         case .requestError:
