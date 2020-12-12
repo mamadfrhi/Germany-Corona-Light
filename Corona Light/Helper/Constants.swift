@@ -9,3 +9,4 @@ import UIKit
 
 
 let screenBounds = UIScreen.main.bounds
+typealias Parameter = [String : Any]

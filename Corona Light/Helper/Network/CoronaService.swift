@@ -13,7 +13,6 @@ import Moya
 enum CoronaService {
     case getStatsOf(state: String)
 }
-typealias Parameter = [String : Any]
 
 extension CoronaService: TargetType {
     var baseURL: URL {
