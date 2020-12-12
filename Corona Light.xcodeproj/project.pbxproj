@@ -63,7 +63,6 @@
 		875621CD257A81CD00A705D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		875621D6257A81CE00A705D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		875621D9257A81CE00A705D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		875621DB257A81CE00A705D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		875621FB257A831A00A705D7 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		875621FC257A831A00A705D7 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		87562203257A83A000A705D7 /* Reactive+isAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reactive+isAnimating.swift"; sourceTree = "<group>"; };
@@ -84,6 +83,9 @@
 		87CEDC7E258527970087113C /* LocationErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationErrorState.swift; sourceTree = "<group>"; };
 		87CEDC8125852B380087113C /* NetworkErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorState.swift; sourceTree = "<group>"; };
 		87CEDC8425852ECE0087113C /* NormalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalState.swift; sourceTree = "<group>"; };
+		87CEDC9925853D240087113C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
+		87CEDC9A25853D250087113C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/Info.plist; sourceTree = "<group>"; };
+		87CEDCA825853E300087113C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		87E3B619257BD53B00F785C3 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaAPI.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
@@ -182,7 +184,7 @@
 			children = (
 				875621D6257A81CE00A705D7 /* Assets.xcassets */,
 				875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */,
-				875621DB257A81CE00A705D7 /* Info.plist */,
+				87CEDC9825853D200087113C /* Info.plist */,
 				87575EAC257F76DC00919A7E /* Localizable.strings */,
 			);
 			path = Resources;
@@ -521,6 +523,16 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		87CEDC9825853D200087113C /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87CEDC9925853D240087113C /* en */,
+				87CEDC9A25853D250087113C /* de */,
+				87CEDCA825853E300087113C /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -650,7 +662,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
-				INFOPLIST_FILE = "Corona Light/Resources/Info.plist";
+				INFOPLIST_FILE = "Corona Light/Resources/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -671,7 +683,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
-				INFOPLIST_FILE = "Corona Light/Resources/Info.plist";
+				INFOPLIST_FILE = "Corona Light/Resources/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
