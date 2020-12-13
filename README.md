@@ -111,6 +111,7 @@ This app completely **localized for use in Germany.**
 
 
 ![German Page 1](https://s16.picofile.com/file/8417399634/1.png) ![German Page 2](https://s16.picofile.com/file/8417399692/2.png)
+
 These texts were translated by google, all comments for correction would be appreciated.
 
 
