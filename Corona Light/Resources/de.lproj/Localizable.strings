@@ -35,8 +35,9 @@
 
 // ------- Location -------
 
-// Targeted State Name
+// ** Targeted State Name **
 "stateName" = "Bayern";
+
 // Location Permission Alert
 "locationPermissionAlert" = "Ich kann dir nicht ohne Standortgenehmigung helfen. Gehen Sie zu dieser Adresse und erlauben Sie mir, den Rest zu erledigen.\n\nEinstellungen> Datenschutz> Ortungsdienste> Corona Light> Immer";
 // OutOfBavariaError

@@ -36,8 +36,9 @@ specific public places form 21:00";
 
 // ------- Location -------
 
-// Targeted State Name
+// ** Targeted State Name **
 "stateName" = "Bavaria";
+
 // Location Permission Alert
 "locationPermissionAlert" = "I can't help you without location permission. Go to this address and allow me to do the rest.\n\nSettings > Privacy > Location Services > Corona Light > Always";
 // Location Out Of Bavaria Error
