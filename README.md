@@ -1,5 +1,7 @@
 # Germany Corona Light 🇩🇪🚦🦠
 
+![Semantic description of ](https://s17.picofile.com/file/8417404718/banner.jpg "Diagrams")
+
 It shows **you the current *status* of corona** and **related limitations** in your current location within a charming traffic light!
 
 
@@ -46,7 +48,7 @@ Long: ```10.697828```
 It refers to **Erlangen-Höchstadt**
 
 
-#### Test Localization
+### Test Localization
 
 
 In order to test localization in Deutsch do the following in simulator...
@@ -54,6 +56,8 @@ In order to test localization in Deutsch do the following in simulator...
 
 ```Settings > General > Language & Region > Deutsch```
 
+
+These texts translated by google, all comments for correction would be appreciated.
 
 ## Code style 🛠
 
@@ -77,14 +81,14 @@ This app completely **localized for use in Germany.**
 
 **Principles** 💎
 - OOP
-- SOLID
 - POP
+- SOLID
 - Clean Code
 
 
 
 **Main Classes Diagrams** (❤️ of the app)
-![Semantic description of image](https://s17.picofile.com/file/8417382568/Corona_Status.jpeg "Diagrams")
+![Semantic description of ](https://s17.picofile.com/file/8417382568/Corona_Status.jpeg "Diagrams")
 
 
 # Screenshots 📱
@@ -131,7 +135,7 @@ Replace ```Bavaria``` with name of your desired state.
 
 Do it again for ```Lozalizable.strings (German)```
 
-
+---
 
 🚧**Pay attention:** In this file you must replace it with a local name.
 
