@@ -38,6 +38,7 @@ class LightsView: UIView {
     
     let descriptionLabel : UILabel = {
         let lbl = UILabel()
+        lbl.text = "moveAround".localized()
         lbl.numberOfLines = 0
         return lbl
     }()

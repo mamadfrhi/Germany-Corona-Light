@@ -41,8 +41,10 @@
 "locationPermissionAlert" = "Ich kann dir nicht ohne Standortgenehmigung helfen. Gehen Sie zu dieser Adresse und erlauben Sie mir, den Rest zu erledigen.\n\nEinstellungen> Datenschutz> Ortungsdienste> Corona Light> Immer";
 // OutOfBavariaError
 "locationOutOfBavariaError" = "Diese App wurde für den Freistaat Bayern entwickelt.\nEs kann Ihnen an diesem aktuellen Standort nicht helfen.";
-// Location Detenction Errpr
+// Location Detenction Error
 "locationDetectionError" = "Ich kann Ihren Standort nicht erkennen!";
+// Move aroud
+"moveAround" = "Bewegen Sie sich, um Ihren Standort zu finden";
 
 // ------- Notification -------
 

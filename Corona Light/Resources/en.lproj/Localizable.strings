@@ -42,9 +42,10 @@ specific public places form 21:00";
 "locationPermissionAlert" = "I can't help you without location permission. Go to this address and allow me to do the rest.\n\nSettings > Privacy > Location Services > Corona Light > Always";
 // Location Out Of Bavaria Error
 "locationOutOfBavariaError" = "This app has designed for Free State of Bavaria.\nIt can't help you in this current location.";
-// Location Detection Errpr
+// Location Detection Error
 "locationDetectionError" = "I can't detect your location!";
-
+// Move around
+"moveAround" = "Move around to find your location";
 
 // ------- Notification -------
 
