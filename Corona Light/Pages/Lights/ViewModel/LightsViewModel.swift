@@ -41,7 +41,6 @@ class LightsViewModel {
     // MARK:- Variables
     
     private var requestSentTime: Date?
-    private var firstRequestSent = false
     
 
     // MARK:- RX Variables

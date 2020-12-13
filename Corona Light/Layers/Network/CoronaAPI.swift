@@ -10,14 +10,13 @@ import Moya
 
 
 protocol CoronaServiceAdaptable {
-    var provider: MoyaProvider<CoronaService> { get }
     func getStats(of state: String, completion: @escaping (Int?, NetworkError?)->())
 }
 
 // CoronaAPI = adapter
 internal
 struct CoronaAPI : CoronaServiceAdaptable {
-    var provider = MoyaProvider<CoronaService>()
+    private var provider = MoyaProvider<CoronaService>()
     
     func getStats(of state: String, completion: @escaping (Int?, NetworkError?) -> ()) {
         
