@@ -36,7 +36,7 @@ class MainCoordinator : Coordinator {
                                         locationManager: LocationManager(),
                                         notificationManager: NotificationManager())
         let lightsVC = LightsVC(viewModel: viewModel,
-                               coordinator: self)
+                                coordinator: self)
         // Show VC
         navigationController.pushViewController(lightsVC, animated: true)
     }

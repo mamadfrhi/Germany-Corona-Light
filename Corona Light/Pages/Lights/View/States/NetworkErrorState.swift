@@ -19,7 +19,7 @@ class NewtorkErrorState: NetworkErrorStateable {
     private let lightsView: LightsView
     private var localizedErrorMessage: String? = nil
     private var networkError: NetworkError? = nil
-
+    
     // MARK: Init
     
     init(lightsView: LightsView) {

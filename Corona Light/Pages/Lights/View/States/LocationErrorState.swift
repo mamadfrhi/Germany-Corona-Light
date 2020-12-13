@@ -19,7 +19,7 @@ class LocationErrorState: LocationErrorStateable {
     private let lightsView: LightsView
     private var localizedErrorMessage: String? = nil
     private var locationError: LocationError? = nil
-
+    
     // MARK: Init
     
     init(lightsView: LightsView) {

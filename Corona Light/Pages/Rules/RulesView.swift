@@ -13,7 +13,7 @@ class RulesView : UIView {
     
     // MARK: Views
     private let myMaskView = MaskView(statusColor: .green)
-
+    
     let statusLabel : UILabel = {
         let lbl = UILabel()
         lbl.text = "statusLabel".localized()
@@ -100,4 +100,4 @@ extension RulesView {
         }
     }
 }
-    
+

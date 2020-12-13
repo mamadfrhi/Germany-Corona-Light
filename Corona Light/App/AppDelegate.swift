@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navController = UINavigationController()
         coordinator = MainCoordinator(navigationController: navController)
         coordinator?.start()
-
+        
         // create a basic UIWindow and activate it
         window = UIWindow(frame: screenBounds)
         window?.rootViewController = navController

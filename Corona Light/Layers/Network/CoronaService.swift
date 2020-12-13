@@ -39,7 +39,7 @@ extension CoronaService: TargetType {
             return parameters
         }
     }
-
+    
     var headers: [String : String]? {
         return ["Accept":"*/*",
                 "Accept-Encoding":"gzip, deflate, br"]

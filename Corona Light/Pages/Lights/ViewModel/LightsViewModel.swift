@@ -42,7 +42,7 @@ class LightsViewModel {
     
     private var requestSentTime: Date?
     
-
+    
     // MARK:- RX Variables
     
     // UI
@@ -60,7 +60,7 @@ class LightsViewModel {
     // For reset purpose
     private var localLocationInfo: LocationInfo?
     
-
+    
     // MARK:- RX Setups
     
     private func setupRefreshTimer() {

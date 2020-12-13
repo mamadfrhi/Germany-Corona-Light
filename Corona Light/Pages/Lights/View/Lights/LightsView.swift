@@ -180,7 +180,7 @@ extension LightsView {
             make.top.equalTo(descriptionLabel.snp.bottom)
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
-//            make.centerX.equalTo(contentView.snp.centerX)
+            //            make.centerX.equalTo(contentView.snp.centerX)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
     }
