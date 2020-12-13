@@ -50,6 +50,8 @@ class LocationManager: NSObject {
         super.init()
         setupBinding()
         self.locationManager.delegate = self
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
     }
     
     private func setupBinding() {
