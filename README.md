@@ -15,11 +15,15 @@ pod update
 ```
 Open ```Corona Light.xcworkspace```
 Press ```Cmd + R``` and see how it works
-#### Simulate Location (Macos BigSur)
+
+#### Simulate Location on iOS simulator (Macos BigSur)
 Select simluator
+
 ```Feature > Location > Custom Location... > Set following...```
+
 Lat: ```49.763138```
 Long: ```10.697828```
+
 It refers to **Erlangen-Höchstadt**
 
 #### Test Localization
@@ -29,6 +33,7 @@ In order to test localization in Deutsch do the following in simulator...
 
 ## Code style 🛠
 Used **MVVM** architecture by the use of **RX**
+
 This app completely **localized for use in Germany.**
 
 **Design patterns** ⚙️
@@ -69,13 +74,20 @@ This app is currently designed for use at ***Bavaria.***
 **If you want to use it in other states of Germany do the following.**
 
 Open ```.../Resources/Lozalizable.strings (English)```
+
 find ```"stateName" = "Bavaria";```
+
 Replace ```Bavaria``` with name of your desired state.
 
+
 Do it again for ```Lozalizable.strings (German)```
+
 🚧**Pay attention:** In this file you must replace it with a local name.
+
 For example:
+
 (English) = Bavaria
+
 (German) = Bayern
 
 
