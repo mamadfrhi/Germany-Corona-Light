@@ -7,13 +7,16 @@
 
 import UIKit
 
+
 extension UIView {
     func blink() {
-        self.alpha = 0.0;
-        UIView.animate(withDuration: 2, //Time duration you want,
-            delay: 0.0,
-            options: [.curveEaseInOut, .autoreverse, .repeat],
-            animations: { [weak self] in self?.alpha = 1.0 },
-            completion: { [weak self] _ in self?.alpha = 0.2 })
+        let flash = CABasicAnimation(keyPath: "opacity")
+        flash.duration = 2
+        flash.fromValue = 1
+        flash.toValue = 0.3
+        flash.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        flash.autoreverses = true
+        flash.repeatCount = .infinity
+        layer.add(flash, forKey: nil)
     }
 }

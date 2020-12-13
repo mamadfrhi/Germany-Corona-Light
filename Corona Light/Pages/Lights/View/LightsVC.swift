@@ -112,7 +112,7 @@ class LightsVC : UIViewController {
                 descriptionLabelText.append("\t\(locationInfo.country ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.state ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.town ?? "")")
-                self.lightsView.descriptionLabel.text = descriptionLabelText
+                self.lightsView.changeDesciriptionLabel(text: descriptionLabelText)
             }
             .disposed(by: disposeBag)
         

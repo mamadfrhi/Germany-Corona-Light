@@ -57,6 +57,9 @@ class LightsViewModel {
     
     private let disposeable = DisposeBag()
     
+    // For reset purpose
+    private var localLocationInfo: LocationInfo?
+    
 
     // MARK:- RX Setups
     
@@ -144,6 +147,7 @@ extension LightsViewModel: LocationDelegate {
             return
         }
         
+        self.localLocationInfo = locationInfo
         self.locationInfo.onNext(locationInfo)
         // Call API
         self.getIncidents(of: townName,
@@ -158,6 +162,12 @@ extension LightsViewModel: LocationDelegate {
 // Locationable
 extension LightsViewModel: Locationable {
     func startUpdatingLocation() {
+        // It causes a signal to locationInfo that is
+        // observing in LightVC = refresh descriptionLabel
+        if let locationInfo = self.localLocationInfo {
+            self.locationInfo.onNext(locationInfo)
+        }
+        // Invoke looking for location
         locationManager.startUpdatingLocation()
     }
 }

@@ -84,6 +84,13 @@ class LightsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func changeDesciriptionLabel(text: String?) {
+        self.descriptionLabel.text = text
+        UIView.animate(withDuration: 3) {
+            self.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK:-
@@ -138,6 +145,7 @@ extension LightsView {
             make.centerX.equalToSuperview()
         }
     }
+    
     // Stack View
     private func setupStackViewConstraints() {
         stackView.snp.makeConstraints { (make) in
@@ -147,14 +155,24 @@ extension LightsView {
             make.centerX.equalToSuperview()
         }
     }
+    
     // Description Label
-    func setupDescriptionLabelConstraints() {
-        descriptionLabel.snp.makeConstraints { (make) in
+    private func setupDescriptionLabelConstraints() {
+        descriptionLabel.snp.remakeConstraints { (make) in
             make.top.equalTo(contentView.snp.bottom).offset(20)
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(100)
         }
     }
+    private func setupDescriptionLabelErrorConstraints() {
+        self.descriptionLabel.snp.remakeConstraints { (make) in
+            make.top.equalTo(contentView.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
+            make.height.equalTo(100)
+        }
+    }
+    
     // Rules Page Button
     private func setupRulesPageButttonConstraints() {
         rulesPageButton.snp.makeConstraints { (make) in
@@ -165,6 +183,7 @@ extension LightsView {
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
     }
+    
     // Retry Buttton
     private func setupRetryButttonConstraints() {
         retryButton.snp.makeConstraints { (make) in
@@ -175,16 +194,15 @@ extension LightsView {
         }
     }
     
-    // Change Description Label constraints
-    // to better showing erro messages (prevent clips)
-    func setupDescriptionLabelErrorConstraints() {
-        self.descriptionLabel.snp.remakeConstraints { (make) in
-            descriptionLabel.snp.makeConstraints { (make) in
-                make.top.equalTo(contentView.snp.bottom).offset(20)
-                make.left.equalToSuperview().offset(30)
-                make.right.equalToSuperview().offset(-30)
-                make.height.equalTo(100)
-            }
+    
+    
+    // Reset Description Label constraints
+    // to better showing error messages (prevent clips)
+    func resetDescriptionLabelConstraints(for error: Bool) {
+        if error {
+            self.setupDescriptionLabelErrorConstraints()
+        }else {
+            self.setupDescriptionLabelConstraints()
         }
     }
 }

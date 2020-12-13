@@ -37,6 +37,7 @@ class LightsManager {
     // MARK: Light Functions
     private func turnOn(lightColor: StatusColors) {
         lights.forEach { (light) in
+            light.circleView.layer.removeAllAnimations()
             if light.colorName == lightColor.rawValue {
                 UIView.animate(withDuration: 1) {
                     light.circleView.alpha = 1

@@ -33,6 +33,7 @@ class NewtorkErrorState: NetworkErrorStateable {
         setupState(with: networkError)
         // Perform changes
         handleGeneralViews()
+        handleButtons()
         sendMessageView()
     }
     
@@ -46,8 +47,8 @@ class NewtorkErrorState: NetworkErrorStateable {
         // Handle Views
         self.lightsView.currentOnlineLight = .off
         
-        self.lightsView.setupDescriptionLabelErrorConstraints()
-        self.lightsView.descriptionLabel.text = localizedErrorMessage
+        self.lightsView.resetDescriptionLabelConstraints(for: true)
+        self.lightsView.changeDesciriptionLabel(text: localizedErrorMessage)
     }
     private func handleButtons() {
         // Buttons
@@ -60,6 +61,7 @@ class NewtorkErrorState: NetworkErrorStateable {
         else { return}
         
         // Show Error Messsage to user
+        // Like notification
         switch networkError {
         case .requestError:
             Toast.shared.showIn(body: localizedErrorMessage)

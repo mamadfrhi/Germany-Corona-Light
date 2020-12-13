@@ -29,10 +29,13 @@ class NormalState: NormalStateable {
     
     private func handleGeneralViews() {
         
-        self.lightsView.setupDescriptionLabelConstraints()
+        self.lightsView.resetDescriptionLabelConstraints(for: false)
         
         // Buttons
         self.lightsView.rulesPageButton.isHidden = false
         self.lightsView.retryButton.isHidden = true
+        
+        // Label
+        self.lightsView.descriptionLabel.isHidden = false
     }
 }
