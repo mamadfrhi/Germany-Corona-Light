@@ -57,7 +57,7 @@ In order to test localization in Deutsch do the following in simulator...
 ```Settings > General > Language & Region > Deutsch```
 
 
-These texts translated by google, all comments for correction would be appreciated.
+These texts were translated by google, all comments for correction would be appreciated.
 
 ## Code style 🛠
 
@@ -89,6 +89,13 @@ This app completely **localized for use in Germany.**
 
 **Main Classes Diagrams** (❤️ of the app)
 ![Semantic description of ](https://s17.picofile.com/file/8417382568/Corona_Status.jpeg "Diagrams")
+
+
+## Layers ⛓
+#### Location - to get current user's lcoation
+#### Notification - if the status changes make the user aware of it
+#### Network - to get corona statistics from the server
+
 
 
 # Screenshots 📱

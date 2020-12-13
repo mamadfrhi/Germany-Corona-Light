@@ -142,7 +142,11 @@ extension LightsViewModel: LocationDelegate {
         }
         
         let localizedStateName = "stateName".localized()
-        guard stateName == localizedStateName else {
+        
+        // TODO: Clean it
+        // Handle it with language check
+        let isBavaria = stateName == "Bavaria" || stateName == "Bayern"
+        guard (stateName == localizedStateName) || (isBavaria) else {
             self.locationError.onNext(.outOfBavariaError)
             return
         }

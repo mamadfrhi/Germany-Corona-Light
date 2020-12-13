@@ -13,30 +13,14 @@ class LocationAdapter {
     
     let geocoder = CLGeocoder()
     
-    private func getTownName(from location: CLLocation,
-                             completion: @escaping (String?) -> Void) {
-        
-        geocoder.reverseGeocodeLocation(location) {
-            placemarks, error in
-            guard error == nil else {
-                print("*** Error in \(#function): \(error!.localizedDescription)")
-                completion(nil)
-                return
-            }
-            
-            guard let placemark = placemarks?[0] else {
-                print("*** Error in \(#function): placemark is nil")
-                completion(nil)
-                return
-            }
-            completion(placemark.subAdministrativeArea)
-        }
-    }
-    
     func getLocationInfo(from location: CLLocation,
                          completion: @escaping (LocationInfo?) -> Void) {
+        // Force to get German name of state
+        // if the device's language setted in English
+        let germanyLocale = Locale(identifier: "de")
         
-        geocoder.reverseGeocodeLocation(location) {
+        geocoder.reverseGeocodeLocation(location,
+                                        preferredLocale: germanyLocale) {
             placemarks, error in
             guard error == nil else {
                 print("*** Error in \(#function): \(error!.localizedDescription)")
