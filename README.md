@@ -7,6 +7,7 @@ Currently, it is designed to use in Germany, Bavaria.🇩🇪
 ## Installation ✅
 
 [Download the project](https://github.com/mamadfrhi/Germany-Corona-Light) first!
+
  Install packages
 ```
 cd .../project directory/Corona Light
