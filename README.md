@@ -4,7 +4,7 @@
 
 <br/>
 
-## This iOS app shows **you the current status of corona** and **related limitations** in your current location within a charming traffic light!
+## This iOS app shows ***you the current status of corona*** and ***related limitations*** in your current location within a charming traffic light!
 
 <br/>
 
@@ -17,43 +17,42 @@
 
 1. [Download the project](https://github.com/mamadfrhi/Germany-Corona-Light/archive/main.zip) first!
 
- 2. Install packages (using terminal) 👇🏼
- 
- ```bash
+2. Install packages (using terminal) 👇🏼
+
+```bash
 3. $ cd .../project directory/Corona Light
 
 4. $ pod update
 ```
 
-5. Open ```Corona Light.xcworkspace```
+5. Open `Corona Light.xcworkspace`
 
-6. Press ```Cmd + R``` and see how it works
-
+6. Press `Cmd + R` and see how it works
 
 <br/>
 
-## Testing 🔁
+# Testing 🔁
 
-### Simulate Location on iOS simulator (Macos BigSur)
+### Simulate Location on iOS simulator (macOS BigSur)
 
 1. Select simluator
-2. Choose ```Feature > Location > Custom Location... > Set following...```
-* Lat: ```49.763138```
-* Long: ```10.697828```
-* It refers to **Erlangen-Höchstadt**
+2. Choose `Feature > Location > Custom Location... > Set following...`
+
+- Lat: `49.763138`
+- Long: `10.697828`
+- It refers to **Erlangen-Höchstadt**
 
 <br/>
 
 ### Test Localization 🇩🇪🇬🇧
 
-* In order to test the app in 🇩🇪 do the following in simulator...
+- In order to test the app in 🇩🇪 do the following in simulator...
 
-* ```Settings > General > Language & Region > Deutsch```
+- `Settings > General > Language & Region > Deutsch`
 
 <br/>
 
 # Code style 🛠
-
 
 Used **MVVM** architecture by the use of **RX**
 
@@ -62,6 +61,7 @@ This app completely **localized for use in Germany.**
 <br/>
 
 **Design patterns** ⚙️
+
 - State
 - Template
 - Coordinator
@@ -75,6 +75,7 @@ This app completely **localized for use in Germany.**
 <br/>
 
 **Principles** 💎
+
 - OOP
 - SOLID
 - POP
@@ -83,61 +84,57 @@ This app completely **localized for use in Germany.**
 <br/>
 
 ### **Used Frameworks** ➕
+
 #### **Natives** 👴🏼
 
-* UIKit 🎭
-* CoreLocation 📍
-* NotificationCenter ⚠️
-
+- UIKit 🎭
+- CoreLocation 📍
+- NotificationCenter ⚠️
 
 #### **Pods** 🧔🏻
 
+##### **_Network_** 🌐
 
+- [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+- [Moya](https://github.com/SwiftyJSON/SwiftyJSON)
 
-##### ***Network*** 🌐
-* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
-* [Moya](https://github.com/SwiftyJSON/SwiftyJSON)
+##### **_View_** 🎭
 
-##### ***View*** 🎭
+- [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
+- [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
+- [SnapKit](https://github.com/SnapKit/SnapKit)
 
-* [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
-* [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
-* [SnapKit](https://github.com/SnapKit/SnapKit)
+##### **_RX_** 🐟
 
-
-##### ***RX*** 🐟
-* [RxSwift](https://github.com/ReactiveX/RxSwift)
-* [RxCocoa](https://github.com/ReactiveX/RxSwift/tree/main/RxCocoa)
+- [RxSwift](https://github.com/ReactiveX/RxSwift)
+- [RxCocoa](https://github.com/ReactiveX/RxSwift/tree/main/RxCocoa)
 
 <br/>
 
 # Main Classes Diagrams
+
 Heart❤️ of the app
 
 <br/>
 
-![Class Diagrams](https://s17.picofile.com/file/8417382568/Corona_Status.jpeg=150x)
+<img src=https://s17.picofile.com/file/8417382568/Corona_Status.jpeg widht="300"  height="200"/>
 
 </br>
 
 # Screenshots 📱
 
-
 #### English 🇬🇧
 
-
-![English Page 1](https://s17.picofile.com/file/8417399450/1.png=50x)
-![English Page 2](https://s16.picofile.com/file/8417399476/2.png=50x)
-
+<img src=https://s17.picofile.com/file/8417399450/1.png widht="100"  height="200"/>
+<img src=https://s16.picofile.com/file/8417399476/2.png widht="100"  height="200"/>
 
 #### Germany 🇩🇪
 
+<img src=https://s16.picofile.com/file/8417399634/1.png widht="100"  height="200" />
 
-![German Page 1](https://s16.picofile.com/file/8417399634/1.png=50x)
-![German Page 2](https://s16.picofile.com/file/8417399692/2.png=50x)
+<img src=https://s16.picofile.com/file/8417399692/2.png) widht="100"  height="200" />
 
-
-</br>
+</br></br>
 
 # Video 🎥
 
@@ -153,28 +150,22 @@ Heart❤️ of the app
 
 # How to use for other states in Germany? 🔁🇩🇪
 
-
-This app is currently designed for use at ***Bavaria.***
+This app is currently designed for use at **_Bavaria._**
 
 **If you want to use it in other states of Germany do the following.**
 
-1. Open ```.../Resources/Info.plist```
+1. Open `.../Resources/Info.plist`
 
-2. find ```stateName = Bayern;```
+2. find `stateName = Bayern;`
 
-3. Replace ```Bayern``` with name of your desired state.
-
+3. Replace `Bayern` with name of your desired state.
 
 ---
 
-🚧**Pay attention:** In this file you must replace it with a local name.
+🚧**Pay attention:** In this file you must replace it with a local name (German name).
 
 For example:
 
-(English) = Bavaria
+❌ (English) = ~~Bavaria~~
 
-(German) = Bayern
-
-
-
-
+✅  (German) = Bayern
