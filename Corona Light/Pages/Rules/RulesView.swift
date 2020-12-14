@@ -96,7 +96,7 @@ extension RulesView {
             make.top.equalTo(statusLabel.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
     }
 }

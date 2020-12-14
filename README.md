@@ -115,6 +115,12 @@ This app completely **localized for use in Germany.**
 These texts were translated by google, all comments for correction would be appreciated.
 
 
+# Stretchy Design 📱
+
+
+![Stretchy Design](https://s17.picofile.com/file/8417460250/Strachy_Design.png) 
+
+
 # Video
 
 
@@ -140,7 +146,7 @@ find  Key Value of ```"stateName" : "Bayern"```
 
 Replace ```Bayern``` with name of your desired state in local name.
 
-[This address](https://s17.picofile.com/file/8417452742/Screen_Shot_2020_12_14_at_10_48_05.png)
+![This address](https://s17.picofile.com/file/8417452742/Screen_Shot_2020_12_14_at_10_48_05.png)
 
 **info.plist**
 

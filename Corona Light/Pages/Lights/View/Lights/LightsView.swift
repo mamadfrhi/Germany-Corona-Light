@@ -169,9 +169,8 @@ extension LightsView {
     // Description Label
     private func setupDescriptionLabelConstraints() {
         descriptionLabel.snp.remakeConstraints { (make) in
-            make.top.equalTo(contentView.snp.bottom).offset(20)
+            make.top.equalTo(contentView.snp.bottom).offset(8)
             make.centerX.equalTo(contentView.snp.centerX)
-            make.height.equalTo(100)
         }
     }
     private func setupDescriptionLabelErrorConstraints() {
@@ -179,7 +178,6 @@ extension LightsView {
             make.top.equalTo(contentView.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
-            make.height.equalTo(100)
         }
     }
     
