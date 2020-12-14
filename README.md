@@ -125,11 +125,15 @@ Heart❤️ of the app
 
 #### English 🇬🇧
 
+<p float="left">
 <img src=https://s17.picofile.com/file/8417399450/1.png widht="100"  height="200"/>  <img src=https://s16.picofile.com/file/8417399476/2.png widht="100"  height="200"/>
+</p>
 
 #### Germany 🇩🇪
 
+<p float="left">
 <img src=https://s16.picofile.com/file/8417399634/1.png widht="100"  height="200" />  <img src=https://s16.picofile.com/file/8417399692/2.png) widht="100"  height="200" />
+</p>
 
 </br></br>
 
