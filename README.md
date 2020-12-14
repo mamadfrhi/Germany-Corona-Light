@@ -1,71 +1,74 @@
 # Germany Corona Light 🇩🇪🚦🦠
 
-![Semantic description of ](https://s17.picofile.com/file/8417404718/banner.jpg "Diagrams")
+![Banner](https://s17.picofile.com/file/8417404042/banner.jpg)
 
-It shows **you the current *status* of corona** and **related limitations** in your current location within a charming traffic light!
+<br/>
+<br/>
+<br/>
 
+## This iOS app shows **you the current status of corona** and **related limitations** in your current location within a charming traffic light!
 
-Currently, it is designed to use in Germany, Bavaria.🇩🇪
+<br/>
 
+### Currently, it is designed to use in Germany, Bavaria. 🇩🇪
 
-## Installation ✅
+<br/>
+<br/>
+<br/>
+<br/>
 
+# Installation ✅
 
-[Download the project](https://github.com/mamadfrhi/Germany-Corona-Light/archive/main.zip) first!
+1. [Download the project](https://github.com/mamadfrhi/Germany-Corona-Light/archive/main.zip) first!
 
-
- Install packages
+ 2. Install packages (using terminal) 👇🏼
  
+ ```bash
+3. $ cd .../project directory/Corona Light
+
+4. $ pod update
 ```
-cd .../project directory/Corona Light
 
-pod update
-```
+5. Open ```Corona Light.xcworkspace```
 
-
-Open ```Corona Light.xcworkspace```
+6. Press ```Cmd + R``` and see how it works
 
 
-Press ```Cmd + R``` and see how it works
+<br/>
+<br/>
 
+## Testing 🔁
 
+<br/>
 
-#### Simulate Location on iOS simulator (Macos BigSur)
+### Simulate Location on iOS simulator (Macos BigSur)
 
+1. Select simluator
+2. Choose ```Feature > Location > Custom Location... > Set following...```
+* Lat: ```49.763138```
+* Long: ```10.697828```
+* It refers to **Erlangen-Höchstadt**
 
-Select simluator
+<br/>
 
+### Test Localization 🇩🇪🇬🇧
 
-```Feature > Location > Custom Location... > Set following...```
+* In order to test the app in 🇩🇪 do the following in simulator...
 
+* ```Settings > General > Language & Region > Deutsch```
 
-Lat: ```49.763138```
+<br/>
+<br/>
+<br/>
 
-
-Long: ```10.697828```
-
-
-It refers to **Erlangen-Höchstadt**
-
-
-### Test Localization
-
-
-In order to test localization in Deutsch do the following in simulator...
-
-
-```Settings > General > Language & Region > Deutsch```
-
-
-These texts were translated by google, all comments for correction would be appreciated.
-
-## Code style 🛠
+# Code style 🛠
 
 
 Used **MVVM** architecture by the use of **RX**
 
 This app completely **localized for use in Germany.**
 
+<br/>
 
 **Design patterns** ⚙️
 - State
@@ -78,25 +81,55 @@ This app completely **localized for use in Germany.**
 - Facade
 - ...
 
+<br/>
 
 **Principles** 💎
 - OOP
-- POP
 - SOLID
+- POP
 - Clean Code
 
+<br/>
+
+### **Used Frameworks** ➕
+#### **Natives** 👴🏼
+
+* UIKit 🎭
+* CoreLocation 📍
+* NotificationCenter ⚠️
+
+</br>
+
+#### **Pods** 🧔🏻
 
 
-**Main Classes Diagrams** (❤️ of the app)
-![Semantic description of ](https://s17.picofile.com/file/8417382568/Corona_Status.jpeg "Diagrams")
+
+##### ***Network*** 🌐
+* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+* [Moya](https://github.com/SwiftyJSON/SwiftyJSON)
+
+##### ***View*** 🎭
+
+* [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
+* [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
+* [SnapKit](https://github.com/SnapKit/SnapKit)
 
 
-## Layers ⛓
-#### Location - to get current user's lcoation
-#### Notification - if the status changes make the user aware of it
-#### Network - to get corona statistics from the server
+##### ***RX*** 🐟
+* [RxSwift](https://github.com/ReactiveX/RxSwift)
+* [RxCocoa](https://github.com/ReactiveX/RxSwift/tree/main/RxCocoa)
 
+<br/>
+</br>
 
+# Main Classes Diagrams
+Heart❤️ of the app
+
+<br/>
+
+![Class Diagrams](https://s17.picofile.com/file/8417382568/Corona_Status.jpeg=150x)
+
+</br>
 
 # Screenshots 📱
 
@@ -104,34 +137,29 @@ This app completely **localized for use in Germany.**
 #### English 🇬🇧
 
 
-![English Page 1](https://s17.picofile.com/file/8417399450/1.png) ![English Page 2](https://s16.picofile.com/file/8417399476/2.png)
+![English Page 1](https://s17.picofile.com/file/8417399450/1.png=50x)
+![English Page 2](https://s16.picofile.com/file/8417399476/2.png=50x)
 
 
 #### Germany 🇩🇪
 
 
-![German Page 1](https://s16.picofile.com/file/8417399634/1.png) ![German Page 2](https://s16.picofile.com/file/8417399692/2.png)
-
-These texts were translated by google, all comments for correction would be appreciated.
-
-
-# Stretchy Design 📱
+![German Page 1](https://s16.picofile.com/file/8417399634/1.png=50x)
+![German Page 2](https://s16.picofile.com/file/8417399692/2.png=50x)
 
 
-![Stretchy Design](https://s17.picofile.com/file/8417460250/Strachy_Design.png) 
 
-
-# Video
-
+# Video 🎥
 
 [Click here to see app in use](https://youtu.be/jXjny-TFchc)
 
+</br>
 
-# API Reference
-
+# API Documents 📄
 
 [Click here to see API docs](https://npgeo-corona-npgeo-de.hub.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0)
 
+</br>
 
 # How to use for other states in Germany? 🔁🇩🇪
 
@@ -140,25 +168,22 @@ This app is currently designed for use at ***Bavaria.***
 
 **If you want to use it in other states of Germany do the following.**
 
-Open ```.../Resources/Info.plist (Base)```
+1. Open ```.../Resources/Info.plist```
 
-find  Key Value of ```"stateName" : "Bayern"```
+2. find ```stateName = Bayern;```
 
-Replace ```Bayern``` with name of your desired state in local name.
+3. Replace ```Bayern``` with name of your desired state.
 
-![This address](https://s17.picofile.com/file/8417452742/Screen_Shot_2020_12_14_at_10_48_05.png)
-
-**info.plist**
 
 ---
 
-🚧**Pay attention:** In this file you must replace it with local name in Germany.
+🚧**Pay attention:** In this file you must replace it with a local name.
 
 For example:
 
-🚫 ~~Bavaria~~
+(English) = Bavaria
 
-✅ **Bayern**
+(German) = Bayern
 
 
 
