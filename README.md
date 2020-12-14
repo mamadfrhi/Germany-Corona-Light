@@ -3,17 +3,13 @@
 ![Banner](https://s17.picofile.com/file/8417404042/banner.jpg)
 
 <br/>
-<br/>
-<br/>
 
 ## This iOS app shows **you the current status of corona** and **related limitations** in your current location within a charming traffic light!
 
 <br/>
 
-### Currently, it is designed to use in Germany, Bavaria. 🇩🇪
+## Currently, it is designed to use in Germany, Bavaria. 🇩🇪
 
-<br/>
-<br/>
 <br/>
 <br/>
 
@@ -35,11 +31,8 @@
 
 
 <br/>
-<br/>
 
 ## Testing 🔁
-
-<br/>
 
 ### Simulate Location on iOS simulator (Macos BigSur)
 
@@ -57,8 +50,6 @@
 
 * ```Settings > General > Language & Region > Deutsch```
 
-<br/>
-<br/>
 <br/>
 
 # Code style 🛠
@@ -98,7 +89,6 @@ This app completely **localized for use in Germany.**
 * CoreLocation 📍
 * NotificationCenter ⚠️
 
-</br>
 
 #### **Pods** 🧔🏻
 
@@ -120,7 +110,6 @@ This app completely **localized for use in Germany.**
 * [RxCocoa](https://github.com/ReactiveX/RxSwift/tree/main/RxCocoa)
 
 <br/>
-</br>
 
 # Main Classes Diagrams
 Heart❤️ of the app
@@ -148,6 +137,7 @@ Heart❤️ of the app
 ![German Page 2](https://s16.picofile.com/file/8417399692/2.png=50x)
 
 
+</br>
 
 # Video 🎥
 
