@@ -125,14 +125,11 @@ Heart❤️ of the app
 
 #### English 🇬🇧
 
-<img src=https://s17.picofile.com/file/8417399450/1.png widht="100"  height="200"/>
-<img src=https://s16.picofile.com/file/8417399476/2.png widht="100"  height="200"/>
+<img src=https://s17.picofile.com/file/8417399450/1.png widht="100"  height="200"/>  <img src=https://s16.picofile.com/file/8417399476/2.png widht="100"  height="200"/>
 
 #### Germany 🇩🇪
 
-<img src=https://s16.picofile.com/file/8417399634/1.png widht="100"  height="200" />
-
-<img src=https://s16.picofile.com/file/8417399692/2.png) widht="100"  height="200" />
+<img src=https://s16.picofile.com/file/8417399634/1.png widht="100"  height="200" />  <img src=https://s16.picofile.com/file/8417399692/2.png) widht="100"  height="200" />
 
 </br></br>
 
@@ -169,3 +166,6 @@ For example:
 ❌ (English) = ~~Bavaria~~
 
 ✅  (German) = Bayern
+
+---
+#### You can download desing of app in AdobeXD [here!](https://github.com/mamadfrhi/Germany-Corona-Light/raw/main/Corona%20Light/Resources/Corona%20Status%20Design.xd)

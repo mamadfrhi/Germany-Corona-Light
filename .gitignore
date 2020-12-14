@@ -103,4 +103,4 @@ Podfile.lock
 *.xcconfig
 *.pbxproj
 
-Podfile
+*.xd
