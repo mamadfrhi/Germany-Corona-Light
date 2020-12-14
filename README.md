@@ -150,9 +150,9 @@ Replace ```Bayern``` with name of your desired state in local name.
 
 For example:
 
-Not ~~Bavaria~~
+🚫 ~~Bavaria~~
 
-**Bayern**
+✅ **Bayern**
 
 
 

@@ -37,5 +37,8 @@ class NormalState: NormalStateable {
         
         // Label
         self.lightsView.descriptionLabel.isHidden = false
+        
+        // Gesture
+        self.lightsView.handleStackViewGesture(isEnable: true)
     }
 }

@@ -86,12 +86,21 @@ class LightsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Functions
+    
+    // Description Label
     func changeDesciriptionLabel(text: String?) {
         self.descriptionLabel.text = text
         UIView.animate(withDuration: 3) {
             self.layoutIfNeeded()
         }
     }
+    
+    // Stack View's Gesture
+    func handleStackViewGesture(isEnable: Bool) {
+        stackViewTapGesture.isEnabled = isEnable
+    }
+    
 }
 
 // MARK:-
