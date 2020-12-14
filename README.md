@@ -134,24 +134,25 @@ This app is currently designed for use at ***Bavaria.***
 
 **If you want to use it in other states of Germany do the following.**
 
-Open ```.../Resources/Lozalizable.strings (English)```
+Open ```.../Resources/Info.plist (Base)```
 
-find ```"stateName" = "Bavaria";```
+find  Key Value of ```"stateName" : "Bayern"```
 
-Replace ```Bavaria``` with name of your desired state.
+Replace ```Bayern``` with name of your desired state in local name.
 
+[This address](https://s17.picofile.com/file/8417452742/Screen_Shot_2020_12_14_at_10_48_05.png)
 
-Do it again for ```Lozalizable.strings (German)```
+**info.plist**
 
 ---
 
-🚧**Pay attention:** In this file you must replace it with a local name.
+🚧**Pay attention:** In this file you must replace it with local name in Germany.
 
 For example:
 
-(English) = Bavaria
+Not ~~Bavaria~~
 
-(German) = Bayern
+**Bayern**
 
 
 

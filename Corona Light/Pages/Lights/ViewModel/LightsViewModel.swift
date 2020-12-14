@@ -134,6 +134,7 @@ extension LightsViewModel: LocationDelegate {
     func didUpdateLocation(to locationInfo: LocationInfo?) {
         print("Did update location at this town: \(String(describing: locationInfo?.town)).\n")
         
+        // Wrap settled location
         guard let locationInfo = locationInfo,
               let stateName = locationInfo.state,
               let townName = locationInfo.town else {
@@ -141,18 +142,19 @@ extension LightsViewModel: LocationDelegate {
             return
         }
         
-        let localizedStateName = "stateName".localized()
-        
-        // TODO: Clean it
-        // Handle it with language check
-        let isBavaria = stateName == "Bavaria" || stateName == "Bayern"
-        guard (stateName == localizedStateName) || (isBavaria) else {
+        // Check location
+        guard let targetedStateName =
+                Bundle.main.object(forInfoDictionaryKey: "stateName") as? String
+              ,(stateName == targetedStateName)
+        else {
             self.locationError.onNext(.outOfBavariaError)
             return
         }
         
+        // Update UI
         self.localLocationInfo = locationInfo
         self.locationInfo.onNext(locationInfo)
+        
         // Call API
         self.getIncidents(of: townName,
                           previousRequestTime: self.requestSentTime)
@@ -189,10 +191,23 @@ extension LightsViewModel: CoronaNetworkable {
     }
     
     func retryRequest() {
-        if let townName = self.locationManager.locationInfo?.town {
+        
+        // Wrap variables and check
+        if let targetedStateName =
+            Bundle.main.object(forInfoDictionaryKey: "stateName") as? String,
+           // Read from info.plist
+           
+           let stateName = self.locationManager.locationInfo?.state,
+           //For checking
+           let townName = self.locationManager.locationInfo?.town,
+           //For request parameter
+           
+           targetedStateName == stateName { // Check
             let longTimeAgo = Date(timeIntervalSince1970: 1)
             self.getIncidents(of: townName,
                               previousRequestTime: longTimeAgo)
+        } else {
+            self.locationError.onNext(.outOfBavariaError)
         }
     }
 }
