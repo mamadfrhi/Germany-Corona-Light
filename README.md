@@ -4,11 +4,11 @@
 
 <br/>
 
-## This iOS app shows ***you the current status of Corona*** and ***related limitations*** in your current location within a charming traffic light!
+## This iOS app shows ***you the status of Corona*** and ***related limitations*** in your current location within a charming traffic light!
 
 <br/>
 
-## Currently, it is designed to use in Germany, Bavaria. 🇩🇪
+## Presently, this app designed to use in Germany, Bavaria. 🇩🇪
 
 <br/>
 <br/>
