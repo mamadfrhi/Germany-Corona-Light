@@ -4,7 +4,7 @@
 
 <br/>
 
-## This iOS app shows ***you the current status of corona*** and ***related limitations*** in your current location within a charming traffic light!
+## This iOS app shows ***you the current status of Corona*** and ***related limitations*** in your current location within a charming traffic light!
 
 <br/>
 
@@ -46,7 +46,7 @@
 
 ### Test Localization 🇩🇪🇬🇧
 
-- In order to test the app in 🇩🇪 do the following in simulator...
+- To test the app in 🇩🇪 do the following in the simulator...
 
 - `Settings > General > Language & Region > Deutsch`
 
@@ -139,7 +139,7 @@ Heart❤️ of the app
 
 # Video 🎥
 
-[Click here to see app in use](https://youtu.be/jXjny-TFchc)
+[Click here to see the app in use](https://youtu.be/jXjny-TFchc)
 
 </br>
 
@@ -159,7 +159,7 @@ This app is currently designed for use at **_Bavaria._**
 
 2. find `stateName = Bayern;`
 
-3. Replace `Bayern` with name of your desired state.
+3. Replace `Bayern` with the name of your desired state.
 
 ---
 
@@ -172,4 +172,4 @@ For example:
 ✅  (German) = Bayern
 
 ---
-#### You can download desing of app in AdobeXD [here!](https://github.com/mamadfrhi/Germany-Corona-Light/raw/main/Corona%20Light/Resources/Corona%20Status%20Design.xd)
+#### You can download app desing in AdobeXD [here!](https://github.com/mamadfrhi/Germany-Corona-Light/raw/main/Corona%20Light/Resources/Corona%20Status%20Design.xd)
