@@ -139,7 +139,11 @@ Heart❤️ of the app
 
 # Video 🎥
 
-[Click here to see the app in use](https://youtu.be/jXjny-TFchc)
+
+
+https://user-images.githubusercontent.com/28094207/166139678-5fcd311a-adcc-40da-85b1-4b1c72e0c05c.mp4
+
+
 
 </br>
 
