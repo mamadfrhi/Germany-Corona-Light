@@ -117,7 +117,7 @@ Heart❤️ of the app
 
 <br/>
 
-<img src=https://s17.picofile.com/file/8417382568/Corona_Status.jpeg widht="300"  height="200"/>
+<img src=https://user-images.githubusercontent.com/28094207/166139899-d74549cc-aa55-4a4d-9d26-bc76aebfb09d.jpeg widht="300"  height="200"/>
 
 </br>
 
