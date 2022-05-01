@@ -126,24 +126,20 @@ Heart❤️ of the app
 #### English 🇬🇧
 
 <p float="left">
-<img src=https://user-images.githubusercontent.com/28094207/166139802-4d89bf03-7289-4f65-8fe0-489fe5cbd59c.png widht="100"  height="200"/>  <img src=https://s16.picofile.com/file/8417399476/2.png widht="100"  height="200"/>
+<img src=https://user-images.githubusercontent.com/28094207/166139802-4d89bf03-7289-4f65-8fe0-489fe5cbd59c.png widht="100"  height="200"/>  <img src=https://user-images.githubusercontent.com/28094207/166139852-b99b3742-0c01-428f-8502-0e0941d4bbee.png widht="100"  height="200"/>
 </p>
 
 #### German 🇩🇪
 
 <p float="left">
-<img src=https://user-images.githubusercontent.com/28094207/166139810-be314eb3-a92c-467f-b13e-9066f4382d47.png widht="100"  height="200" />  <img src=https://s16.picofile.com/file/8417399692/2.png) widht="100"  height="200" />
+<img src=https://user-images.githubusercontent.com/28094207/166139810-be314eb3-a92c-467f-b13e-9066f4382d47.png widht="100"  height="200" />  <img src=https://user-images.githubusercontent.com/28094207/166139865-4b9aeadd-b066-4c04-99f0-b8318b20a338.png) widht="100"  height="200" />
 </p>
 
 </br></br>
 
 # Video 🎥
 
-
-
 https://user-images.githubusercontent.com/28094207/166139678-5fcd311a-adcc-40da-85b1-4b1c72e0c05c.mp4
-
-
 
 </br>
 
