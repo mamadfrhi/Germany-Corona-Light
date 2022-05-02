@@ -15,12 +15,6 @@ class MainCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        navigationController.navigationBar.barTintColor = .systemBlue
-        navigationController
-            .navigationBar
-            .titleTextAttributes
-            = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationController.navigationBar.tintColor = .white
     }
     
     func start() {
