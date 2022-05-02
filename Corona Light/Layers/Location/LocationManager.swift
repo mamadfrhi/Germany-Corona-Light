@@ -10,21 +10,8 @@ import RxSwift
 
 // MARK: - Protocols
 protocol Locationable {
-    var locationInfo: LocationInfo? { get set}
-    func requestLocationPermission()
     func startUpdatingLocation()
-}
-// Make optionals
-extension Locationable {
-    func requestLocationPermission() {}
-    var locationInfo: LocationInfo? {
-        get {
-            return LocationInfo(country: nil, state: nil, town: nil)
-        }
-        set {
-            return
-        }
-    }
+    func getLocationInfo() -> LocationInfo?
 }
 protocol LocationDelegate {
     func didUpdateLocation(to newLocation: LocationInfo?)
@@ -33,13 +20,11 @@ protocol LocationDelegate {
 
 
 // MARK: - Location Manager
-internal
 class LocationManager: NSObject {
     
     // MARK: Variables
-    private var localLocationInfo : LocationInfo?
+    private var locationInfo: LocationInfo?
     private let locationManager = CLLocationManager()
-    private let locationConvertor = LocationAdapter()
     var delegate: LocationDelegate?
     
     // RX
@@ -59,14 +44,9 @@ class LocationManager: NSObject {
         exposedLocation.bind {
             (freshLocation) in
             guard let exposedLocation = freshLocation else { return}
-            self.locationConvertor.getLocationInfo(from: exposedLocation) {
-                [unowned self]
-                (locationInfo) in
-                // set local locationInfo
-                self.localLocationInfo = locationInfo
-                // call delegate
-                self.delegate?.didUpdateLocation(to: locationInfo)
-            }
+            self.locationInfo = LocationInfo(clLocation: exposedLocation)
+            // call delegate
+            self.delegate?.didUpdateLocation(to: self.locationInfo!)
         }
         .disposed(by: disposeBag)
     }
@@ -74,18 +54,7 @@ class LocationManager: NSObject {
 
 // MARK: - Locationable
 extension LocationManager: Locationable {
-    var locationInfo: LocationInfo? {
-        get {
-            return localLocationInfo
-        }
-        set {
-            self.localLocationInfo = newValue
-        }
-    }
-    
-    func requestLocationPermission() {
-        self.locationManager.requestAlwaysAuthorization()
-    }
+    func getLocationInfo() -> LocationInfo? { self.locationInfo }
     
     func startUpdatingLocation() {
         self.locationManager.startUpdatingLocation()
@@ -109,11 +78,9 @@ extension LocationManager: CLLocationManagerDelegate {
         switch status {
         
         case .notDetermined:
-            print("Not determined!")
-            requestLocationPermission()
+            self.locationManager.requestAlwaysAuthorization()
             
         case .authorizedAlways, .authorizedWhenInUse:
-            print("Location permission allowed!")
             locationManager.startUpdatingLocation()
             
         case .restricted, .denied:

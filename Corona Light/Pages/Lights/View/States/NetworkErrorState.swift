@@ -11,14 +11,13 @@ protocol NetworkErrorStateable {
     func setNewtorkErrorState(networkError: NetworkError)
 }
 
-internal
 class NewtorkErrorState: NetworkErrorStateable {
     
     // MARK: Variables
     
     private let lightsView: LightsView
-    private var localizedErrorMessage: String? = nil
-    private var networkError: NetworkError? = nil
+    private var localizedErrorMessage: String?
+    private var networkError: NetworkError?
     
     // MARK: Init
     
@@ -49,7 +48,7 @@ class NewtorkErrorState: NetworkErrorStateable {
         
         // Description
         self.lightsView.resetDescriptionLabelConstraints(for: true)
-        self.lightsView.changeDesciriptionLabel(text: localizedErrorMessage)
+        self.lightsView.changeDescriptionLabel(text: localizedErrorMessage)
         
         // Gesture
         self.lightsView.handleStackViewGesture(isEnable: false)

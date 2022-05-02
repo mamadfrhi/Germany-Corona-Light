@@ -10,10 +10,10 @@
 		1CE5098FF135AF2C33533D1B /* Pods_Corona_Light.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */; };
 		8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715B822257E6C7300AE77BB /* LoadingViewable.swift */; };
 		87164CF42584ADA800DE56E3 /* CoronaNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87164CF32584ADA800DE56E3 /* CoronaNetworking.swift */; };
+		8719526828202A8800F8EC50 /* LightsVMAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8719526728202A8800F8EC50 /* LightsVMAbstraction.swift */; };
 		871E1F0F2583CBB9005FEE0A /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E1F0E2583CBB9005FEE0A /* MaskView.swift */; };
 		8723EA1C257F85D3001DC3A5 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8723EA1B257F85D3001DC3A5 /* RulesView.swift */; };
 		8726B8562585FA8C00546F81 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726B8552585FA8C00546F81 /* CircleView.swift */; };
-		872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C3402257BDC5C0081B174 /* LocationAdapter.swift */; };
 		872D34BB258360740083305D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34BA258360740083305D /* NetworkError.swift */; };
 		872D34BE258365820083305D /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34BD258365820083305D /* LocationError.swift */; };
 		872D34C1258376980083305D /* UIView+blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34C0258376980083305D /* UIView+blink.swift */; };
@@ -56,10 +56,10 @@
 		7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corona_Light.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8715B822257E6C7300AE77BB /* LoadingViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewable.swift; sourceTree = "<group>"; };
 		87164CF32584ADA800DE56E3 /* CoronaNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaNetworking.swift; sourceTree = "<group>"; };
+		8719526728202A8800F8EC50 /* LightsVMAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsVMAbstraction.swift; sourceTree = "<group>"; };
 		871E1F0E2583CBB9005FEE0A /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		8723EA1B257F85D3001DC3A5 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		8726B8552585FA8C00546F81 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		872C3402257BDC5C0081B174 /* LocationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAdapter.swift; sourceTree = "<group>"; };
 		872D34BA258360740083305D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		872D34BD258365820083305D /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		872D34C0258376980083305D /* UIView+blink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+blink.swift"; sourceTree = "<group>"; };
@@ -235,8 +235,8 @@
 		87562208257A842300A705D7 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				875621FA257A830F00A705D7 /* Coordinator */,
 				875621CD257A81CD00A705D7 /* AppDelegate.swift */,
+				875621FA257A830F00A705D7 /* Coordinator */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -254,6 +254,7 @@
 		8756220B257A846200A705D7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8719526728202A8800F8EC50 /* LightsVMAbstraction.swift */,
 				87562214257A853600A705D7 /* LightsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -294,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				8756221B257A870100A705D7 /* LocationManager.swift */,
-				872C3402257BDC5C0081B174 /* LocationAdapter.swift */,
 				872D34BD258365820083305D /* LocationError.swift */,
 			);
 			path = Location;
@@ -497,7 +497,6 @@
 				87C9913B257E3EC0003049A3 /* LightsManager.swift in Sources */,
 				8747136F2584CE4A0012E3B3 /* CodeView.swift in Sources */,
 				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,
-				872C3403257BDC5C0081B174 /* LocationAdapter.swift in Sources */,
 				87562205257A83A000A705D7 /* Reactive+isAnimating.swift in Sources */,
 				87CEDC8225852B380087113C /* NetworkErrorState.swift in Sources */,
 				8775F7AD2585476800EB42A6 /* String+localized.swift in Sources */,
@@ -511,6 +510,7 @@
 				87164CF42584ADA800DE56E3 /* CoronaNetworking.swift in Sources */,
 				871E1F0F2583CBB9005FEE0A /* MaskView.swift in Sources */,
 				8715B826257E6C7300AE77BB /* LoadingViewable.swift in Sources */,
+				8719526828202A8800F8EC50 /* LightsVMAbstraction.swift in Sources */,
 				87C99143257E3F68003049A3 /* LightsView.swift in Sources */,
 				875621FD257A831A00A705D7 /* MainCoordinator.swift in Sources */,
 				872D34C1258376980083305D /* UIView+blink.swift in Sources */,
@@ -691,7 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
 				INFOPLIST_FILE = "Corona Light/Resources/Base.lproj/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -712,7 +712,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
 				INFOPLIST_FILE = "Corona Light/Resources/Base.lproj/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

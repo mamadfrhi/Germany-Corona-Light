@@ -14,8 +14,7 @@ protocol CoronaServiceAdaptable {
 }
 
 // CoronaAPI = adapter
-internal
-struct CoronaAPI : CoronaServiceAdaptable {
+struct CoronaAPI: CoronaServiceAdaptable {
     private var provider = MoyaProvider<CoronaService>()
     
     func getStats(of state: String, completion: @escaping (Int?, NetworkError?) -> ()) {

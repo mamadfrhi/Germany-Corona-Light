@@ -10,7 +10,7 @@ import Moya
 import RxSwift
 import RxCocoa
 
-internal
+
 class LightsViewModel {
     
     // MARK:- Dependencies
@@ -18,16 +18,19 @@ class LightsViewModel {
     private var api: CoronaNetworkable
     private let locationManager: Locationable
     private let notificationManager: Notificationable
+    private let mainCoordinatorDelegate: MainCoordinatorDelegate
     
     
-    // Inject -> network + location manager + notification
-    init(coronaNetworking: CoronaNetworkable,
+    // Inject: coordinator delegate + network + location manager + notification
+    init(mainCoordinatorDelegate: MainCoordinatorDelegate,
+         coronaNetworking: CoronaNetworkable,
          locationManager: LocationManager,
          notificationManager: Notificationable) {
         // Injecting dependencies
         self.api = coronaNetworking
         self.locationManager = locationManager
         self.notificationManager = notificationManager
+        self.mainCoordinatorDelegate = mainCoordinatorDelegate
         // Delegates conformation
         locationManager.delegate = self
         (coronaNetworking as? CoronaNetworking)?.delegate = self
@@ -41,6 +44,14 @@ class LightsViewModel {
     // MARK:- Variables
     
     private var requestSentTime: Date?
+    private var allowedToCallAPI: Bool {
+        // only if 30 sec passed from previous api call
+        let timeDifference = requestSentTime?.seconds(from: Date()) ?? 31
+        if  timeDifference > 30 {
+            return true
+        }
+        return false
+    }
     
     
     // MARK:- RX Variables
@@ -64,15 +75,15 @@ class LightsViewModel {
     // MARK:- RX Setups
     
     private func setupRefreshTimer() {
-        let tenMinutes = TimeInterval(60 * 10)
+        let tenMinutes = RxTimeInterval.seconds(60 * 10)
         Observable<Int>
-            .timer(0,
+            .timer(RxTimeInterval.seconds(0),
                    period: tenMinutes,
                    scheduler: MainScheduler.instance)
             .subscribe { _ in
-                if let townName = self.locationManager.locationInfo?.town {
+                if let townName = self.getLocationInfo()?.town {
                     print("I'm going to refresh stats!")
-                    self.getIncidents(of: townName, previousRequestTime: self.requestSentTime)
+                    self.getIncidents(of: townName)
                 }
             }
             .disposed(by: disposeable)
@@ -125,6 +136,13 @@ class LightsViewModel {
     }
 }
 
+//MARK: Navigation
+extension LightsViewModel: MainCoordinatorDelegate {
+    func didSelect(statusColor: StatusColors) {
+        mainCoordinatorDelegate.didSelect(statusColor: statusColor)
+    }
+}
+
 //MARK:-
 //MARK: Location
 //MARK:-
@@ -145,7 +163,7 @@ extension LightsViewModel: LocationDelegate {
         // Check location
         guard let targetedStateName =
                 Bundle.main.object(forInfoDictionaryKey: "stateName") as? String
-              ,(stateName == targetedStateName)
+                ,(stateName == targetedStateName)
         else {
             self.locationError.onNext(.outOfBavariaError)
             return
@@ -156,8 +174,7 @@ extension LightsViewModel: LocationDelegate {
         self.locationInfo.onNext(locationInfo)
         
         // Call API
-        self.getIncidents(of: townName,
-                          previousRequestTime: self.requestSentTime)
+        self.getIncidents(of: townName)
     }
     
     func didNotAllowedLocationServices() {
@@ -167,6 +184,11 @@ extension LightsViewModel: LocationDelegate {
 
 // Locationable
 extension LightsViewModel: Locationable {
+    
+    func getLocationInfo() -> LocationInfo? {
+        locationManager.getLocationInfo()
+    }
+    
     func startUpdatingLocation() {
         // It causes a signal to locationInfo that is
         // observing in LightVC = refresh descriptionLabel
@@ -184,28 +206,19 @@ extension LightsViewModel: Locationable {
 
 // Corona Networkable
 extension LightsViewModel: CoronaNetworkable {
-    func getIncidents(of townName: String,
-                      previousRequestTime: Date?) {
-        self.api.getIncidents(of: townName,
-                              previousRequestTime: previousRequestTime)
+    func getIncidents(of townName: String) {
+        if allowedToCallAPI {
+            self.api.getIncidents(of: townName)
+        }
     }
     
     func retryRequest() {
-        
-        // Wrap variables and check
-        if let targetedStateName =
-            Bundle.main.object(forInfoDictionaryKey: "stateName") as? String,
-           // Read from info.plist
-           
-           let stateName = self.locationManager.locationInfo?.state,
-           //For checking
-           let townName = self.locationManager.locationInfo?.town,
-           //For request parameter
-           
-           targetedStateName == stateName { // Check
-            let longTimeAgo = Date(timeIntervalSince1970: 1)
-            self.getIncidents(of: townName,
-                              previousRequestTime: longTimeAgo)
+        if let targetedStateName = Bundle.main.object(forInfoDictionaryKey: "stateName") as? String,
+           let locationInfo = self.getLocationInfo(),
+           let stateName = locationInfo.state,
+           let townName = locationInfo.town,
+           targetedStateName == stateName {
+            self.getIncidents(of: townName)
         } else {
             self.locationError.onNext(.outOfBavariaError)
         }

@@ -14,7 +14,6 @@ protocol LightManagerable {
     func makeLights()
 }
 
-internal
 class LightsManager {
     
     // MARK: Variables

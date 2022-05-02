@@ -9,40 +9,25 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-internal
 class LightsVC : UIViewController {
     
     //MARK: Dependencies
-    
     private var lightsView: LightsView
     private var viewModel: LightsViewModel
-    private var coordinator: MainCoordinator
     
-    //MARK: States
+    //MARK: - States
     private var locationErrorStateable: LocationErrorStateable?
     private var networkErrorStateable: NetworkErrorStateable?
     private var normalStateable: NormalStateable?
     
     
-    //MARK: Lifecycle
-    
-    init(viewModel: LightsViewModel,
-         coordinator: MainCoordinator) {
-        
+    //MARK: - Lifecycle
+    init(viewModel: LightsViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         self.lightsView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
-        
-        
-        
-        // Setups
-        setupStates()
-        setupGeneralBindings()
-        setupErrorBindings()
-        setupNavigationBindings()
+        self.setupVC()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -52,45 +37,66 @@ class LightsVC : UIViewController {
         self.title = "coronaStatus".localized()
     }
     
+    private func setupVC() {
+        setupStates()
+        setupGeneralBindings()
+        setupErrorBindings()
+        setupNavigationBindings()
+    }
+    
     private func pushRulesPage() {
         if self.currentStatus != .off {
-            coordinator.pushRulesPage(for: self.currentStatus)
+            viewModel.didSelect(statusColor: self.currentStatus)
         }
     }
     
     
-    //MARK: Variable
-    
+    //MARK: - Variable
     private var currentStatus: StatusColors = .off
     private let disposeBag = DisposeBag()
-    
-    
-    //MARK: RX Binding
-    // Bindings
+}
+
+//MARK: State Setups
+extension LightsVC {
+    private func setupStates() {
+        // Location Error State
+        self.locationErrorStateable =
+        LocationErrorState(lightsView: self.lightsView)
+        
+        // Network Error State
+        self.networkErrorStateable =
+        NewtorkErrorState(lightsView: self.lightsView)
+        
+        // Normal State
+        self.normalStateable =
+        NormalState(lightsView: self.lightsView)
+    }
+}
+
+//MARK: RX Binding
+extension LightsVC {
     private func setupGeneralBindings() {
-        
-        
         // Loading
         viewModel.loading
-            .bind(onNext: { (loading) in
+            .bind(onNext: {
                 // Just show loading view for first request
                 // prevent showing for next refreshal requests
                 if self.currentStatus == .off {
-                    self.rx.isAnimating.onNext(loading)
+                    self.rx.isAnimating.onNext($0)
                 }
             })
             .disposed(by: disposeBag)
         
         
-        // Town Status (Main Purpose)
+        // Town Status
         viewModel
             .townStatus
-            .observeOn(MainScheduler.instance)
-            .subscribe { (statusColor) in
-                guard let statusColorElement = statusColor.element
+            .observe(on: MainScheduler.instance)
+            .subscribe {
+                guard let statusColor = $0.element
                 else { return }
-                self.lightsView.currentOnlineLight = statusColorElement
-                self.currentStatus = statusColorElement
+                self.lightsView.currentOnlineLight = statusColor
+                self.currentStatus = statusColor
                 self.setNormlaState()
             }
             .disposed(by: disposeBag)
@@ -99,12 +105,10 @@ class LightsVC : UIViewController {
         // Location Info
         viewModel
             .locationInfo
-            .observeOn(MainScheduler.instance)
-            .subscribe { (locationInfo) in
+            .observe(on: MainScheduler.instance)
+            .subscribe {
                 var descriptionLabelText = ""
-                guard let locationInfo = locationInfo.element else {
-                    return
-                }
+                guard let locationInfo = $0.element else { return }
                 descriptionLabelText = ""
                 descriptionLabelText.append("📍 ")
                 let youAreAt = "youAreAt".localized() + "\n"
@@ -112,7 +116,7 @@ class LightsVC : UIViewController {
                 descriptionLabelText.append("\t\(locationInfo.country ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.state ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.town ?? "")")
-                self.lightsView.changeDesciriptionLabel(text: descriptionLabelText)
+                self.lightsView.changeDescriptionLabel(text: descriptionLabelText)
             }
             .disposed(by: disposeBag)
         
@@ -121,9 +125,7 @@ class LightsVC : UIViewController {
         lightsView.retryButton
             .rx.tap
             .subscribe { _ in
-                // Trig locaiton manager
                 self.viewModel.startUpdatingLocation()
-                // Fresh request
                 self.viewModel.retryRequest()
             }
             .disposed(by: disposeBag)
@@ -131,30 +133,22 @@ class LightsVC : UIViewController {
     }
     
     private func setupErrorBindings() {
-        
-        
         // Location Error
         viewModel
             .locationError
-            .observeOn(MainScheduler.instance)
-            .subscribe { (locationError) in
-                self.setLocationErrorState(locationError: locationError)
+            .observe(on: MainScheduler.instance)
+            .subscribe {
+                self.setLocationErrorState(locationError: $0)
             }
             .disposed(by: disposeBag)
-        
         
         // Network Error
         viewModel
             .networkError
-            .observeOn(MainScheduler.instance)
-            .subscribe { (networkError) in
-                
-                // if recently a network error occured
-                // It remains previous state
-                if self.currentStatus == .off,
-                   let networkError = networkError.element {
-                    self.networkErrorStateable?
-                        .setNewtorkErrorState(networkError: networkError)
+            .observe(on: MainScheduler.instance)
+            .subscribe {
+                if let networkError = $0.element {
+                    self.setNewtorkErrorState(networkError: networkError)
                 }
             }
             .disposed(by: disposeBag)
@@ -163,58 +157,28 @@ class LightsVC : UIViewController {
     private func setupNavigationBindings() {
         
         // Light View Tap Gesture
-        // Tap gesture added on contentView & stackView
         lightsView.stackViewTapGesture
-            .rx
-            .event
-            .bind { _ in
-                self.pushRulesPage()
-            }
+            .rx.event
+            .bind { _ in self.pushRulesPage() }
             .disposed(by: disposeBag)
-        
         
         // Rules Page Button
         lightsView.rulesPageButton
             .rx.tap
-            .subscribe { _ in
-                self.pushRulesPage()
-            }
+            .subscribe { _ in self.pushRulesPage() }
             .disposed(by: disposeBag)
         
         
         // Notification Tapped
         viewModel
             .notificationTapped
-            .observeOn(MainScheduler.instance)
-            .subscribe { _ in
-                self.pushRulesPage()
-            }
+            .observe(on: MainScheduler.instance)
+            .subscribe { _ in self.pushRulesPage() }
             .disposed(by: disposeBag)
     }
 }
 
-// MARK:-
-// MARK: States
-// MARK:-
 
-//MARK: State Setups
-extension LightsVC {
-    // It calls from init
-    private func setupStates() {
-        // States
-        // Location Error State
-        self.locationErrorStateable =
-            LocationErrorState(lightsView: self.lightsView)
-        
-        // Network Error State
-        self.networkErrorStateable =
-            NewtorkErrorState(lightsView: self.lightsView)
-        
-        // Normal State
-        self.normalStateable =
-            NormalState(lightsView: self.lightsView)
-    }
-}
 
 //MARK: State Setters
 // Location Error Stateable

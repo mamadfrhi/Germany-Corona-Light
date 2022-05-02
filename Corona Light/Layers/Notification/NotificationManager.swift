@@ -24,7 +24,6 @@ extension Notificationable {
 }
 
 // MARK:- NotificationManager
-internal
 class NotificationManager: NSObject {
     
     override init() {
@@ -68,7 +67,9 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("Push notification received in foreground.")
-        completionHandler([.sound, .banner])
+        if #available(iOS 14.0, *) {
+            completionHandler([.sound, .banner])
+        }
     }
 }
 

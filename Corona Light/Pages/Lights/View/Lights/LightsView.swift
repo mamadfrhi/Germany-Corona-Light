@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-internal
 class LightsView: UIView {
     
     // MARK: Dependency
@@ -89,7 +88,7 @@ class LightsView: UIView {
     // MARK: Functions
     
     // Description Label
-    func changeDesciriptionLabel(text: String?) {
+    func changeDescriptionLabel(text: String?) {
         self.descriptionLabel.text = text
         UIView.animate(withDuration: 3) {
             self.layoutIfNeeded()

@@ -11,7 +11,6 @@ protocol NormalStateable {
     func setNormlaState()
 }
 
-internal
 class NormalState: NormalStateable {
     
     private let lightsView: LightsView
