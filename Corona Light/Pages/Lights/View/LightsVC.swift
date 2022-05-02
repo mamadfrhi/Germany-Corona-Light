@@ -28,7 +28,6 @@ class LightsVC : UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.setupVC()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -45,9 +44,8 @@ class LightsVC : UIViewController {
     }
     
     
-    //MARK: Variable
-    
-    private var currentStatus: StatusColors = .off
+    //MARK: - Variable
+    private let currentStatus: StatusColors = .off
     private let disposeBag = DisposeBag()
 }
 
