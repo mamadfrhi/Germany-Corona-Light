@@ -12,19 +12,15 @@ import RxSwift
 // MARK:- Interface
 protocol Notificationable {
     func requestNotificationPermission()
-    func send(notification: Notification,
-              at timetInterval: TimeInterval)
     func sendLocalizedNotification(at timetInterval: TimeInterval)
-}
-// Make interface functions -optional-
-extension Notificationable {
-    func send(notification: Notification,
-              at timetInterval: TimeInterval){}
-    func sendLocalizedNotification(at timetInterval: TimeInterval){}
 }
 
 // MARK: - NotificationManager
 class NotificationManager: NSObject {
+    
+    private let center = UNUserNotificationCenter.current()
+    private let disposeable = DisposeBag()
+    let notificationTapped: PublishSubject<Bool> = PublishSubject()
     
     override init() {
         super.init()
@@ -32,13 +28,7 @@ class NotificationManager: NSObject {
         center.delegate = self
     }
     
-    // Variables
-    private let center = UNUserNotificationCenter.current()
-    // RX
-    private let disposeable = DisposeBag()
-    let notificationTapped: PublishSubject<Bool> = PublishSubject()
-    
-    private var localizedNotification : Notification {
+    private var localizedNotification: Notification {
         get {
             let title = "notificationTitle".localized()
             let body = "notificationBody".localized()
@@ -85,17 +75,7 @@ extension NotificationManager: Notificationable {
                 }
             }
     }
-    func send(notification: Notification,
-              at timetInterval: TimeInterval) {
-        registerCategories()
-        let content = makeContent(from: notification)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timetInterval,
-                                                        repeats: false)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString,
-                                            content: content, trigger: trigger)
-        center.add(request)
-    }
+    
     func sendLocalizedNotification(at timetInterval: TimeInterval) {
         registerCategories()
         let content = makeContent(from: localizedNotification)
