@@ -235,8 +235,8 @@
 		87562208257A842300A705D7 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				875621FA257A830F00A705D7 /* Coordinator */,
 				875621CD257A81CD00A705D7 /* AppDelegate.swift */,
+				875621FA257A830F00A705D7 /* Coordinator */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -691,7 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
 				INFOPLIST_FILE = "Corona Light/Resources/Base.lproj/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -712,7 +712,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
 				INFOPLIST_FILE = "Corona Light/Resources/Base.lproj/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

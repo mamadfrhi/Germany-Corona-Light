@@ -64,9 +64,9 @@ class LightsViewModel {
     // MARK:- RX Setups
     
     private func setupRefreshTimer() {
-        let tenMinutes = TimeInterval(60 * 10)
+        let tenMinutes = RxTimeInterval.seconds(60 * 10)
         Observable<Int>
-            .timer(0,
+            .timer(RxTimeInterval.seconds(0),
                    period: tenMinutes,
                    scheduler: MainScheduler.instance)
             .subscribe { _ in
