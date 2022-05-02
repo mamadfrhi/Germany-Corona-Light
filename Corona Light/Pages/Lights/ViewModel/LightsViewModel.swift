@@ -254,7 +254,7 @@ extension LightsViewModel: Notificationable {
         notificationManager.requestNotificationPermission()
     }
     
-    func sendLocalizedNotification(at timetInterval: TimeInterval) {
-        notificationManager.sendLocalizedNotification(at: timetInterval)
+    func sendLocalizedNotification(at timeInterval: TimeInterval) {
+        notificationManager.sendLocalizedNotification(at: timeInterval)
     }
 }

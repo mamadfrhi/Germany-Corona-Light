@@ -12,7 +12,7 @@ import RxSwift
 // MARK:- Interface
 protocol Notificationable {
     func requestNotificationPermission()
-    func sendLocalizedNotification(at timetInterval: TimeInterval)
+    func sendLocalizedNotification(at timeInterval: TimeInterval)
 }
 
 // MARK: - NotificationManager
@@ -66,20 +66,13 @@ extension NotificationManager: Notificationable {
     // Interface functions
     func requestNotificationPermission() {
         UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound]) {
-                (granted, error) in
-                if granted {
-                    print("Notifications permission granted.")
-                } else {
-                    print("Notifications permission denied because: \(String(describing: error?.localizedDescription)).")
-                }
-            }
+            .requestAuthorization(options: [.alert, .sound]) { _,_  in }
     }
     
-    func sendLocalizedNotification(at timetInterval: TimeInterval) {
+    func sendLocalizedNotification(at timeInterval: TimeInterval) {
         registerCategories()
         let content = makeContent(from: localizedNotification)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timetInterval,
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval,
                                                         repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString,
