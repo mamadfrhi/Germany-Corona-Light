@@ -20,10 +20,10 @@ class MainCoordinator: Coordinator {
     func start() {
         // prepare dependencies
         let networking = CoronaNetworking(coronaAPI: CoronaAPI())
-        let lightsVM = LightsViewModel(coronaNetworking: networking,
-                                        locationManager: LocationManager(),
-                                       notificationManager: NotificationManager(),
-                                       mainCoordinatorDelegate: self)
+        let lightsVM = LightsViewModel(mainCoordinatorDelegate: self,
+                                       coronaNetworking: networking,
+                                       locationManager: LocationManager(),
+                                       notificationManager: NotificationManager())
         let lightsVC = LightsVC(viewModel: lightsVM)
         // Show VC
         navigationController.pushViewController(lightsVC, animated: true)

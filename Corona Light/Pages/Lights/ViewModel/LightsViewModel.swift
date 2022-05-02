@@ -21,11 +21,11 @@ class LightsViewModel {
     private let mainCoordinatorDelegate: MainCoordinatorDelegate
     
     
-    // Inject -> network + location manager + notification
-    init(coronaNetworking: CoronaNetworkable,
+    // Inject: coordinator delegate + network + location manager + notification
+    init(mainCoordinatorDelegate: MainCoordinatorDelegate,
+         coronaNetworking: CoronaNetworkable,
          locationManager: LocationManager,
-         notificationManager: Notificationable,
-         mainCoordinatorDelegate: MainCoordinatorDelegate) {
+         notificationManager: Notificationable) {
         // Injecting dependencies
         self.api = coronaNetworking
         self.locationManager = locationManager
