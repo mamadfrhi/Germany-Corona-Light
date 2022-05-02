@@ -3,12 +3,12 @@
 //  iOS-Challenge
 //
 //  Created by iMamad on 6/3/20.
-//  Copyright © 2020 Farshad Mousalou. All rights reserved.
+//  Copyright © 2020 Mamad Farrahi. All rights reserved.
 //
 
 import UIKit
 
-class MainCoordinator : Coordinator {
+class MainCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
@@ -23,19 +23,13 @@ class MainCoordinator : Coordinator {
         navigationController.navigationBar.tintColor = .white
     }
     
-    // MARK:-
-    // MARK: Coordinate functions
-    // MARK:-
     func start() {
-        
-        // Fire up networking
-        // It made from CoronaAPI = Adapter of moya
+        // prepare dependencies
         let networking = CoronaNetworking(coronaAPI: CoronaAPI())
-        // Fire up ViewModel
-        let viewModel = LightsViewModel(coronaNetworking: networking,
+        let lightsVM = LightsViewModel(coronaNetworking: networking,
                                         locationManager: LocationManager(),
                                         notificationManager: NotificationManager())
-        let lightsVC = LightsVC(viewModel: viewModel,
+        let lightsVC = LightsVC(viewModel: lightsVM,
                                 coordinator: self)
         // Show VC
         navigationController.pushViewController(lightsVC, animated: true)
