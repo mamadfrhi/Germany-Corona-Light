@@ -36,6 +36,12 @@ class MainCoordinator: Coordinator {
     }
     
     func pushRulesPage(for statusColor: StatusColors) {
+        goToRulesPage(with: statusColor)
+    }
+}
+
+extension MainCoordinator {
+    private func goToRulesPage(with statusColor: StatusColors) {
         let vc = RulesVC(statusColor: statusColor)
         navigationController.pushViewController(vc, animated: true)
     }
