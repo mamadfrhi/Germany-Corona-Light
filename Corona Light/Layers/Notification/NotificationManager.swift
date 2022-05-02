@@ -24,7 +24,6 @@ extension Notificationable {
 }
 
 // MARK:- NotificationManager
-internal
 class NotificationManager: NSObject {
     
     override init() {

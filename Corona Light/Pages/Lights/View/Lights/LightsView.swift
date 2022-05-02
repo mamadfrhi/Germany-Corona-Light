@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-internal
 class LightsView: UIView {
     
     // MARK: Dependency

@@ -20,7 +20,6 @@ protocol CoronaNetworkableDelegate {
 }
 
 // Implementation
-internal
 class CoronaNetworking : CoronaNetworkable {
     
     // MARK: Variables

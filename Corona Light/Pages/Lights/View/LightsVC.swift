@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-internal
 class LightsVC : UIViewController {
     
     //MARK: Dependencies

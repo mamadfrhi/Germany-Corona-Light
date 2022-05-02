@@ -11,7 +11,6 @@ protocol LocationErrorStateable {
     func setLocationErrorState(locationError: LocationError)
 }
 
-internal
 class LocationErrorState: LocationErrorStateable {
     
     // MARK: Variables

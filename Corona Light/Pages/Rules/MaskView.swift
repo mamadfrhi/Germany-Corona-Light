@@ -7,10 +7,6 @@
 
 import UIKit
 
-
-// MARK: MaskView
-
-internal
 class MaskView: UIView {
     
     // Variables
