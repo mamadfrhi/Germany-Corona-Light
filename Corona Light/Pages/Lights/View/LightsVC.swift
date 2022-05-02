@@ -134,30 +134,22 @@ extension LightsVC {
     }
     
     private func setupErrorBindings() {
-        
-        
         // Location Error
         viewModel
             .locationError
             .observe(on: MainScheduler.instance)
-            .subscribe { (locationError) in
-                self.setLocationErrorState(locationError: locationError)
+            .subscribe {
+                self.setLocationErrorState(locationError: $0)
             }
             .disposed(by: disposeBag)
-        
         
         // Network Error
         viewModel
             .networkError
             .observe(on: MainScheduler.instance)
-            .subscribe { (networkError) in
-                
-                // if recently a network error occured
-                // It remains previous state
-                if self.currentStatus == .off,
-                   let networkError = networkError.element {
-                    self.networkErrorStateable?
-                        .setNewtorkErrorState(networkError: networkError)
+            .subscribe {
+                if let networkError = $0.element {
+                    self.setNewtorkErrorState(networkError: networkError)
                 }
             }
             .disposed(by: disposeBag)
