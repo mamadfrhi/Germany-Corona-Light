@@ -25,7 +25,6 @@ class LocationManager: NSObject {
     // MARK: Variables
     private var locationInfo: LocationInfo?
     private let locationManager = CLLocationManager()
-    private let locationConvertor = LocationAdapter()
     var delegate: LocationDelegate?
     
     // RX
@@ -45,14 +44,9 @@ class LocationManager: NSObject {
         exposedLocation.bind {
             (freshLocation) in
             guard let exposedLocation = freshLocation else { return}
-            self.locationConvertor.getLocationInfo(from: exposedLocation) {
-                [unowned self]
-                (locationInfo) in
-                // set local locationInfo
-                self.locationInfo = locationInfo
-                // call delegate
-                self.delegate?.didUpdateLocation(to: locationInfo)
-            }
+            self.locationInfo = LocationInfo(clLocation: exposedLocation)
+            // call delegate
+            self.delegate?.didUpdateLocation(to: self.locationInfo!)
         }
         .disposed(by: disposeBag)
     }
