@@ -75,7 +75,6 @@ extension LightsVC {
 
 //MARK: RX Binding
 extension LightsVC {
-    // Bindings
     private func setupGeneralBindings() {
         // Loading
         viewModel.loading
@@ -158,22 +157,15 @@ extension LightsVC {
     private func setupNavigationBindings() {
         
         // Light View Tap Gesture
-        // Tap gesture added on contentView & stackView
         lightsView.stackViewTapGesture
-            .rx
-            .event
-            .bind { _ in
-                self.pushRulesPage()
-            }
+            .rx.event
+            .bind { self.pushRulesPage() }
             .disposed(by: disposeBag)
-        
         
         // Rules Page Button
         lightsView.rulesPageButton
             .rx.tap
-            .subscribe { _ in
-                self.pushRulesPage()
-            }
+            .subscribe { self.pushRulesPage() }
             .disposed(by: disposeBag)
         
         
@@ -181,9 +173,7 @@ extension LightsVC {
         viewModel
             .notificationTapped
             .observe(on: MainScheduler.instance)
-            .subscribe { _ in
-                self.pushRulesPage()
-            }
+            .subscribe { self.pushRulesPage() }
             .disposed(by: disposeBag)
     }
 }
