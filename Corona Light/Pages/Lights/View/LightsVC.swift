@@ -61,15 +61,15 @@ extension LightsVC {
     private func setupStates() {
         // Location Error State
         self.locationErrorStateable =
-            LocationErrorState(lightsView: self.lightsView)
+        LocationErrorState(lightsView: self.lightsView)
         
         // Network Error State
         self.networkErrorStateable =
-            NewtorkErrorState(lightsView: self.lightsView)
+        NewtorkErrorState(lightsView: self.lightsView)
         
         // Normal State
         self.normalStateable =
-            NormalState(lightsView: self.lightsView)
+        NormalState(lightsView: self.lightsView)
     }
 }
 
@@ -159,13 +159,13 @@ extension LightsVC {
         // Light View Tap Gesture
         lightsView.stackViewTapGesture
             .rx.event
-            .bind { self.pushRulesPage() }
+            .bind { _ in self.pushRulesPage() }
             .disposed(by: disposeBag)
         
         // Rules Page Button
         lightsView.rulesPageButton
             .rx.tap
-            .subscribe { self.pushRulesPage() }
+            .subscribe { _ in self.pushRulesPage() }
             .disposed(by: disposeBag)
         
         
@@ -173,7 +173,7 @@ extension LightsVC {
         viewModel
             .notificationTapped
             .observe(on: MainScheduler.instance)
-            .subscribe { self.pushRulesPage() }
+            .subscribe { _ in self.pushRulesPage() }
             .disposed(by: disposeBag)
     }
 }
