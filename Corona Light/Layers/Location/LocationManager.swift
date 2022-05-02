@@ -24,7 +24,6 @@ class LocationManager: NSObject {
     
     // MARK: Variables
     private var locationInfo: LocationInfo?
-    private var localLocationInfo : LocationInfo?
     private let locationManager = CLLocationManager()
     private let locationConvertor = LocationAdapter()
     var delegate: LocationDelegate?
@@ -50,7 +49,7 @@ class LocationManager: NSObject {
                 [unowned self]
                 (locationInfo) in
                 // set local locationInfo
-                self.localLocationInfo = locationInfo
+                self.locationInfo = locationInfo
                 // call delegate
                 self.delegate?.didUpdateLocation(to: locationInfo)
             }
