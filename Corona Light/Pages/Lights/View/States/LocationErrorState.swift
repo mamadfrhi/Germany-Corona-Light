@@ -48,7 +48,7 @@ class LocationErrorState: LocationErrorStateable {
         
         // Description
         self.lightsView.resetDescriptionLabelConstraints(for: true)
-        self.lightsView.changeDesciriptionLabel(text: localizedErrorMessage)
+        self.lightsView.changeDescriptionLabel(text: localizedErrorMessage)
         
         // Gesture
         self.lightsView.handleStackViewGesture(isEnable: false)

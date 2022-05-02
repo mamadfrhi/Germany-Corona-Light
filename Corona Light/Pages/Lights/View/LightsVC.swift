@@ -89,15 +89,15 @@ extension LightsVC {
             .disposed(by: disposeBag)
         
         
-        // Town Status (Main Purpose)
+        // Town Status
         viewModel
             .townStatus
             .observe(on: MainScheduler.instance)
-            .subscribe { (statusColor) in
-                guard let statusColorElement = statusColor.element
+            .subscribe {
+                guard let statusColor = $0.element
                 else { return }
-                self.lightsView.currentOnlineLight = statusColorElement
-                self.currentStatus = statusColorElement
+                self.lightsView.currentOnlineLight = statusColor
+                self.currentStatus = statusColor
                 self.setNormlaState()
             }
             .disposed(by: disposeBag)
@@ -107,11 +107,9 @@ extension LightsVC {
         viewModel
             .locationInfo
             .observe(on: MainScheduler.instance)
-            .subscribe { (locationInfo) in
+            .subscribe {
                 var descriptionLabelText = ""
-                guard let locationInfo = locationInfo.element else {
-                    return
-                }
+                guard let locationInfo = $0.element else { return }
                 descriptionLabelText = ""
                 descriptionLabelText.append("📍 ")
                 let youAreAt = "youAreAt".localized() + "\n"
@@ -119,7 +117,7 @@ extension LightsVC {
                 descriptionLabelText.append("\t\(locationInfo.country ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.state ?? "")\n")
                 descriptionLabelText.append("\t\(locationInfo.town ?? "")")
-                self.lightsView.changeDesciriptionLabel(text: descriptionLabelText)
+                self.lightsView.changeDescriptionLabel(text: descriptionLabelText)
             }
             .disposed(by: disposeBag)
         
@@ -128,9 +126,7 @@ extension LightsVC {
         lightsView.retryButton
             .rx.tap
             .subscribe { _ in
-                // Trig locaiton manager
                 self.viewModel.startUpdatingLocation()
-                // Fresh request
                 self.viewModel.retryRequest()
             }
             .disposed(by: disposeBag)
