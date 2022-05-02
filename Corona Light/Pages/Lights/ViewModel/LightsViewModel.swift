@@ -44,6 +44,14 @@ class LightsViewModel {
     // MARK:- Variables
     
     private var requestSentTime: Date?
+    private var allowedToCallAPI: Bool {
+        // only if 30 sec passed from previous api call
+        let timeDifference = requestSentTime?.seconds(from: Date()) ?? 31
+        if  timeDifference > 30 {
+            return true
+        }
+        return false
+    }
     
     
     // MARK:- RX Variables
@@ -75,7 +83,7 @@ class LightsViewModel {
             .subscribe { _ in
                 if let townName = self.getLocationInfo()?.town {
                     print("I'm going to refresh stats!")
-                    self.getIncidents(of: townName, previousRequestTime: self.requestSentTime)
+                    self.getIncidents(of: townName)
                 }
             }
             .disposed(by: disposeable)
@@ -166,8 +174,7 @@ extension LightsViewModel: LocationDelegate {
         self.locationInfo.onNext(locationInfo)
         
         // Call API
-        self.getIncidents(of: townName,
-                          previousRequestTime: self.requestSentTime)
+        self.getIncidents(of: townName)
     }
     
     func didNotAllowedLocationServices() {
@@ -199,10 +206,10 @@ extension LightsViewModel: Locationable {
 
 // Corona Networkable
 extension LightsViewModel: CoronaNetworkable {
-    func getIncidents(of townName: String,
-                      previousRequestTime: Date?) {
-        self.api.getIncidents(of: townName,
-                              previousRequestTime: previousRequestTime)
+    func getIncidents(of townName: String) {
+        if allowedToCallAPI {
+            self.api.getIncidents(of: townName)
+        }
     }
     
     func retryRequest() {
@@ -211,9 +218,7 @@ extension LightsViewModel: CoronaNetworkable {
            let stateName = locationInfo.state,
            let townName = locationInfo.town,
            targetedStateName == stateName {
-            let longTimeAgo = Date(timeIntervalSince1970: 1)
-            self.getIncidents(of: townName,
-                              previousRequestTime: longTimeAgo)
+            self.getIncidents(of: townName)
         } else {
             self.locationError.onNext(.outOfBavariaError)
         }

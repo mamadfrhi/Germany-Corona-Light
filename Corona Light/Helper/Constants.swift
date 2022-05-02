@@ -19,3 +19,11 @@ enum StatusColors: String, CaseIterable {
     case green = "Green"
     case off
 }
+
+
+extension Date {
+    /// Returns the amount of seconds from another date
+    func seconds(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+    }
+}
