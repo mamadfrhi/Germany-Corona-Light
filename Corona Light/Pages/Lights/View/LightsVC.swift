@@ -13,10 +13,8 @@ internal
 class LightsVC : UIViewController {
     
     //MARK: Dependencies
-    
     private var lightsView: LightsView
     private var viewModel: LightsViewModel
-    private var coordinator: MainCoordinator
     
     //MARK: - States
     private var locationErrorStateable: LocationErrorStateable?
@@ -25,10 +23,8 @@ class LightsVC : UIViewController {
     
     
     //MARK: - Lifecycle
-    init(viewModel: LightsViewModel,
-         coordinator: MainCoordinator) {
+    init(viewModel: LightsViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         self.lightsView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
         self.setupVC()
@@ -45,7 +41,7 @@ class LightsVC : UIViewController {
     
     private func pushRulesPage() {
         if self.currentStatus != .off {
-            coordinator.pushRulesPage(for: self.currentStatus)
+            viewModel.didSelect(statusColor: self.currentStatus)
         }
     }
     

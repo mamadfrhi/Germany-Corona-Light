@@ -10,7 +10,7 @@ import Moya
 import RxSwift
 import RxCocoa
 
-internal
+
 class LightsViewModel {
     
     // MARK:- Dependencies
@@ -18,16 +18,19 @@ class LightsViewModel {
     private var api: CoronaNetworkable
     private let locationManager: Locationable
     private let notificationManager: Notificationable
+    private let mainCoordinatorDelegate: MainCoordinatorDelegate
     
     
     // Inject -> network + location manager + notification
     init(coronaNetworking: CoronaNetworkable,
          locationManager: LocationManager,
-         notificationManager: Notificationable) {
+         notificationManager: Notificationable,
+         mainCoordinatorDelegate: MainCoordinatorDelegate) {
         // Injecting dependencies
         self.api = coronaNetworking
         self.locationManager = locationManager
         self.notificationManager = notificationManager
+        self.mainCoordinatorDelegate = mainCoordinatorDelegate
         // Delegates conformation
         locationManager.delegate = self
         (coronaNetworking as? CoronaNetworking)?.delegate = self
@@ -122,6 +125,13 @@ class LightsViewModel {
         else if incidents > 100 {
             self.townStatus.onNext(.darkRed)
         }
+    }
+}
+
+//MARK: Navigation
+extension LightsViewModel: MainCoordinatorDelegate {
+    func didSelect(statusColor: StatusColors) {
+        mainCoordinatorDelegate.didSelect(statusColor: statusColor)
     }
 }
 

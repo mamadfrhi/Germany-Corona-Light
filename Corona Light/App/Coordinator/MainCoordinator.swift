@@ -22,20 +22,24 @@ class MainCoordinator: Coordinator {
         let networking = CoronaNetworking(coronaAPI: CoronaAPI())
         let lightsVM = LightsViewModel(coronaNetworking: networking,
                                         locationManager: LocationManager(),
-                                        notificationManager: NotificationManager())
-        let lightsVC = LightsVC(viewModel: lightsVM,
-                                coordinator: self)
+                                       notificationManager: NotificationManager(),
+                                       mainCoordinatorDelegate: self)
+        let lightsVC = LightsVC(viewModel: lightsVM)
         // Show VC
         navigationController.pushViewController(lightsVC, animated: true)
     }
-    
-    func pushRulesPage(for statusColor: StatusColors) {
-        goToRulesPage(with: statusColor)
+}
+
+// MARK: - MainCoordinator Delegate
+extension MainCoordinator: MainCoordinatorDelegate {
+    func didSelect(statusColor: StatusColors) {
+        goToRulesPage(by: statusColor)
     }
 }
 
+// MARK: - Navigation
 extension MainCoordinator {
-    private func goToRulesPage(with statusColor: StatusColors) {
+    func goToRulesPage(by statusColor: StatusColors) {
         let vc = RulesVC(statusColor: statusColor)
         navigationController.pushViewController(vc, animated: true)
     }
