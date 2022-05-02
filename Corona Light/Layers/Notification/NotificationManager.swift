@@ -12,19 +12,15 @@ import RxSwift
 // MARK:- Interface
 protocol Notificationable {
     func requestNotificationPermission()
-    func send(notification: Notification,
-              at timetInterval: TimeInterval)
-    func sendLocalizedNotification(at timetInterval: TimeInterval)
-}
-// Make interface functions -optional-
-extension Notificationable {
-    func send(notification: Notification,
-              at timetInterval: TimeInterval){}
-    func sendLocalizedNotification(at timetInterval: TimeInterval){}
+    func sendLocalizedNotification(at timeInterval: TimeInterval)
 }
 
-// MARK:- NotificationManager
+// MARK: - NotificationManager
 class NotificationManager: NSObject {
+    
+    private let center = UNUserNotificationCenter.current()
+    private let disposeable = DisposeBag()
+    let notificationTapped: PublishSubject<Bool> = PublishSubject()
     
     override init() {
         super.init()
@@ -32,13 +28,7 @@ class NotificationManager: NSObject {
         center.delegate = self
     }
     
-    // Variables
-    private let center = UNUserNotificationCenter.current()
-    // RX
-    private let disposeable = DisposeBag()
-    let notificationTapped: PublishSubject<Bool> = PublishSubject()
-    
-    private var localizedNotification : Notification {
+    private var localizedNotification: Notification {
         get {
             let title = "notificationTitle".localized()
             let body = "notificationBody".localized()
@@ -49,9 +39,7 @@ class NotificationManager: NSObject {
     }
 }
 
-// MARK:-
-// MARK: NotificationDelegate implementation (native delegate)
-// MARK:-
+// MARK: - NotificationCenter Delegate
 extension NotificationManager: UNUserNotificationCenterDelegate {
     // User tapped the banner or notification's category
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -73,37 +61,18 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     }
 }
 
-// MARK:-
 // MARK: Notificationable implementation
-// MARK:-
 extension NotificationManager: Notificationable {
     // Interface functions
     func requestNotificationPermission() {
         UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound]) {
-                (granted, error) in
-                if granted {
-                    print("Notifications permission granted.")
-                } else {
-                    print("Notifications permission denied because: \(String(describing: error?.localizedDescription)).")
-                }
-            }
+            .requestAuthorization(options: [.alert, .sound]) { _,_  in }
     }
-    func send(notification: Notification,
-              at timetInterval: TimeInterval) {
-        registerCategories()
-        let content = makeContent(from: notification)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timetInterval,
-                                                        repeats: false)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString,
-                                            content: content, trigger: trigger)
-        center.add(request)
-    }
-    func sendLocalizedNotification(at timetInterval: TimeInterval) {
+    
+    func sendLocalizedNotification(at timeInterval: TimeInterval) {
         registerCategories()
         let content = makeContent(from: localizedNotification)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timetInterval,
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval,
                                                         repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString,
