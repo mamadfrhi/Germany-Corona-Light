@@ -18,29 +18,20 @@ class LightsVC : UIViewController {
     private var viewModel: LightsViewModel
     private var coordinator: MainCoordinator
     
-    //MARK: States
+    //MARK: - States
     private var locationErrorStateable: LocationErrorStateable?
     private var networkErrorStateable: NetworkErrorStateable?
     private var normalStateable: NormalStateable?
     
     
-    //MARK: Lifecycle
-    
+    //MARK: - Lifecycle
     init(viewModel: LightsViewModel,
          coordinator: MainCoordinator) {
-        
         self.viewModel = viewModel
         self.coordinator = coordinator
         self.lightsView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
-        
-        
-        
-        // Setups
-        setupStates()
-        setupGeneralBindings()
-        setupErrorBindings()
-        setupNavigationBindings()
+        self.setupVC()
     }
     
     required init?(coder: NSCoder) {
@@ -63,9 +54,17 @@ class LightsVC : UIViewController {
     
     private var currentStatus: StatusColors = .off
     private let disposeBag = DisposeBag()
+}
+
+//MARK: RX Binding
+extension LightsVC {
+    private func setupVC() {
+        setupStates()
+        setupGeneralBindings()
+        setupErrorBindings()
+        setupNavigationBindings()
+    }
     
-    
-    //MARK: RX Binding
     // Bindings
     private func setupGeneralBindings() {
         
