@@ -37,6 +37,13 @@ class LightsVC : UIViewController {
         self.title = "coronaStatus".localized()
     }
     
+    private func setupVC() {
+        setupStates()
+        setupGeneralBindings()
+        setupErrorBindings()
+        setupNavigationBindings()
+    }
+    
     private func pushRulesPage() {
         if self.currentStatus != .off {
             viewModel.didSelect(statusColor: self.currentStatus)
@@ -45,30 +52,40 @@ class LightsVC : UIViewController {
     
     
     //MARK: - Variable
-    private let currentStatus: StatusColors = .off
+    private var currentStatus: StatusColors = .off
     private let disposeBag = DisposeBag()
+}
+
+//MARK: State Setups
+extension LightsVC {
+    // It calls from init
+    private func setupStates() {
+        // States
+        // Location Error State
+        self.locationErrorStateable =
+            LocationErrorState(lightsView: self.lightsView)
+        
+        // Network Error State
+        self.networkErrorStateable =
+            NewtorkErrorState(lightsView: self.lightsView)
+        
+        // Normal State
+        self.normalStateable =
+            NormalState(lightsView: self.lightsView)
+    }
 }
 
 //MARK: RX Binding
 extension LightsVC {
-    private func setupVC() {
-        setupStates()
-        setupGeneralBindings()
-        setupErrorBindings()
-        setupNavigationBindings()
-    }
-    
     // Bindings
     private func setupGeneralBindings() {
-        
-        
         // Loading
         viewModel.loading
-            .bind(onNext: { (loading) in
+            .bind(onNext: {
                 // Just show loading view for first request
                 // prevent showing for next refreshal requests
                 if self.currentStatus == .off {
-                    self.rx.isAnimating.onNext(loading)
+                    self.rx.isAnimating.onNext($0)
                 }
             })
             .disposed(by: disposeBag)
@@ -185,28 +202,7 @@ extension LightsVC {
     }
 }
 
-// MARK:-
-// MARK: States
-// MARK:-
 
-//MARK: State Setups
-extension LightsVC {
-    // It calls from init
-    private func setupStates() {
-        // States
-        // Location Error State
-        self.locationErrorStateable =
-            LocationErrorState(lightsView: self.lightsView)
-        
-        // Network Error State
-        self.networkErrorStateable =
-            NewtorkErrorState(lightsView: self.lightsView)
-        
-        // Normal State
-        self.normalStateable =
-            NormalState(lightsView: self.lightsView)
-    }
-}
 
 //MARK: State Setters
 // Location Error Stateable
