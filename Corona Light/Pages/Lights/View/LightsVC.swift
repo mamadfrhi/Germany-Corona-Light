@@ -58,9 +58,7 @@ class LightsVC : UIViewController {
 
 //MARK: State Setups
 extension LightsVC {
-    // It calls from init
     private func setupStates() {
-        // States
         // Location Error State
         self.locationErrorStateable =
             LocationErrorState(lightsView: self.lightsView)
