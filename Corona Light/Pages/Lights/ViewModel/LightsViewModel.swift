@@ -73,7 +73,7 @@ class LightsViewModel {
                    period: tenMinutes,
                    scheduler: MainScheduler.instance)
             .subscribe { _ in
-                if let townName = self.locationManager.locationInfo?.town {
+                if let townName = self.getLocationInfo()?.town {
                     print("I'm going to refresh stats!")
                     self.getIncidents(of: townName, previousRequestTime: self.requestSentTime)
                 }
@@ -155,7 +155,7 @@ extension LightsViewModel: LocationDelegate {
         // Check location
         guard let targetedStateName =
                 Bundle.main.object(forInfoDictionaryKey: "stateName") as? String
-              ,(stateName == targetedStateName)
+                ,(stateName == targetedStateName)
         else {
             self.locationError.onNext(.outOfBavariaError)
             return
@@ -177,6 +177,11 @@ extension LightsViewModel: LocationDelegate {
 
 // Locationable
 extension LightsViewModel: Locationable {
+    
+    func getLocationInfo() -> LocationInfo? {
+        locationManager.getLocationInfo()
+    }
+    
     func startUpdatingLocation() {
         // It causes a signal to locationInfo that is
         // observing in LightVC = refresh descriptionLabel
@@ -201,18 +206,11 @@ extension LightsViewModel: CoronaNetworkable {
     }
     
     func retryRequest() {
-        
-        // Wrap variables and check
-        if let targetedStateName =
-            Bundle.main.object(forInfoDictionaryKey: "stateName") as? String,
-           // Read from info.plist
-           
-           let stateName = self.locationManager.locationInfo?.state,
-           //For checking
-           let townName = self.locationManager.locationInfo?.town,
-           //For request parameter
-           
-           targetedStateName == stateName { // Check
+        if let targetedStateName = Bundle.main.object(forInfoDictionaryKey: "stateName") as? String,
+           let locationInfo = self.getLocationInfo(),
+           let stateName = locationInfo.state,
+           let townName = locationInfo.town,
+           targetedStateName == stateName {
             let longTimeAgo = Date(timeIntervalSince1970: 1)
             self.getIncidents(of: townName,
                               previousRequestTime: longTimeAgo)

@@ -10,21 +10,8 @@ import RxSwift
 
 // MARK: - Protocols
 protocol Locationable {
-    var locationInfo: LocationInfo? { get set}
-    func requestLocationPermission()
     func startUpdatingLocation()
-}
-// Make optionals
-extension Locationable {
-    func requestLocationPermission() {}
-    var locationInfo: LocationInfo? {
-        get {
-            return LocationInfo(country: nil, state: nil, town: nil)
-        }
-        set {
-            return
-        }
-    }
+    func getLocationInfo() -> LocationInfo?
 }
 protocol LocationDelegate {
     func didUpdateLocation(to newLocation: LocationInfo?)
@@ -36,6 +23,7 @@ protocol LocationDelegate {
 class LocationManager: NSObject {
     
     // MARK: Variables
+    private var locationInfo: LocationInfo?
     private var localLocationInfo : LocationInfo?
     private let locationManager = CLLocationManager()
     private let locationConvertor = LocationAdapter()
@@ -73,18 +61,7 @@ class LocationManager: NSObject {
 
 // MARK: - Locationable
 extension LocationManager: Locationable {
-    var locationInfo: LocationInfo? {
-        get {
-            return localLocationInfo
-        }
-        set {
-            self.localLocationInfo = newValue
-        }
-    }
-    
-    func requestLocationPermission() {
-        self.locationManager.requestAlwaysAuthorization()
-    }
+    func getLocationInfo() -> LocationInfo? { self.locationInfo }
     
     func startUpdatingLocation() {
         self.locationManager.startUpdatingLocation()
@@ -108,11 +85,9 @@ extension LocationManager: CLLocationManagerDelegate {
         switch status {
         
         case .notDetermined:
-            print("Not determined!")
-            requestLocationPermission()
+            self.locationManager.requestAlwaysAuthorization()
             
         case .authorizedAlways, .authorizedWhenInUse:
-            print("Location permission allowed!")
             locationManager.startUpdatingLocation()
             
         case .restricted, .denied:

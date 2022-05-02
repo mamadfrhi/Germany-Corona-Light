@@ -256,8 +256,8 @@
 		8756220B257A846200A705D7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				87562214257A853600A705D7 /* LightsViewModel.swift */,
 				8719526728202A8800F8EC50 /* LightsVMAbstraction.swift */,
+				87562214257A853600A705D7 /* LightsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
