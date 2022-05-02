@@ -80,7 +80,7 @@ extension LightsVC {
         // Town Status (Main Purpose)
         viewModel
             .townStatus
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe { (statusColor) in
                 guard let statusColorElement = statusColor.element
                 else { return }
@@ -94,7 +94,7 @@ extension LightsVC {
         // Location Info
         viewModel
             .locationInfo
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe { (locationInfo) in
                 var descriptionLabelText = ""
                 guard let locationInfo = locationInfo.element else {
@@ -131,7 +131,7 @@ extension LightsVC {
         // Location Error
         viewModel
             .locationError
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe { (locationError) in
                 self.setLocationErrorState(locationError: locationError)
             }
@@ -141,7 +141,7 @@ extension LightsVC {
         // Network Error
         viewModel
             .networkError
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe { (networkError) in
                 
                 // if recently a network error occured
@@ -180,7 +180,7 @@ extension LightsVC {
         // Notification Tapped
         viewModel
             .notificationTapped
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe { _ in
                 self.pushRulesPage()
             }
