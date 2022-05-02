@@ -20,16 +20,14 @@ protocol CoronaNetworkableDelegate {
 }
 
 // Implementation
-class CoronaNetworking : CoronaNetworkable {
+class CoronaNetworking: CoronaNetworkable {
     
     // MARK: Variables
     private var _api : CoronaAPI
     var delegate: CoronaNetworkableDelegate?
     
     // MARK: Init
-    init(coronaAPI: CoronaAPI) {
-        self._api = coronaAPI
-    }
+    init(coronaAPI: CoronaAPI) { self._api = coronaAPI }
     
     // MARK: Functions
     func getIncidents(of townName: String,
