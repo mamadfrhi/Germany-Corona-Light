@@ -44,9 +44,10 @@ class LocationManager: NSObject {
         exposedLocation.bind {
             (freshLocation) in
             guard let exposedLocation = freshLocation else { return}
-            LocationInfo(clLocation: exposedLocation).convert {
-                self.locationInfo = $0
-                self.delegate?.didUpdateLocation(to: $0)
+            LocationInfo(clLocation: exposedLocation).get {
+                [weak self] in
+                self?.locationInfo = $0
+                self?.delegate?.didUpdateLocation(to: $0)
             }
         }
         .disposed(by: disposeBag)

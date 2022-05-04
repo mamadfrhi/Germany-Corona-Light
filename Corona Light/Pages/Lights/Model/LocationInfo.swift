@@ -8,8 +8,7 @@
 import Foundation
 import CoreLocation
 
-class LocationInfo {
-    
+struct LocationInfo {
     private var clLocation: CLLocation
     var country: String?
     var state: String?
@@ -17,19 +16,18 @@ class LocationInfo {
     
     init(clLocation: CLLocation) { self.clLocation = clLocation }
     
-    func convert(completion: @escaping (LocationInfo)->()) {
+    func get(completion: @escaping (LocationInfo)->()) {
         let geocoder = CLGeocoder()
         let germanyLocale = Locale(identifier: "de")
         
         geocoder.reverseGeocodeLocation(clLocation, preferredLocale: germanyLocale) {
-            [weak self]
             placeMarks, error in
-            guard let self = self else { return }
             guard let placeMark = placeMarks?.first, error == nil else { return }
-            self.country = placeMark.country
-            self.state = placeMark.administrativeArea
-            self.town = placeMark.subAdministrativeArea
-            completion(self)
+            var locationInfo = LocationInfo(clLocation: clLocation)
+            locationInfo.country = placeMark.country
+            locationInfo.state = placeMark.administrativeArea
+            locationInfo.town = placeMark.subAdministrativeArea
+            completion(locationInfo)
         }
     }
 }
