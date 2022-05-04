@@ -76,18 +76,13 @@ extension LocationManager: CLLocationManagerDelegate {
     // It executes automatically
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {
-        
         switch status {
-        
         case .notDetermined:
             self.locationManager.requestAlwaysAuthorization()
-            
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
-            
         case .restricted, .denied:
             delegate?.didNotAllowedLocationServices()
-            
         @unknown default:
             fatalError("Unknow location permission")
         }
