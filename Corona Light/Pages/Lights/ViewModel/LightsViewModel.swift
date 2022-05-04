@@ -96,7 +96,7 @@ class LightsViewModel {
                 guard let previous = previous else { return}
                 if current != previous { // status changed
                     // send notification
-                    self.sendLocalizedNotification(at: 1)
+                    self.sendLocalizedNotification()
                 }
             }
             .disposed(by: disposeable)
@@ -254,7 +254,7 @@ extension LightsViewModel: Notificationable {
         notificationManager.requestNotificationPermission()
     }
     
-    func sendLocalizedNotification(at timeInterval: TimeInterval) {
-        notificationManager.sendLocalizedNotification(at: timeInterval)
+    func sendLocalizedNotification() {
+        notificationManager.sendLocalizedNotification()
     }
 }

@@ -9,13 +9,11 @@ import NotificationCenter
 import RxSwift
 
 
-// MARK:- Interface
 protocol Notificationable {
     func requestNotificationPermission()
-    func sendLocalizedNotification(at timeInterval: TimeInterval)
+    func sendLocalizedNotification()
 }
 
-// MARK: - NotificationManager
 class NotificationManager: NSObject {
     
     private let center = UNUserNotificationCenter.current()
@@ -24,7 +22,6 @@ class NotificationManager: NSObject {
     
     override init() {
         super.init()
-        UNUserNotificationCenter.current().delegate = self
         center.delegate = self
     }
     
@@ -61,7 +58,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     }
 }
 
-// MARK: Notificationable implementation
+// MARK: Notificationable
 extension NotificationManager: Notificationable {
     // Interface functions
     func requestNotificationPermission() {
@@ -69,14 +66,12 @@ extension NotificationManager: Notificationable {
             .requestAuthorization(options: [.alert, .sound]) { _,_  in }
     }
     
-    func sendLocalizedNotification(at timeInterval: TimeInterval) {
+    func sendLocalizedNotification() {
         registerCategories()
         let content = makeContent(from: localizedNotification)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval,
-                                                        repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString,
-                                            content: content, trigger: trigger)
+                                            content: content, trigger: nil)
         center.add(request)
     }
     
