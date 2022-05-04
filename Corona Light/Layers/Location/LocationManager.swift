@@ -28,7 +28,7 @@ class LocationManager: NSObject {
     var delegate: LocationDelegate?
     
     // RX
-    let exposedLocation: PublishSubject<CLLocation?> = PublishSubject()
+    private let exposedLocation: PublishSubject<CLLocation?> = PublishSubject()
     private let disposeBag = DisposeBag()
     
     override init() {
@@ -44,9 +44,10 @@ class LocationManager: NSObject {
         exposedLocation.bind {
             (freshLocation) in
             guard let exposedLocation = freshLocation else { return}
-            self.locationInfo = LocationInfo(clLocation: exposedLocation)
-            // call delegate
-            self.delegate?.didUpdateLocation(to: self.locationInfo!)
+            LocationInfo(clLocation: exposedLocation).convert {
+                self.locationInfo = $0
+                self.delegate?.didUpdateLocation(to: $0)
+            }
         }
         .disposed(by: disposeBag)
     }
