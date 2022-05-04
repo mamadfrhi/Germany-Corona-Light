@@ -55,6 +55,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
         if #available(iOS 14.0, *) {
             completionHandler([.sound, .banner])
         }
+        completionHandler([.sound])
     }
 }
 
