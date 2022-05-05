@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 
-class LightsVM {
+class LightsVM: LightsVMType {
     
     // MARK: Variables
     private var localLocationInfo: LocationInfo?
@@ -40,7 +40,7 @@ class LightsVM {
     private let api: CoronaNetworkable
     private let locationManager: Locationable
     private let notificationManager: Notificationable
-    private let mainCoordinatorDelegate: MainCoordinatorDelegate
+    let mainCoordinatorDelegate: MainCoordinatorDelegate
     
     
     // Inject: coordinator delegate + network + location manager + notification
