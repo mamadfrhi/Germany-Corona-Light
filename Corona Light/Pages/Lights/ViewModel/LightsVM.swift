@@ -30,15 +30,26 @@ class LightsVM {
         self.locationManager = locationManager
         self.notificationManager = notificationManager
         self.mainCoordinatorDelegate = mainCoordinatorDelegate
-        // Delegates conformation
-        locationManager.delegate = self
-        (coronaNetworking as? CoronaNetworking)?.delegate = self
+        
+        start()
+    }
+    
+    private func start() {
         requestNotificationPermission()
+        delegatesSetups()
+        rxSetups()
+    }
+    
+    private func delegatesSetups() {
+        (locationManager as? LocationManager)?.delegate = self
+        (api as? CoronaNetworking)?.delegate = self
+    }
+    
+    private func rxSetups() {
         // setup RX related
         setupRefreshTimer()
         setupNotification()
     }
-    
     
     // MARK: Variables
     private var requestSentTime: Date?
