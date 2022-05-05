@@ -112,13 +112,13 @@ class LightsVM {
     private func setTownStatus(by incidents: Int) {
         
         switch incidents {
-        case ..<35:
+        case ..<300:
             self.townStatus.onNext(.green)
-        case 35...50:
+        case 300...600:
             self.townStatus.onNext(.yellow)
-        case 51...100:
+        case 601...1200:
             self.townStatus.onNext(.red)
-        case 101..<Int.max:
+        case 1201..<Int.max:
             self.townStatus.onNext(.darkRed)
         default:
             self.townStatus.onNext(.off)
