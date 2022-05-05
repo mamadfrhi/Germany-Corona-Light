@@ -46,7 +46,7 @@ class LightsVM {
     // Inject: coordinator delegate + network + location manager + notification
     init(mainCoordinatorDelegate: MainCoordinatorDelegate,
          coronaNetworking: CoronaNetworkable,
-         locationManager: LocationManager,
+         locationManager: Locationable,
          notificationManager: Notificationable) {
         // Injecting dependencies
         self.api = coronaNetworking
