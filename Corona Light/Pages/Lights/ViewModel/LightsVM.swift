@@ -122,6 +122,8 @@ class LightsVM {
             self.townStatus.onNext(.red)
         case 101..<Int.max:
             self.townStatus.onNext(.darkRed)
+        default:
+            self.townStatus.onNext(.off)
         }
     }
 }
