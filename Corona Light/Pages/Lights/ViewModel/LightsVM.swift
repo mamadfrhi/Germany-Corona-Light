@@ -44,7 +44,8 @@ class LightsVM: LightsVMType {
     
     
     // Inject: coordinator delegate + network + location manager + notification
-    init(mainCoordinatorDelegate: MainCoordinatorDelegate,
+    // TODO: put all dependencies on a Services class and then inject
+    required init(mainCoordinatorDelegate: MainCoordinatorDelegate,
          coronaNetworking: CoronaNetworkable,
          locationManager: Locationable,
          notificationManager: Notificationable) {
