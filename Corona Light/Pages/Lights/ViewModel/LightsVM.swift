@@ -14,7 +14,7 @@ import RxCocoa
 class LightsVM {
     
     // MARK: Dependencies
-    private var api: CoronaNetworkable
+    private let api: CoronaNetworkable
     private let locationManager: Locationable
     private let notificationManager: Notificationable
     private let mainCoordinatorDelegate: MainCoordinatorDelegate
@@ -86,22 +86,20 @@ class LightsVM {
     }
     
     private func setupNotification() {
-        // If townStatus changed -> SEND notification to user
+        // If townStatus changed -> send notification to user
         townStatus.currentAndPrevious()
             .subscribe { (current, previous) in
                 guard let previous = previous else { return}
-                if current != previous { // status changed
-                    // send notification
+                if current != previous {
                     self.sendLocalizedNotification()
                 }
             }
             .disposed(by: disposeable)
         
         
-        // Check type of injected NotificationManager is safe
         guard let notificationManager = notificationManager as? NotificationManager
         else { return}
-        // Notification button or banner TAPPED
+        // Notification button or banner tapped
         notificationManager.notificationTapped
             .subscribe { _ in
                 print("Notif tapped! I'm in VM")
