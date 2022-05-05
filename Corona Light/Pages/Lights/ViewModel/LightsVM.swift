@@ -13,6 +13,29 @@ import RxCocoa
 
 class LightsVM {
     
+    // MARK: Variables
+    private var localLocationInfo: LocationInfo?
+    private var requestSentTime: Date?
+    private var allowedToCallAPI: Bool {
+        // only if 30 sec passed from previous api call
+        let timeDifference = requestSentTime?.seconds(from: Date()) ?? 31
+        if  timeDifference > 30 {
+            return true
+        }
+        return false
+    }
+    
+    // MARK: RX Variables
+    let loading: PublishSubject<Bool> = PublishSubject()
+    let networkError : PublishSubject<NetworkError> = PublishSubject()
+    let locationError : PublishSubject<LocationError> = PublishSubject()
+    let notificationTapped : PublishSubject<Bool> = PublishSubject()
+    
+    let townStatus : PublishSubject<StatusColors> = PublishSubject()
+    let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
+    
+    private let disposeable = DisposeBag()
+    
     // MARK: Dependencies
     private let api: CoronaNetworkable
     private let locationManager: Locationable
@@ -50,35 +73,6 @@ class LightsVM {
         setupRefreshTimer()
         setupNotification()
     }
-    
-    // MARK: Variables
-    private var requestSentTime: Date?
-    private var allowedToCallAPI: Bool {
-        // only if 30 sec passed from previous api call
-        let timeDifference = requestSentTime?.seconds(from: Date()) ?? 31
-        if  timeDifference > 30 {
-            return true
-        }
-        return false
-    }
-    
-    
-    // MARK: RX Variables
-    // UI
-    let loading: PublishSubject<Bool> = PublishSubject()
-    let networkError : PublishSubject<NetworkError> = PublishSubject()
-    let locationError : PublishSubject<LocationError> = PublishSubject()
-    let notificationTapped : PublishSubject<Bool> = PublishSubject()
-    
-    // Logic
-    let townStatus : PublishSubject<StatusColors> = PublishSubject()
-    let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
-    
-    private let disposeable = DisposeBag()
-    
-    // For reset purpose
-    private var localLocationInfo: LocationInfo?
-    
     
     // MARK: RX Setups
     private func setupRefreshTimer() {
@@ -120,6 +114,8 @@ class LightsVM {
             .disposed(by: disposeable)
     }
     
+    
+    // MARK: Functions
     private func setTownStatus(by incidents: Int) {
         
         switch incidents {
@@ -141,9 +137,7 @@ class LightsVM {
 //MARK: Locationable
 extension LightsVM: Locationable {
     
-    func getLocationInfo() -> LocationInfo? {
-        locationManager.getLocationInfo()
-    }
+    func getLocationInfo() -> LocationInfo? { locationManager.getLocationInfo() }
     
     func startUpdatingLocation() {
         // It causes a signal to locationInfo that is
