@@ -12,7 +12,15 @@ import RxSwift
 protocol Locationable {
     func startUpdatingLocation()
     func getLocationInfo() -> LocationInfo?
+    var delegate: LocationDelegate? { get set }
 }
+extension Locationable { // make delegate optional
+    var delegate: LocationDelegate? {
+        get { nil }
+        set { delegate = newValue }
+    }
+}
+
 protocol LocationDelegate {
     func didUpdateLocation(to newLocation: LocationInfo?)
     func didNotAllowedLocationServices()
@@ -25,7 +33,15 @@ class LocationManager: NSObject {
     // MARK: Variables
     private var locationInfo: LocationInfo?
     private let locationManager = CLLocationManager()
-    var delegate: LocationDelegate?
+    private var _delegate: LocationDelegate?
+    var delegate: LocationDelegate? {
+        get {
+            return self._delegate
+        }
+        set {
+            _delegate = newValue
+        }
+    }
     
     // RX
     private let exposedLocation: PublishSubject<CLLocation?> = PublishSubject()
@@ -47,7 +63,7 @@ class LocationManager: NSObject {
             LocationInfo(clLocation: exposedLocation).get {
                 [weak self] in
                 self?.locationInfo = $0
-                self?.delegate?.didUpdateLocation(to: $0)
+                self?._delegate?.didUpdateLocation(to: $0)
             }
         }
         .disposed(by: disposeBag)
@@ -82,7 +98,7 @@ extension LocationManager: CLLocationManagerDelegate {
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
         case .restricted, .denied:
-            delegate?.didNotAllowedLocationServices()
+            _delegate?.didNotAllowedLocationServices()
         @unknown default:
             fatalError("Unknow location permission")
         }

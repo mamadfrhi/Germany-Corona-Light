@@ -38,7 +38,7 @@ class LightsVM: LightsVMType {
     
     // MARK: Dependencies
     private let api: CoronaNetworkable
-    private let locationManager: Locationable
+    private var locationManager: Locationable
     private let notificationManager: Notificationable
     let mainCoordinatorDelegate: MainCoordinatorDelegate
     
@@ -60,17 +60,16 @@ class LightsVM: LightsVMType {
     
     private func start() {
         requestNotificationPermission()
-        delegatesSetups()
-        rxSetups()
+        setupDelegates()
+        setupRX()
     }
     
-    private func delegatesSetups() {
-        (locationManager as? LocationManager)?.delegate = self
+    private func setupDelegates() {
+        locationManager.delegate = self
         (api as? CoronaNetworking)?.delegate = self
     }
     
-    private func rxSetups() {
-        // setup RX related
+    private func setupRX() {
         setupRefreshTimer()
         setupNotification()
     }
