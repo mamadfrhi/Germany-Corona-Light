@@ -13,7 +13,7 @@ class LightsVC : UIViewController {
     
     //MARK: Dependencies
     private var lightsView: LightsView
-    private var viewModel: LightsViewModel
+    private var viewModel: LightsVM
     
     //MARK: - States
     private var locationErrorStateable: LocationErrorStateable?
@@ -22,7 +22,7 @@ class LightsVC : UIViewController {
     
     
     //MARK: - Lifecycle
-    init(viewModel: LightsViewModel) {
+    init(viewModel: LightsVM) {
         self.viewModel = viewModel
         self.lightsView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)

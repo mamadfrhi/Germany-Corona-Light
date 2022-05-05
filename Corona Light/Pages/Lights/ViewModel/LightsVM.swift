@@ -11,10 +11,9 @@ import RxSwift
 import RxCocoa
 
 
-class LightsViewModel {
+class LightsVM {
     
-    // MARK:- Dependencies
-    
+    // MARK: Dependencies
     private var api: CoronaNetworkable
     private let locationManager: Locationable
     private let notificationManager: Notificationable
@@ -41,8 +40,7 @@ class LightsViewModel {
     }
     
     
-    // MARK:- Variables
-    
+    // MARK: Variables
     private var requestSentTime: Date?
     private var allowedToCallAPI: Bool {
         // only if 30 sec passed from previous api call
@@ -54,8 +52,7 @@ class LightsViewModel {
     }
     
     
-    // MARK:- RX Variables
-    
+    // MARK: RX Variables
     // UI
     let loading: PublishSubject<Bool> = PublishSubject()
     let networkError : PublishSubject<NetworkError> = PublishSubject()
@@ -72,8 +69,7 @@ class LightsViewModel {
     private var localLocationInfo: LocationInfo?
     
     
-    // MARK:- RX Setups
-    
+    // MARK: RX Setups
     private func setupRefreshTimer() {
         let tenMinutes = RxTimeInterval.seconds(60 * 10)
         Observable<Int>
@@ -115,40 +111,41 @@ class LightsViewModel {
             .disposed(by: disposeable)
     }
     
-    // Function
     private func setTownStatus(by incidents: Int) {
-        // Green
-        if incidents < 35 {
+        
+        switch incidents {
+        case ..<35:
             self.townStatus.onNext(.green)
-        }
-        // Yellow
-        else if incidents >= 35 && incidents <= 50 {
+        case 35...50:
             self.townStatus.onNext(.yellow)
-        }
-        // Red
-        else if incidents >= 35 && incidents <= 50 {
+        case 51...100:
             self.townStatus.onNext(.red)
-        }
-        // DarkRed
-        else if incidents > 100 {
+        case 101..<Int.max:
             self.townStatus.onNext(.darkRed)
         }
     }
 }
 
-//MARK: Navigation
-extension LightsViewModel: MainCoordinatorDelegate {
-    func didSelect(statusColor: StatusColors) {
-        mainCoordinatorDelegate.didSelect(statusColor: statusColor)
+
+//MARK: Locationable
+extension LightsVM: Locationable {
+    
+    func getLocationInfo() -> LocationInfo? {
+        locationManager.getLocationInfo()
+    }
+    
+    func startUpdatingLocation() {
+        // It causes a signal to locationInfo that is
+        // observing in LightVC = refresh descriptionLabel
+        if let locationInfo = self.localLocationInfo {
+            self.locationInfo.onNext(locationInfo)
+        }
+        // Invoke looking for location
+        locationManager.startUpdatingLocation()
     }
 }
-
-//MARK:-
-//MARK: Location
-//MARK:-
-
 // Location Delegate
-extension LightsViewModel: LocationDelegate {
+extension LightsVM: LocationDelegate {
     func didUpdateLocation(to locationInfo: LocationInfo?) {
         print("Did update location at this town: \(String(describing: locationInfo?.town)).\n")
         
@@ -182,30 +179,9 @@ extension LightsViewModel: LocationDelegate {
     }
 }
 
-// Locationable
-extension LightsViewModel: Locationable {
-    
-    func getLocationInfo() -> LocationInfo? {
-        locationManager.getLocationInfo()
-    }
-    
-    func startUpdatingLocation() {
-        // It causes a signal to locationInfo that is
-        // observing in LightVC = refresh descriptionLabel
-        if let locationInfo = self.localLocationInfo {
-            self.locationInfo.onNext(locationInfo)
-        }
-        // Invoke looking for location
-        locationManager.startUpdatingLocation()
-    }
-}
 
-//MARK:-
-//MARK: Network
-//MARK:-
-
-// Corona Networkable
-extension LightsViewModel: CoronaNetworkable {
+//MARK: Networkable
+extension LightsVM: CoronaNetworkable {
     func getIncidents(of townName: String) {
         if allowedToCallAPI {
             self.api.getIncidents(of: townName)
@@ -226,7 +202,7 @@ extension LightsViewModel: CoronaNetworkable {
 }
 
 // Corona Networkable Delegate
-extension LightsViewModel: CoronaNetworkableDelegate {
+extension LightsVM: CoronaNetworkableDelegate {
     func isLoading(loading: Bool) {
         self.loading.onNext(loading)
     }
@@ -245,11 +221,9 @@ extension LightsViewModel: CoronaNetworkableDelegate {
     }
 }
 
-//MARK:-
-//MARK: Notification
-//MARK:-
 
-extension LightsViewModel: Notificationable {
+//MARK: Notificationable
+extension LightsVM: Notificationable {
     func requestNotificationPermission() {
         notificationManager.requestNotificationPermission()
     }
@@ -258,3 +232,12 @@ extension LightsViewModel: Notificationable {
         notificationManager.sendLocalizedNotification()
     }
 }
+
+
+//MARK: Navigation
+extension LightsVM: MainCoordinatorDelegate {
+    func didSelect(statusColor: StatusColors) {
+        mainCoordinatorDelegate.didSelect(statusColor: statusColor)
+    }
+}
+
