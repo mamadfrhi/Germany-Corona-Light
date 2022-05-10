@@ -34,6 +34,7 @@ class LocationErrorState: LocationErrorStateable {
     }
 }
 
+// MARK: Template
 extension LocationErrorState: Stateable {
     func handleGeneralViews() {
         // Handle Views

@@ -34,6 +34,7 @@ class NetworkErrorState: NetworkErrorStateable {
     }
 }
 
+// MARK: Template
 extension NetworkErrorState: Stateable {
     func handleGeneralViews() {
         // Handle Views
