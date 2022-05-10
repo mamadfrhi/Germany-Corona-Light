@@ -11,38 +11,10 @@ import RxSwift
 import RxCocoa
 
 
-class LightsViewModel {
+class LightsVM: LightsVMType {
     
-    // MARK:- Dependencies
-    
-    private var api: CoronaNetworkable
-    private let locationManager: Locationable
-    private let notificationManager: Notificationable
-    private let mainCoordinatorDelegate: MainCoordinatorDelegate
-    
-    
-    // Inject: coordinator delegate + network + location manager + notification
-    init(mainCoordinatorDelegate: MainCoordinatorDelegate,
-         coronaNetworking: CoronaNetworkable,
-         locationManager: LocationManager,
-         notificationManager: Notificationable) {
-        // Injecting dependencies
-        self.api = coronaNetworking
-        self.locationManager = locationManager
-        self.notificationManager = notificationManager
-        self.mainCoordinatorDelegate = mainCoordinatorDelegate
-        // Delegates conformation
-        locationManager.delegate = self
-        (coronaNetworking as? CoronaNetworking)?.delegate = self
-        requestNotificationPermission()
-        // setup RX related
-        setupRefreshTimer()
-        setupNotification()
-    }
-    
-    
-    // MARK:- Variables
-    
+    // MARK: Variables
+    private var localLocationInfo: LocationInfo?
     private var requestSentTime: Date?
     private var allowedToCallAPI: Bool {
         // only if 30 sec passed from previous api call
@@ -53,27 +25,56 @@ class LightsViewModel {
         return false
     }
     
-    
-    // MARK:- RX Variables
-    
-    // UI
+    // MARK: RX Variables
     let loading: PublishSubject<Bool> = PublishSubject()
     let networkError : PublishSubject<NetworkError> = PublishSubject()
     let locationError : PublishSubject<LocationError> = PublishSubject()
     let notificationTapped : PublishSubject<Bool> = PublishSubject()
     
-    // Logic
     let townStatus : PublishSubject<StatusColors> = PublishSubject()
     let locationInfo : PublishSubject<LocationInfo> = PublishSubject()
     
     private let disposeable = DisposeBag()
     
-    // For reset purpose
-    private var localLocationInfo: LocationInfo?
+    // MARK: Dependencies
+    private let api: CoronaNetworkable
+    private var locationManager: Locationable
+    private let notificationManager: Notificationable
+    let mainCoordinatorDelegate: MainCoordinatorDelegate
     
     
-    // MARK:- RX Setups
+    // Inject: coordinator delegate + network + location manager + notification
+    // TODO: put all dependencies on a Services class and then inject
+    required init(mainCoordinatorDelegate: MainCoordinatorDelegate,
+         coronaNetworking: CoronaNetworkable,
+         locationManager: Locationable,
+         notificationManager: Notificationable) {
+        // Injecting dependencies
+        self.api = coronaNetworking
+        self.locationManager = locationManager
+        self.notificationManager = notificationManager
+        self.mainCoordinatorDelegate = mainCoordinatorDelegate
+        
+        start()
+    }
     
+    private func start() {
+        requestNotificationPermission()
+        setupDelegates()
+        setupRX()
+    }
+    
+    private func setupDelegates() {
+        locationManager.delegate = self
+        (api as? CoronaNetworking)?.delegate = self
+    }
+    
+    private func setupRX() {
+        setupRefreshTimer()
+        setupNotification()
+    }
+    
+    // MARK: RX Setups
     private func setupRefreshTimer() {
         let tenMinutes = RxTimeInterval.seconds(60 * 10)
         Observable<Int>
@@ -90,22 +91,20 @@ class LightsViewModel {
     }
     
     private func setupNotification() {
-        // If townStatus changed -> SEND notification to user
+        // If townStatus changed -> send notification to user
         townStatus.currentAndPrevious()
             .subscribe { (current, previous) in
                 guard let previous = previous else { return}
-                if current != previous { // status changed
-                    // send notification
-                    self.sendLocalizedNotification(at: 1)
+                if current != previous {
+                    self.sendLocalizedNotification()
                 }
             }
             .disposed(by: disposeable)
         
         
-        // Check type of injected NotificationManager is safe
         guard let notificationManager = notificationManager as? NotificationManager
         else { return}
-        // Notification button or banner TAPPED
+        // Notification button or banner tapped
         notificationManager.notificationTapped
             .subscribe { _ in
                 print("Notif tapped! I'm in VM")
@@ -115,40 +114,43 @@ class LightsViewModel {
             .disposed(by: disposeable)
     }
     
-    // Function
+    
+    // MARK: Functions
     private func setTownStatus(by incidents: Int) {
-        // Green
-        if incidents < 35 {
+        
+        switch incidents {
+        case ..<300:
             self.townStatus.onNext(.green)
-        }
-        // Yellow
-        else if incidents >= 35 && incidents <= 50 {
+        case 300...600:
             self.townStatus.onNext(.yellow)
-        }
-        // Red
-        else if incidents >= 35 && incidents <= 50 {
+        case 601...1200:
             self.townStatus.onNext(.red)
-        }
-        // DarkRed
-        else if incidents > 100 {
+        case 1201..<Int.max:
             self.townStatus.onNext(.darkRed)
+        default:
+            self.townStatus.onNext(.off)
         }
     }
 }
 
-//MARK: Navigation
-extension LightsViewModel: MainCoordinatorDelegate {
-    func didSelect(statusColor: StatusColors) {
-        mainCoordinatorDelegate.didSelect(statusColor: statusColor)
+
+//MARK: Locationable
+extension LightsVM: Locationable {
+    
+    func getLocationInfo() -> LocationInfo? { locationManager.getLocationInfo() }
+    
+    func startUpdatingLocation() {
+        // It causes a signal to locationInfo that is
+        // observing in LightVC = refresh descriptionLabel
+        if let locationInfo = self.localLocationInfo {
+            self.locationInfo.onNext(locationInfo)
+        }
+        // Invoke looking for location
+        locationManager.startUpdatingLocation()
     }
 }
-
-//MARK:-
-//MARK: Location
-//MARK:-
-
 // Location Delegate
-extension LightsViewModel: LocationDelegate {
+extension LightsVM: LocationDelegate {
     func didUpdateLocation(to locationInfo: LocationInfo?) {
         print("Did update location at this town: \(String(describing: locationInfo?.town)).\n")
         
@@ -182,30 +184,9 @@ extension LightsViewModel: LocationDelegate {
     }
 }
 
-// Locationable
-extension LightsViewModel: Locationable {
-    
-    func getLocationInfo() -> LocationInfo? {
-        locationManager.getLocationInfo()
-    }
-    
-    func startUpdatingLocation() {
-        // It causes a signal to locationInfo that is
-        // observing in LightVC = refresh descriptionLabel
-        if let locationInfo = self.localLocationInfo {
-            self.locationInfo.onNext(locationInfo)
-        }
-        // Invoke looking for location
-        locationManager.startUpdatingLocation()
-    }
-}
 
-//MARK:-
-//MARK: Network
-//MARK:-
-
-// Corona Networkable
-extension LightsViewModel: CoronaNetworkable {
+//MARK: Networkable
+extension LightsVM: CoronaNetworkable {
     func getIncidents(of townName: String) {
         if allowedToCallAPI {
             self.api.getIncidents(of: townName)
@@ -226,7 +207,7 @@ extension LightsViewModel: CoronaNetworkable {
 }
 
 // Corona Networkable Delegate
-extension LightsViewModel: CoronaNetworkableDelegate {
+extension LightsVM: CoronaNetworkableDelegate {
     func isLoading(loading: Bool) {
         self.loading.onNext(loading)
     }
@@ -245,16 +226,23 @@ extension LightsViewModel: CoronaNetworkableDelegate {
     }
 }
 
-//MARK:-
-//MARK: Notification
-//MARK:-
 
-extension LightsViewModel: Notificationable {
+//MARK: Notificationable
+extension LightsVM: Notificationable {
     func requestNotificationPermission() {
         notificationManager.requestNotificationPermission()
     }
     
-    func sendLocalizedNotification(at timeInterval: TimeInterval) {
-        notificationManager.sendLocalizedNotification(at: timeInterval)
+    func sendLocalizedNotification() {
+        notificationManager.sendLocalizedNotification()
     }
 }
+
+
+//MARK: Navigation
+extension LightsVM: MainCoordinatorDelegate {
+    func didSelect(statusColor: StatusColors) {
+        mainCoordinatorDelegate.didSelect(statusColor: statusColor)
+    }
+}
+

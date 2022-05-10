@@ -8,24 +8,26 @@
 import Foundation
 import CoreLocation
 
-class LocationInfo {
-    
+struct LocationInfo {
     private var clLocation: CLLocation
     var country: String?
     var state: String?
     var town: String?
     
-    init(clLocation: CLLocation) {
-        self.clLocation = clLocation
+    init(clLocation: CLLocation) { self.clLocation = clLocation }
+    
+    func get(completion: @escaping (LocationInfo)->()) {
         let geocoder = CLGeocoder()
         let germanyLocale = Locale(identifier: "de")
-        let completion : ([CLPlacemark]?, Error?) -> () = {
+        
+        geocoder.reverseGeocodeLocation(clLocation, preferredLocale: germanyLocale) {
             placeMarks, error in
             guard let placeMark = placeMarks?.first, error == nil else { return }
-            self.country = placeMark.country
-            self.state = placeMark.administrativeArea
-            self.town = placeMark.subAdministrativeArea
+            var locationInfo = LocationInfo(clLocation: clLocation)
+            locationInfo.country = placeMark.country
+            locationInfo.state = placeMark.administrativeArea
+            locationInfo.town = placeMark.subAdministrativeArea
+            completion(locationInfo)
         }
-        geocoder.reverseGeocodeLocation(clLocation, preferredLocale: germanyLocale, completionHandler: completion)
     }
 }
