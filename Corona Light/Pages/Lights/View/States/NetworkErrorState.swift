@@ -21,9 +21,7 @@ class NewtorkErrorState: NetworkErrorStateable {
     
     // MARK: Init
     
-    init(lightsView: LightsView) {
-        self.lightsView = lightsView
-    }
+    required init(lightsView: LightsView) { self.lightsView = lightsView }
     
     // MARK: Functions
     
