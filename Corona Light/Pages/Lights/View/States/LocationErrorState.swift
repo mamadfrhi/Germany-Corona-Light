@@ -23,12 +23,8 @@ class LocationErrorState: LocationErrorStateable {
     
     // MARK: Functions
     func setLocationErrorState(locationError: LocationError) {
-        // Setup
         setupState(with: locationError)
-        // Perform changes
-        handleGeneralViews()
-        handleButtons()
-        sendMessageView()
+        configState() // call template
     }
     
     private func setupState(with locationError: LocationError) {
@@ -36,8 +32,10 @@ class LocationErrorState: LocationErrorStateable {
             ?? "An error releated to location services occured!"
         self.locationError = locationError
     }
-    
-    private func handleGeneralViews() {
+}
+
+extension LocationErrorState: Stateable {
+    func handleGeneralViews() {
         // Handle Views
         self.lightsView.currentOnlineLight = .off
         
@@ -48,11 +46,11 @@ class LocationErrorState: LocationErrorStateable {
         // Gesture
         self.lightsView.handleStackViewGesture(isEnable: false)
     }
-    private func handleButtons() {
+    func handleButtons() {
         self.lightsView.rulesPageButton.isHidden = true
         self.lightsView.retryButton.isHidden = false
     }
-    private func sendMessageView() {
+    func sendMessageView() {
         guard let locationError = locationError ,
               let localizedErrorMessage = localizedErrorMessage
         else { return}
@@ -69,6 +67,3 @@ class LocationErrorState: LocationErrorStateable {
         }
     }
 }
-
-// TODO: Add template design pattern
-// for all 3 states handling

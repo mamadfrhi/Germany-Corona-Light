@@ -19,6 +19,7 @@
 		872D34C1258376980083305D /* UIView+blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34C0258376980083305D /* UIView+blink.swift */; };
 		872DE8BC2586908F00BE5594 /* Corona Status Diagrams.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */; };
 		872DE8BD2586908F00BE5594 /* Corona Status Design.xd in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BB2586908E00BE5594 /* Corona Status Design.xd */; };
+		873E420D282ADED800020E6C /* Stateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873E420C282ADED800020E6C /* Stateable.swift */; };
 		87442A60258221F0004461B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87442A5F258221F0004461B8 /* Constants.swift */; };
 		8747136F2584CE4A0012E3B3 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747136E2584CE4A0012E3B3 /* CodeView.swift */; };
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
@@ -65,6 +66,7 @@
 		872D34C0258376980083305D /* UIView+blink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+blink.swift"; sourceTree = "<group>"; };
 		872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Corona Status Diagrams.jpeg"; sourceTree = "<group>"; };
 		872DE8BB2586908E00BE5594 /* Corona Status Design.xd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corona Status Design.xd"; sourceTree = "<group>"; };
+		873E420C282ADED800020E6C /* Stateable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stateable.swift; sourceTree = "<group>"; };
 		87442A5F258221F0004461B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8747136E2584CE4A0012E3B3 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +337,7 @@
 				87CEDC7E258527970087113C /* LocationErrorState.swift */,
 				87CEDC8125852B380087113C /* NetworkErrorState.swift */,
 				87CEDC8425852ECE0087113C /* NormalState.swift */,
+				873E420C282ADED800020E6C /* Stateable.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				87562221257A87AB00A705D7 /* RulesVC.swift in Sources */,
 				87562205257A83A000A705D7 /* Reactive+isAnimating.swift in Sources */,
 				87CEDC8225852B380087113C /* NetworkErrorState.swift in Sources */,
+				873E420D282ADED800020E6C /* Stateable.swift in Sources */,
 				8775F7AD2585476800EB42A6 /* String+localized.swift in Sources */,
 				87CEDC8525852ECE0087113C /* NormalState.swift in Sources */,
 				8756221C257A870100A705D7 /* LocationManager.swift in Sources */,
