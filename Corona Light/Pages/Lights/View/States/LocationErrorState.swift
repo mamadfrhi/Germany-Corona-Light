@@ -14,17 +14,14 @@ protocol LocationErrorStateable {
 class LocationErrorState: LocationErrorStateable {
     
     // MARK: Variables
-    
     private let lightsView: LightsView
-    private var localizedErrorMessage: String? = nil
-    private var locationError: LocationError? = nil
+    private var localizedErrorMessage: String?
+    private var locationError: LocationError?
     
     // MARK: Init
-    
     required init(lightsView: LightsView) { self.lightsView = lightsView }
     
     // MARK: Functions
-    
     func setLocationErrorState(locationError: LocationError) {
         // Setup
         setupState(with: locationError)
@@ -52,7 +49,6 @@ class LocationErrorState: LocationErrorStateable {
         self.lightsView.handleStackViewGesture(isEnable: false)
     }
     private func handleButtons() {
-        // Buttons
         self.lightsView.rulesPageButton.isHidden = true
         self.lightsView.retryButton.isHidden = false
     }
@@ -61,11 +57,10 @@ class LocationErrorState: LocationErrorStateable {
               let localizedErrorMessage = localizedErrorMessage
         else { return}
         
-        // Show Error Messsage to user
+        // Show Error Message to user
         switch locationError {
         case .locationNotAllowedError:
-            // Show modal message
-            // It's a serious problem
+            // Show modal message - it's a serious problem
             Toast.shared.showModal(description: localizedErrorMessage)
             
         case .outOfBavariaError, .badLocationError:
