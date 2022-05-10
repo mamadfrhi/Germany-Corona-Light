@@ -52,7 +52,7 @@ class RulesView : UIView {
 // MARK:-
 extension RulesView : CodeView {
     
-    func buildViewHierachy() {
+    func buildViewHierarchy() {
         self.addSubview(myMaskView)
         self.addSubview(statusLabel)
         self.addSubview(rulesTextView)

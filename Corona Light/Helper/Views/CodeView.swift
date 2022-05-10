@@ -11,7 +11,7 @@ import Foundation
 // For adding custom uiviews
 
 protocol CodeView {
-    func buildViewHierachy()
+    func buildViewHierarchy()
     func setupConstraints()
     func setupAdditionalConfiguration()
     func setupView()
@@ -19,7 +19,7 @@ protocol CodeView {
 
 extension CodeView {
     func setupView() {
-        buildViewHierachy()
+        buildViewHierarchy()
         setupConstraints()
         setupAdditionalConfiguration()
     }

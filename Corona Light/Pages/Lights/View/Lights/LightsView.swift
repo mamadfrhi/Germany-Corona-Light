@@ -107,7 +107,7 @@ class LightsView: UIView {
 // MARK:-
 extension LightsView : CodeView {
     
-    func buildViewHierachy() {
+    func buildViewHierarchy() {
         self.addSubview(self.contentView)
         self.contentView.addSubview(stackView)
         self.addSubview(descriptionLabel)
