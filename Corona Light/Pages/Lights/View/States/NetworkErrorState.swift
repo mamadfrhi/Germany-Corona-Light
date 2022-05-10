@@ -8,39 +8,34 @@
 import Foundation
 
 protocol NetworkErrorStateable {
-    func setNewtorkErrorState(networkError: NetworkError)
+    func setNetworkErrorState(networkError: NetworkError)
 }
 
-class NewtorkErrorState: NetworkErrorStateable {
+class NetworkErrorState: NetworkErrorStateable {
     
     // MARK: Variables
-    
     private let lightsView: LightsView
     private var localizedErrorMessage: String?
     private var networkError: NetworkError?
     
     // MARK: Init
-    
     required init(lightsView: LightsView) { self.lightsView = lightsView }
     
     // MARK: Functions
-    
-    func setNewtorkErrorState(networkError: NetworkError) {
-        // Setup
+    func setNetworkErrorState(networkError: NetworkError) {
         setupState(with: networkError)
-        // Perform changes
-        handleGeneralViews()
-        handleButtons()
-        sendMessageView()
+        configState() // call template
     }
     
     private func setupState(with networkError: NetworkError) {
         self.localizedErrorMessage = networkError.errorDescription
-            ?? "An error releated to location services occured!"
+        ?? "An error related to location services occurred!"
         self.networkError = networkError
     }
-    
-    private func handleGeneralViews() {
+}
+
+extension NetworkErrorState: Stateable {
+    func handleGeneralViews() {
         // Handle Views
         self.lightsView.currentOnlineLight = .off
         
@@ -51,18 +46,16 @@ class NewtorkErrorState: NetworkErrorStateable {
         // Gesture
         self.lightsView.handleStackViewGesture(isEnable: false)
     }
-    private func handleButtons() {
-        // Buttons
+    func handleButtons() {
         self.lightsView.rulesPageButton.isHidden = true
         self.lightsView.retryButton.isHidden = false
     }
-    private func sendMessageView() {
+    func sendMessageView() {
         guard let networkError = networkError ,
               let localizedErrorMessage = localizedErrorMessage
         else { return}
         
-        // Show Error Messsage to user
-        // Like notification
+        // Show error message to user
         switch networkError {
         case .requestError:
             Toast.shared.showIn(body: localizedErrorMessage)

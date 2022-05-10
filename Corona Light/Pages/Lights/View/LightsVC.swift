@@ -65,7 +65,7 @@ extension LightsVC {
         
         // Network Error State
         self.networkErrorStateable =
-        NewtorkErrorState(lightsView: self.lightsView)
+        NetworkErrorState(lightsView: self.lightsView)
         
         // Normal State
         self.normalStateable =
@@ -148,7 +148,7 @@ extension LightsVC {
             .observe(on: MainScheduler.instance)
             .subscribe {
                 if let networkError = $0.element {
-                    self.setNewtorkErrorState(networkError: networkError)
+                    self.setNetworkErrorState(networkError: networkError)
                 }
             }
             .disposed(by: disposeBag)
@@ -191,9 +191,9 @@ extension LightsVC : LocationErrorStateable {
 
 // Network Error Stateable
 extension LightsVC : NetworkErrorStateable {
-    func setNewtorkErrorState(networkError: NetworkError) {
+    func setNetworkErrorState(networkError: NetworkError) {
         self.networkErrorStateable?
-            .setNewtorkErrorState(networkError: networkError)
+            .setNetworkErrorState(networkError: networkError)
     }
 }
 
