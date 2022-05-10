@@ -105,7 +105,7 @@ class LightsView: UIView {
 // MARK:-
 // MARK: Template Functions
 // MARK:-
-extension LightsView : CodeView {
+extension LightsView : ViewCodeable {
     
     func buildViewHierarchy() {
         self.addSubview(self.contentView)

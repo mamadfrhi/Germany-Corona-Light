@@ -49,8 +49,7 @@ class RulesView : UIView {
 
 // MARK:-
 // MARK: Template Functions
-// MARK:-
-extension RulesView : CodeView {
+extension RulesView: ViewCodeable {
     
     func buildViewHierarchy() {
         self.addSubview(myMaskView)
