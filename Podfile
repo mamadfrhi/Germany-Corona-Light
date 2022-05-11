@@ -4,17 +4,24 @@
 target 'Corona Light' do
   use_frameworks!
 
-# Network
-pod 'SwiftyJSON'
-pod 'Moya'
+	# Network
+	pod 'SwiftyJSON'
+	pod 'Moya'
 
-# View
-pod 'SnapKit'
-pod 'JGProgressHUD'
-pod 'SwiftMessages'
+	# View
+	pod 'SnapKit'
+	pod 'JGProgressHUD'
+	pod 'SwiftMessages'
 
-# RX
-pod 'RxSwift'
-pod 'RxCocoa'
+	# RX
+	pod 'RxSwift'
+	pod 'RxCocoa'
+
+# test target
+#    target 'LightsVM_Tests'
+#      inherit! :search_paths
+	# Pods for testing
+	pod 'RxBlocking'
+	pod 'RxTest'
 
 end

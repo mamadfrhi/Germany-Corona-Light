@@ -19,7 +19,7 @@
 		872D34C1258376980083305D /* UIView+blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34C0258376980083305D /* UIView+blink.swift */; };
 		872DE8BC2586908F00BE5594 /* Corona Status Diagrams.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */; };
 		872DE8BD2586908F00BE5594 /* Corona Status Design.xd in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BB2586908E00BE5594 /* Corona Status Design.xd */; };
-		87319754282C054D00A79A84 /* Corona_LightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87319753282C054D00A79A84 /* Corona_LightTests.swift */; };
+		87319754282C054D00A79A84 /* LightsVM_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87319753282C054D00A79A84 /* LightsVM_Tests.swift */; };
 		87442A60258221F0004461B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87442A5F258221F0004461B8 /* Constants.swift */; };
 		8747136F2584CE4A0012E3B3 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747136E2584CE4A0012E3B3 /* CodeView.swift */; };
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
@@ -77,7 +77,7 @@
 		872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Corona Status Diagrams.jpeg"; sourceTree = "<group>"; };
 		872DE8BB2586908E00BE5594 /* Corona Status Design.xd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corona Status Design.xd"; sourceTree = "<group>"; };
 		87319751282C054D00A79A84 /* Corona LightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corona LightTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		87319753282C054D00A79A84 /* Corona_LightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corona_LightTests.swift; sourceTree = "<group>"; };
+		87319753282C054D00A79A84 /* LightsVM_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsVM_Tests.swift; sourceTree = "<group>"; };
 		87442A5F258221F0004461B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8747136E2584CE4A0012E3B3 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,19 +190,19 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
-		87319752282C054D00A79A84 /* Corona LightTests */ = {
+		87319752282C054D00A79A84 /* LightsVM_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				87319753282C054D00A79A84 /* Corona_LightTests.swift */,
+				87319753282C054D00A79A84 /* LightsVM_Tests.swift */,
 			);
-			path = "Corona LightTests";
+			path = LightsVM_Tests;
 			sourceTree = "<group>";
 		};
 		875621C1257A81CC00A705D7 = {
 			isa = PBXGroup;
 			children = (
 				875621CC257A81CD00A705D7 /* Corona Light */,
-				87319752282C054D00A79A84 /* Corona LightTests */,
+				87319752282C054D00A79A84 /* LightsVM_Tests */,
 				875621CB257A81CD00A705D7 /* Products */,
 				42E47E7B536FC6D15CC946C3 /* Pods */,
 				CDE480D2F0811F1A74602C09 /* Frameworks */,
@@ -552,7 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87319754282C054D00A79A84 /* Corona_LightTests.swift in Sources */,
+				87319754282C054D00A79A84 /* LightsVM_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
