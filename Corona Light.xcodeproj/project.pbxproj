@@ -19,6 +19,7 @@
 		872D34C1258376980083305D /* UIView+blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34C0258376980083305D /* UIView+blink.swift */; };
 		872DE8BC2586908F00BE5594 /* Corona Status Diagrams.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */; };
 		872DE8BD2586908F00BE5594 /* Corona Status Design.xd in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BB2586908E00BE5594 /* Corona Status Design.xd */; };
+		87319754282C054D00A79A84 /* Corona_LightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87319753282C054D00A79A84 /* Corona_LightTests.swift */; };
 		87442A60258221F0004461B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87442A5F258221F0004461B8 /* Constants.swift */; };
 		8747136F2584CE4A0012E3B3 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747136E2584CE4A0012E3B3 /* CodeView.swift */; };
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
@@ -51,6 +52,16 @@
 		87F57773258130CB00FB9E09 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F57772258130CB00FB9E09 /* Notification.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		87319755282C054D00A79A84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 875621C2257A81CC00A705D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 875621C9257A81CD00A705D7;
+			remoteInfo = "Corona Light";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.debug.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.debug.xcconfig"; sourceTree = "<group>"; };
 		7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corona_Light.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +76,8 @@
 		872D34C0258376980083305D /* UIView+blink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+blink.swift"; sourceTree = "<group>"; };
 		872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Corona Status Diagrams.jpeg"; sourceTree = "<group>"; };
 		872DE8BB2586908E00BE5594 /* Corona Status Design.xd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corona Status Design.xd"; sourceTree = "<group>"; };
+		87319751282C054D00A79A84 /* Corona LightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corona LightTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87319753282C054D00A79A84 /* Corona_LightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corona_LightTests.swift; sourceTree = "<group>"; };
 		87442A5F258221F0004461B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8747136E2584CE4A0012E3B3 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +117,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8731974E282C054D00A79A84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		875621C7257A81CD00A705D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,10 +190,19 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		87319752282C054D00A79A84 /* Corona LightTests */ = {
+			isa = PBXGroup;
+			children = (
+				87319753282C054D00A79A84 /* Corona_LightTests.swift */,
+			);
+			path = "Corona LightTests";
+			sourceTree = "<group>";
+		};
 		875621C1257A81CC00A705D7 = {
 			isa = PBXGroup;
 			children = (
 				875621CC257A81CD00A705D7 /* Corona Light */,
+				87319752282C054D00A79A84 /* Corona LightTests */,
 				875621CB257A81CD00A705D7 /* Products */,
 				42E47E7B536FC6D15CC946C3 /* Pods */,
 				CDE480D2F0811F1A74602C09 /* Frameworks */,
@@ -184,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				875621CA257A81CD00A705D7 /* Corona Light.app */,
+				87319751282C054D00A79A84 /* Corona LightTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -378,6 +408,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		87319750282C054D00A79A84 /* Corona LightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87319757282C054D00A79A84 /* Build configuration list for PBXNativeTarget "Corona LightTests" */;
+			buildPhases = (
+				8731974D282C054D00A79A84 /* Sources */,
+				8731974E282C054D00A79A84 /* Frameworks */,
+				8731974F282C054D00A79A84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87319756282C054D00A79A84 /* PBXTargetDependency */,
+			);
+			name = "Corona LightTests";
+			productName = "Corona LightTests";
+			productReference = 87319751282C054D00A79A84 /* Corona LightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		875621C9257A81CD00A705D7 /* Corona Light */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 875621DE257A81CE00A705D7 /* Build configuration list for PBXNativeTarget "Corona Light" */;
@@ -403,9 +451,13 @@
 		875621C2257A81CC00A705D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					87319750282C054D00A79A84 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 875621C9257A81CD00A705D7;
+					};
 					875621C9257A81CD00A705D7 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -426,11 +478,19 @@
 			projectRoot = "";
 			targets = (
 				875621C9257A81CD00A705D7 /* Corona Light */,
+				87319750282C054D00A79A84 /* Corona LightTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8731974F282C054D00A79A84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		875621C8257A81CD00A705D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -488,6 +548,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8731974D282C054D00A79A84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87319754282C054D00A79A84 /* Corona_LightTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		875621C6257A81CD00A705D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,6 +601,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		87319756282C054D00A79A84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 875621C9257A81CD00A705D7 /* Corona Light */;
+			targetProxy = 87319755282C054D00A79A84 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -564,6 +640,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		87319758282C054D00A79A84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5GB4GGS54M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Corona-LightTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corona Light.app/Corona Light";
+			};
+			name = Debug;
+		};
+		87319759282C054D00A79A84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5GB4GGS54M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Corona-LightTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corona Light.app/Corona Light";
+			};
+			name = Release;
+		};
 		875621DC257A81CE00A705D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -727,6 +843,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		87319757282C054D00A79A84 /* Build configuration list for PBXNativeTarget "Corona LightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87319758282C054D00A79A84 /* Debug */,
+				87319759282C054D00A79A84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		875621C5257A81CC00A705D7 /* Build configuration list for PBXProject "Corona Light" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
