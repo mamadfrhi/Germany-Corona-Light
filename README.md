@@ -37,7 +37,6 @@
 
 - `Settings > General > Language & Region > Deutsch`
 
----
 
 # Code style 🛠
 
@@ -98,7 +97,6 @@ Heart❤️ of the app
 
 
 # Screenshots 📱
-
 #### English 🇬🇧
 
 <p float="left">
@@ -113,8 +111,6 @@ Heart❤️ of the app
 
 
 # Video 🎥
-
-
 
 https://user-images.githubusercontent.com/28094207/166139678-5fcd311a-adcc-40da-85b1-4b1c72e0c05c.mp4
 
