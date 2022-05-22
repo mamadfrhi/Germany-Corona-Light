@@ -134,12 +134,6 @@ This app is currently designed for use at **_Bavaria._**
 3. Replace `Bayern` with the name of your desired state.
 
 
-
-# Contribution
-Discussion and pull requests are welcomed 💖
-
----
-
 🚧 **Pay attention:** In this file you must replace it with a local name (German name).
 
 For example:
@@ -147,6 +141,9 @@ For example:
 ❌ (English) = ~~Bavaria~~
 
 ✅  (German) = Bayern
+
+# Contribution
+Discussion and pull requests are welcomed 💖
 
 ---
 #### You can download app desing in AdobeXD [here!](https://github.com/mamadfrhi/Germany-Corona-Light/raw/main/Corona%20Light/Resources/Corona%20Status%20Design.xd)
