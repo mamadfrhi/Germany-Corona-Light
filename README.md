@@ -2,16 +2,10 @@
 
 ![Banner](https://user-images.githubusercontent.com/28094207/166139760-7d46f069-5f5b-4685-91b7-1caa113b5aed.jpeg)
 
-<br/>
 
-## This iOS app shows ***you the status of Corona*** and ***related limitations*** in your current location within a charming traffic light!
+## This iOS app shows you the status of Corona and related limitations in your current location within a charming traffic light!
 
-<br/>
 
-## Presently, this app designed to use in Germany, Bavaria. 🇩🇪
-
-<br/>
-<br/>
 
 # Installation ✅
 
