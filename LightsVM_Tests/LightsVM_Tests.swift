@@ -73,3 +73,52 @@ class LightsVM_Tests: XCTestCase {
     }
     
 }
+
+// MARK: Status Colors
+// based on incidences
+extension LightsVM_Tests {
+    
+    func testGreenStatus() {
+        let townStatus = scheduler!.createObserver(StatusColors.self)
+        _ = viewModel!.townStatus.bind(to: townStatus)
+            .disposed(by: disposeBag!)
+        
+        let greenIncidentsCount = 299
+        viewModel!.didGet(incidents: greenIncidentsCount)
+        
+        XCTAssertRecordedElements(townStatus.events, [StatusColors.green])
+    }
+    
+    func testYellowStatus() {
+        let townStatus = scheduler!.createObserver(StatusColors.self)
+        _ = viewModel!.townStatus.bind(to: townStatus)
+            .disposed(by: disposeBag!)
+        
+        let yellowIncidentsCount = 300
+        viewModel!.didGet(incidents: yellowIncidentsCount)
+        
+        XCTAssertRecordedElements(townStatus.events, [StatusColors.yellow])
+    }
+    
+    func testRedStatus() {
+        let townStatus = scheduler!.createObserver(StatusColors.self)
+        _ = viewModel!.townStatus.bind(to: townStatus)
+            .disposed(by: disposeBag!)
+        
+        let redIncidentsCount = 601
+        viewModel!.didGet(incidents: redIncidentsCount)
+        
+        XCTAssertRecordedElements(townStatus.events, [StatusColors.red])
+    }
+    
+    func testDarkRedStatus() {
+        let townStatus = scheduler!.createObserver(StatusColors.self)
+        _ = viewModel!.townStatus.bind(to: townStatus)
+            .disposed(by: disposeBag!)
+        
+        let darkRedIncidentsCount = 1201
+        viewModel!.didGet(incidents: darkRedIncidentsCount)
+        
+        XCTAssertRecordedElements(townStatus.events, [StatusColors.darkRed])
+    }
+}
