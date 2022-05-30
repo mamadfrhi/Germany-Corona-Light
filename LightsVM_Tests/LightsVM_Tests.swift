@@ -5,8 +5,8 @@
 //  Created by iMamad on 11.05.22.
 //
 
-import XCTest
 @testable import Corona_Light
+import XCTest
 import RxTest
 import RxSwift
 
@@ -16,17 +16,17 @@ class LightsVM_Tests: XCTestCase {
     var coronaNetworking: CoronaNetworking?
     var locationManager: LocationManager?
     var notificationManager: NotificationManager?
-    var SUT: LightsVM?
+    var viewModel: LightsVM?
     
     var disposeBag: DisposeBag?
-    var scheduler: Any?
+    var scheduler: TestScheduler?
     
     override func setUp() {
         super.setUp()
         coronaNetworking = CoronaNetworking(coronaAPI: api)
         locationManager = LocationManager()
         notificationManager = NotificationManager()
-        SUT = LightsVM(mainCoordinatorDelegate: MainCoordinator(navigationController: UINavigationController()),
+        viewModel = LightsVM(mainCoordinatorDelegate: MainCoordinator(navigationController: UINavigationController()),
                        coronaNetworking: coronaNetworking!,
                        locationManager: locationManager!,
                        notificationManager: notificationManager!)
@@ -57,7 +57,7 @@ class LightsVM_Tests: XCTestCase {
     }
     
     func testLightsVM() {
-        XCTAssertNotNil(SUT, "SUT=LightsVM must not be nil")
+        XCTAssertNotNil(viewModel, "SUT=LightsVM must not be nil")
     }
     
     func testLoading() {
