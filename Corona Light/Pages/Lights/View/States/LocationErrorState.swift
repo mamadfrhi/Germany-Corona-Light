@@ -14,26 +14,17 @@ protocol LocationErrorStateable {
 class LocationErrorState: LocationErrorStateable {
     
     // MARK: Variables
-    
     private let lightsView: LightsView
-    private var localizedErrorMessage: String? = nil
-    private var locationError: LocationError? = nil
+    private var localizedErrorMessage: String?
+    private var locationError: LocationError?
     
     // MARK: Init
-    
-    init(lightsView: LightsView) {
-        self.lightsView = lightsView
-    }
+    required init(lightsView: LightsView) { self.lightsView = lightsView }
     
     // MARK: Functions
-    
     func setLocationErrorState(locationError: LocationError) {
-        // Setup
         setupState(with: locationError)
-        // Perform changes
-        handleGeneralViews()
-        handleButtons()
-        sendMessageView()
+        configState() // call template
     }
     
     private func setupState(with locationError: LocationError) {
@@ -41,8 +32,11 @@ class LocationErrorState: LocationErrorStateable {
             ?? "An error releated to location services occured!"
         self.locationError = locationError
     }
-    
-    private func handleGeneralViews() {
+}
+
+// MARK: Template
+extension LocationErrorState: Stateable {
+    func handleGeneralViews() {
         // Handle Views
         self.lightsView.currentOnlineLight = .off
         
@@ -53,21 +47,19 @@ class LocationErrorState: LocationErrorStateable {
         // Gesture
         self.lightsView.handleStackViewGesture(isEnable: false)
     }
-    private func handleButtons() {
-        // Buttons
+    func handleButtons() {
         self.lightsView.rulesPageButton.isHidden = true
         self.lightsView.retryButton.isHidden = false
     }
-    private func sendMessageView() {
+    func sendMessageView() {
         guard let locationError = locationError ,
               let localizedErrorMessage = localizedErrorMessage
         else { return}
         
-        // Show Error Messsage to user
+        // Show Error Message to user
         switch locationError {
         case .locationNotAllowedError:
-            // Show modal message
-            // It's a serious problem
+            // Show modal message - it's a serious problem
             Toast.shared.showModal(description: localizedErrorMessage)
             
         case .outOfBavariaError, .badLocationError:
@@ -76,6 +68,3 @@ class LocationErrorState: LocationErrorStateable {
         }
     }
 }
-
-// TODO: Add template design pattern
-// for all 3 states handling

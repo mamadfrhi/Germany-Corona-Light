@@ -15,9 +15,7 @@ class NormalState: NormalStateable {
     
     private let lightsView: LightsView
     
-    init(lightsView: LightsView) {
-        self.lightsView = lightsView
-    }
+    required init(lightsView: LightsView) { self.lightsView = lightsView }
     
     // MARK: Functions
     

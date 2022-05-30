@@ -10,16 +10,16 @@ import Foundation
 // *** Template Design Pattern ***
 // For adding custom uiviews
 
-protocol CodeView {
-    func buildViewHierachy()
+protocol ViewCodeable {
+    func buildViewHierarchy()
     func setupConstraints()
     func setupAdditionalConfiguration()
     func setupView()
 }
 
-extension CodeView {
+extension ViewCodeable {
     func setupView() {
-        buildViewHierachy()
+        buildViewHierarchy()
         setupConstraints()
         setupAdditionalConfiguration()
     }

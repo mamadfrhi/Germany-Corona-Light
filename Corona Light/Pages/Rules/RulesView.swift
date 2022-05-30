@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class RulesView : UIView {
+class RulesView: UIView {
     
     // MARK: Views
     private let myMaskView = MaskView(statusColor: .green)
@@ -34,12 +34,9 @@ class RulesView : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        // Template methode
-        self.setupView()
+        self.setupView() // call template
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     // MARK: Functions
     func set(statusColor: StatusColors) {
@@ -47,12 +44,10 @@ class RulesView : UIView {
     }
 }
 
-// MARK:-
 // MARK: Template Functions
-// MARK:-
-extension RulesView : CodeView {
+extension RulesView: ViewCodeable {
     
-    func buildViewHierachy() {
+    func buildViewHierarchy() {
         self.addSubview(myMaskView)
         self.addSubview(statusLabel)
         self.addSubview(rulesTextView)
@@ -65,9 +60,7 @@ extension RulesView : CodeView {
     }
 }
 
-// MARK:-
-// MARK: Setup Constraints Functions
-// MARK:-
+// MARK: Setup Constraints
 extension RulesView {
     
     // Mask View
