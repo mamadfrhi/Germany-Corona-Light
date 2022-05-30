@@ -17,11 +17,9 @@ target 'Corona Light' do
 	pod 'RxCocoa'
 
 # test target
-    target 'Corona LightTests' do
-      inherit! :search_paths
-	# Pods for testing
-	pod 'RxBlocking'
-	pod 'RxTest'
-end
-
+	    target 'Corona LightTests' do
+	      inherit! :search_paths
+        pod 'RxBlocking'
+        pod 'RxTest'
+	end
 end
