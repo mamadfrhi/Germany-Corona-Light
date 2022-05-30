@@ -3,7 +3,6 @@
 
 target 'Corona Light' do
   use_frameworks!
-
 	# Network
 	pod 'SwiftyJSON'
 	pod 'Moya'
@@ -18,10 +17,11 @@ target 'Corona Light' do
 	pod 'RxCocoa'
 
 # test target
-#    target 'LightsVM_Tests'
-#      inherit! :search_paths
+    target 'Corona LightTests' do
+      inherit! :search_paths
 	# Pods for testing
 	pod 'RxBlocking'
 	pod 'RxTest'
+end
 
 end
