@@ -8,9 +8,9 @@
 
 # Installation ✅
 
-1. [Download the project](https://github.com/mamadfrhi/Germany-Corona-Light/archive/main.zip) first!
+1. [Download](https://github.com/mamadfrhi/Germany-Corona-Light/archive/main.zip) or Clone the project first!
 
-2. Install packages (using terminal) 👇🏼
+2. Install pods (using Terminal) 👇🏼
 
 ```bash
 3. $ cd .../project directory/Corona Light
@@ -41,8 +41,6 @@
 
 - `Settings > General > Language & Region > Deutsch`
 
-
----
 # Code style 🛠
 
 Used **MVVM** architecture by the use of **RX**
@@ -99,10 +97,6 @@ This app completely **localized for use in Germany.**
 Heart❤️ of the app
 <br/> <img src=https://user-images.githubusercontent.com/28094207/166139899-d74549cc-aa55-4a4d-9d26-bc76aebfb09d.jpeg widht="300"  height="200"/> </br>
 
-
-<img src=https://user-images.githubusercontent.com/28094207/166139899-d74549cc-aa55-4a4d-9d26-bc76aebfb09d.jpeg widht="300"  height="200"/>
-
-
 # Screenshots 📱
 #### English 🇬🇧
 
@@ -116,7 +110,6 @@ Heart❤️ of the app
 <img src=https://user-images.githubusercontent.com/28094207/166139810-be314eb3-a92c-467f-b13e-9066f4382d47.png widht="100"  height="200" />  <img src=https://user-images.githubusercontent.com/28094207/166139996-e6a9653e-6cf9-4ebb-b155-50d92351e96e.png widht="100"  height="200" />
 </p>
 
----
 # Video 🎥
 
 https://user-images.githubusercontent.com/28094207/166139678-5fcd311a-adcc-40da-85b1-4b1c72e0c05c.mp4
@@ -149,12 +142,6 @@ For example:
 ✅  (German) = Bayern
 
 # Contribution
-Discussion and pull requests are welcomed 💖
-
----
-Contribution
----
-
 Discussion and pull requests are welcomed 💖
 
 ---

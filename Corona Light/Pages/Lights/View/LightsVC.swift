@@ -22,7 +22,7 @@ class LightsVC : UIViewController {
     
     
     //MARK: - Lifecycle
-    init(viewModel: LightsVM) {
+    required init(viewModel: LightsVM) {
         self.viewModel = viewModel
         self.lightsView = LightsView(frame: screenBounds)
         super.init(nibName: nil, bundle: nil)
