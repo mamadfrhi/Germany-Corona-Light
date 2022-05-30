@@ -1,3 +1,4 @@
+
 ![Swift](https://img.shields.io/badge/Swift-5.6.1-orange) ![RxSwift](https://img.shields.io/badge/RxSwift-6.5.0-blue) ![build](https://img.shields.io/badge/build-passing-brightgreen)
 
 
@@ -21,6 +22,7 @@
 
 6. Press `Cmd + R` and see how it works
 
+
 # Testing 🔁
 
 #### Simulate Location on iOS simulator
@@ -31,6 +33,8 @@
 - Lat: `49.763138`
 - Long: `10.697828`
 - It refers to **Erlangen-Höchstadt**
+
+
 #### Test Localization 🇩🇪🇬🇧
 
 - To test the app in 🇩🇪 do the following in the simulator...
@@ -38,6 +42,7 @@
 - `Settings > General > Language & Region > Deutsch`
 
 
+---
 # Code style 🛠
 
 Used **MVVM** architecture by the use of **RX**
@@ -92,6 +97,8 @@ This app completely **localized for use in Germany.**
 # Main Classes Diagrams
 
 Heart❤️ of the app
+<br/> <img src=https://user-images.githubusercontent.com/28094207/166139899-d74549cc-aa55-4a4d-9d26-bc76aebfb09d.jpeg widht="300"  height="200"/> </br>
+
 
 <img src=https://user-images.githubusercontent.com/28094207/166139899-d74549cc-aa55-4a4d-9d26-bc76aebfb09d.jpeg widht="300"  height="200"/>
 
@@ -109,7 +116,7 @@ Heart❤️ of the app
 <img src=https://user-images.githubusercontent.com/28094207/166139810-be314eb3-a92c-467f-b13e-9066f4382d47.png widht="100"  height="200" />  <img src=https://user-images.githubusercontent.com/28094207/166139996-e6a9653e-6cf9-4ebb-b155-50d92351e96e.png widht="100"  height="200" />
 </p>
 
-
+---
 # Video 🎥
 
 https://user-images.githubusercontent.com/28094207/166139678-5fcd311a-adcc-40da-85b1-4b1c72e0c05c.mp4
@@ -118,7 +125,6 @@ https://user-images.githubusercontent.com/28094207/166139678-5fcd311a-adcc-40da-
 # API Documents 📄
 
 [Click here to see API docs](https://npgeo-corona-npgeo-de.hub.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0)
-
 
 
 # How to use for other states in Germany? 🔁🇩🇪
@@ -143,6 +149,12 @@ For example:
 ✅  (German) = Bayern
 
 # Contribution
+Discussion and pull requests are welcomed 💖
+
+---
+Contribution
+---
+
 Discussion and pull requests are welcomed 💖
 
 ---

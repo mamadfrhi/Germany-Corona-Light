@@ -19,6 +19,7 @@
 		872D34C1258376980083305D /* UIView+blink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D34C0258376980083305D /* UIView+blink.swift */; };
 		872DE8BC2586908F00BE5594 /* Corona Status Diagrams.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */; };
 		872DE8BD2586908F00BE5594 /* Corona Status Design.xd in Resources */ = {isa = PBXBuildFile; fileRef = 872DE8BB2586908E00BE5594 /* Corona Status Design.xd */; };
+		87319754282C054D00A79A84 /* LightsVM_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87319753282C054D00A79A84 /* LightsVM_Tests.swift */; };
 		87442A60258221F0004461B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87442A5F258221F0004461B8 /* Constants.swift */; };
 		8747136F2584CE4A0012E3B3 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747136E2584CE4A0012E3B3 /* CodeView.swift */; };
 		875621CE257A81CD00A705D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875621CD257A81CD00A705D7 /* AppDelegate.swift */; };
@@ -49,7 +50,18 @@
 		87E7FF5E257CC5730095CDDC /* CoronaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */; };
 		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
 		87F57773258130CB00FB9E09 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F57772258130CB00FB9E09 /* Notification.swift */; };
+		AB9011240DB678EBD7684C98 /* Pods_Corona_LightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF1C78A3BEEC53C71AC3F3E /* Pods_Corona_LightTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87319755282C054D00A79A84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 875621C2257A81CC00A705D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 875621C9257A81CD00A705D7;
+			remoteInfo = "Corona Light";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.debug.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +77,8 @@
 		872D34C0258376980083305D /* UIView+blink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+blink.swift"; sourceTree = "<group>"; };
 		872DE8BA2586908E00BE5594 /* Corona Status Diagrams.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Corona Status Diagrams.jpeg"; sourceTree = "<group>"; };
 		872DE8BB2586908E00BE5594 /* Corona Status Design.xd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corona Status Design.xd"; sourceTree = "<group>"; };
+		87319751282C054D00A79A84 /* Corona LightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corona LightTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87319753282C054D00A79A84 /* LightsVM_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsVM_Tests.swift; sourceTree = "<group>"; };
 		87442A5F258221F0004461B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8747136E2584CE4A0012E3B3 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		875621CA257A81CD00A705D7 /* Corona Light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corona Light.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,10 +114,21 @@
 		87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaAPI.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
 		87F57772258130CB00FB9E09 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		ADF1C78A3BEEC53C71AC3F3E /* Pods_Corona_LightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corona_LightTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.release.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.release.xcconfig"; sourceTree = "<group>"; };
+		DD97590C98A173FE9E78A07B /* Pods-Corona LightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona LightTests.debug.xcconfig"; path = "Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1DA9F7393BF4BCCE1E12BB6 /* Pods-Corona LightTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona LightTests.release.xcconfig"; path = "Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8731974E282C054D00A79A84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9011240DB678EBD7684C98 /* Pods_Corona_LightTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		875621C7257A81CD00A705D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,6 +145,8 @@
 			children = (
 				4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */,
 				C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */,
+				DD97590C98A173FE9E78A07B /* Pods-Corona LightTests.debug.xcconfig */,
+				E1DA9F7393BF4BCCE1E12BB6 /* Pods-Corona LightTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -170,10 +197,19 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		87319752282C054D00A79A84 /* LightsVM_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				87319753282C054D00A79A84 /* LightsVM_Tests.swift */,
+			);
+			path = LightsVM_Tests;
+			sourceTree = "<group>";
+		};
 		875621C1257A81CC00A705D7 = {
 			isa = PBXGroup;
 			children = (
 				875621CC257A81CD00A705D7 /* Corona Light */,
+				87319752282C054D00A79A84 /* LightsVM_Tests */,
 				875621CB257A81CD00A705D7 /* Products */,
 				42E47E7B536FC6D15CC946C3 /* Pods */,
 				CDE480D2F0811F1A74602C09 /* Frameworks */,
@@ -184,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				875621CA257A81CD00A705D7 /* Corona Light.app */,
+				87319751282C054D00A79A84 /* Corona LightTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -371,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */,
+				ADF1C78A3BEEC53C71AC3F3E /* Pods_Corona_LightTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -378,6 +416,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		87319750282C054D00A79A84 /* Corona LightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87319757282C054D00A79A84 /* Build configuration list for PBXNativeTarget "Corona LightTests" */;
+			buildPhases = (
+				446EF5E7886AF03771361016 /* [CP] Check Pods Manifest.lock */,
+				8731974D282C054D00A79A84 /* Sources */,
+				8731974E282C054D00A79A84 /* Frameworks */,
+				8731974F282C054D00A79A84 /* Resources */,
+				4211D72387A0B11B2131C7A4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87319756282C054D00A79A84 /* PBXTargetDependency */,
+			);
+			name = "Corona LightTests";
+			productName = "Corona LightTests";
+			productReference = 87319751282C054D00A79A84 /* Corona LightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		875621C9257A81CD00A705D7 /* Corona Light */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 875621DE257A81CE00A705D7 /* Build configuration list for PBXNativeTarget "Corona Light" */;
@@ -403,9 +461,13 @@
 		875621C2257A81CC00A705D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					87319750282C054D00A79A84 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 875621C9257A81CD00A705D7;
+					};
 					875621C9257A81CD00A705D7 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -426,11 +488,19 @@
 			projectRoot = "";
 			targets = (
 				875621C9257A81CD00A705D7 /* Corona Light */,
+				87319750282C054D00A79A84 /* Corona LightTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8731974F282C054D00A79A84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		875621C8257A81CD00A705D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,6 +538,45 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4211D72387A0B11B2131C7A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		446EF5E7886AF03771361016 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Corona LightTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ACD42CA9C1E3CDD78C19AF4A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -488,6 +597,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8731974D282C054D00A79A84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87319754282C054D00A79A84 /* LightsVM_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		875621C6257A81CD00A705D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,6 +650,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		87319756282C054D00A79A84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 875621C9257A81CD00A705D7 /* Corona Light */;
+			targetProxy = 87319755282C054D00A79A84 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		875621D8257A81CE00A705D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -564,6 +689,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		87319758282C054D00A79A84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD97590C98A173FE9E78A07B /* Pods-Corona LightTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5GB4GGS54M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Corona-LightTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corona Light.app/Corona Light";
+			};
+			name = Debug;
+		};
+		87319759282C054D00A79A84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1DA9F7393BF4BCCE1E12BB6 /* Pods-Corona LightTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5GB4GGS54M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Corona-LightTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Corona Light.app/Corona Light";
+			};
+			name = Release;
+		};
 		875621DC257A81CE00A705D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -727,6 +894,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		87319757282C054D00A79A84 /* Build configuration list for PBXNativeTarget "Corona LightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87319758282C054D00A79A84 /* Debug */,
+				87319759282C054D00A79A84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		875621C5257A81CC00A705D7 /* Build configuration list for PBXProject "Corona Light" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
