@@ -50,6 +50,7 @@
 		87E7FF5E257CC5730095CDDC /* CoronaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */; };
 		87F5776B2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */; };
 		87F57773258130CB00FB9E09 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F57772258130CB00FB9E09 /* Notification.swift */; };
+		AB9011240DB678EBD7684C98 /* Pods_Corona_LightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF1C78A3BEEC53C71AC3F3E /* Pods_Corona_LightTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +114,10 @@
 		87E7FF5D257CC5730095CDDC /* CoronaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaAPI.swift; sourceTree = "<group>"; };
 		87F5776A2580C72200FB9E09 /* ObservableType+CurrentAndPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+CurrentAndPrevious.swift"; sourceTree = "<group>"; };
 		87F57772258130CB00FB9E09 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		ADF1C78A3BEEC53C71AC3F3E /* Pods_Corona_LightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corona_LightTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona Light.release.xcconfig"; path = "Target Support Files/Pods-Corona Light/Pods-Corona Light.release.xcconfig"; sourceTree = "<group>"; };
+		DD97590C98A173FE9E78A07B /* Pods-Corona LightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona LightTests.debug.xcconfig"; path = "Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1DA9F7393BF4BCCE1E12BB6 /* Pods-Corona LightTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corona LightTests.release.xcconfig"; path = "Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9011240DB678EBD7684C98 /* Pods_Corona_LightTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +145,8 @@
 			children = (
 				4A8997F5921C060F2AC83FA3 /* Pods-Corona Light.debug.xcconfig */,
 				C0F7C91B0656EBE4133F9921 /* Pods-Corona Light.release.xcconfig */,
+				DD97590C98A173FE9E78A07B /* Pods-Corona LightTests.debug.xcconfig */,
+				E1DA9F7393BF4BCCE1E12BB6 /* Pods-Corona LightTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -401,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1B85652FFEC058F784E36C /* Pods_Corona_Light.framework */,
+				ADF1C78A3BEEC53C71AC3F3E /* Pods_Corona_LightTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -412,9 +420,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87319757282C054D00A79A84 /* Build configuration list for PBXNativeTarget "Corona LightTests" */;
 			buildPhases = (
+				446EF5E7886AF03771361016 /* [CP] Check Pods Manifest.lock */,
 				8731974D282C054D00A79A84 /* Sources */,
 				8731974E282C054D00A79A84 /* Frameworks */,
 				8731974F282C054D00A79A84 /* Resources */,
+				4211D72387A0B11B2131C7A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -522,6 +532,45 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Corona Light-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4211D72387A0B11B2131C7A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Corona LightTests/Pods-Corona LightTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		446EF5E7886AF03771361016 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Corona LightTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -642,6 +691,7 @@
 /* Begin XCBuildConfiguration section */
 		87319758282C054D00A79A84 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD97590C98A173FE9E78A07B /* Pods-Corona LightTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -662,6 +712,7 @@
 		};
 		87319759282C054D00A79A84 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1DA9F7393BF4BCCE1E12BB6 /* Pods-Corona LightTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
