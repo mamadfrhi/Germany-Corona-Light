@@ -57,11 +57,19 @@ class LightsVM_Tests: XCTestCase {
     }
     
     func testLightsVM() {
-        XCTAssertNotNil(viewModel, "SUT=LightsVM must not be nil")
+        XCTAssertNotNil(viewModel, "LightsVM must not be nil")
     }
     
     func testLoading() {
+        let isLoading = scheduler!.createObserver(Bool.self)
+        _ = viewModel!.loading.bind(to: isLoading)
+            .disposed(by: disposeBag!)
         
+        let currentTown = "Würzburg"
+        viewModel?.getIncidents(of: currentTown)
+            
+        
+        XCTAssertRecordedElements(isLoading.events, [true])
     }
     
 }
