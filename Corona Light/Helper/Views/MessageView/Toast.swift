@@ -3,8 +3,6 @@
 //  iOS-Challenge
 //
 //  Created by iMamad on 6/3/20.
-//  Copyright © 2020 Farshad Mousalou. All rights reserved.
-//
 
 import SwiftMessages
 import SnapKit

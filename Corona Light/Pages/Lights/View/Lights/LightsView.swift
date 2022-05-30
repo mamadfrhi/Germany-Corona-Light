@@ -102,9 +102,7 @@ class LightsView: UIView {
     
 }
 
-// MARK:-
 // MARK: Template Functions
-// MARK:-
 extension LightsView : ViewCodeable {
     
     func buildViewHierarchy() {
@@ -140,9 +138,7 @@ extension LightsView : ViewCodeable {
     }
 }
 
-// MARK:-
 // MARK: Setup Constraints Functions
-// MARK:-
 extension LightsView {
     
     // Content View
