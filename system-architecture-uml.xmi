@@ -1,0 +1,226 @@
+@startuml
+title System Architecture
+
+' ========== Presentation Layer ==========
+package "Presentation Layer" {
+    package "ViewModel" {
+        class LightsVM {
+            - api: CoronaNetworkable
+            - locationManager: Locationable
+            - notificationManager: Notificationable
+            - requestPushTime: Date?
+            + loading: PublishSubject<Boolean>
+            + networkError: PublishSubject<NetworkError>
+            + locationError: PublishSubject<LocationError>
+            + townStatus: PublishSubject<StatusColors>
+            + localNotice: PublishSubject<Bool>
+            + notificationTapped: PublishSubject<Bool>
+            + disposeBag: DisposeBag
+            + setupRefreshTimer()
+            + setupNotification()
+            + setTownStatus(status: Int)
+            + sendLocalNoticeNotification(interval: TimeInterval)
+            + requestNotificationPermission()
+        }
+    }
+
+    package "Coordinator" {
+        interface Coordinator
+
+        class MainCoordinator {
+            + childCoordinators: [Coordinator] = []
+            + navigationController: UINavigationController
+            + start()
+            + pushRulesPage(statusColors: StatusColors)
+        }
+        
+        Coordinator <|-- MainCoordinator
+    }
+
+}
+
+' ========== Services Layer ==========
+package "Services Layer" {
+    package "Notification" {
+        interface Notificationable {
+            + sendLocalNoticeNotification(interval: TimeInterval)
+            + sendNotification(interval: TimeInterval)
+            + requestNotificationPermission()
+        }
+
+        class NotificationManager {
+            + init()
+            + center: UNUserNotificationCenter
+            + disposeBag: DisposeBag
+            + localNoticeNotification: Notification
+            + notificationTapped: PublishSubject<Bool>
+            + makeContent(notification: Notification): UNMutableNotificationContent
+            + registerCategories()
+            + sendLocalNoticeNotification(interval: TimeInterval)
+            + sendNotification(interval: TimeInterval)
+            + requestNotificationPermission()
+            + useNotificationCenter(center: UNUserNotificationCenter, 
+                notification: UNNotification, 
+                options: UNNotificationPresentationOptions -> Void)
+        }
+    }
+
+    package "Location" {
+        interface Locationable
+
+        class LocationManager {
+            + init()
+        }
+    }
+
+    package "Network" {
+        interface CoronaNetworkable
+        interface CoronaServiceAdaptable
+        interface Moya
+
+        class CoronaNetworking {
+            + init()
+            + getIncidents()
+            + isLoading()
+            + raisedNetworkError()
+        }
+
+        class CoronaAPI {
+            + getStats()
+        }
+    }
+}
+
+' ========== UI Layer ==========
+package "UI Layer" {
+
+class LightsVC {
+    - lightsView: LightsView
+    - viewModel: LightsVM
+    - coordinator: MainCoordinator
+    - locationErrorStateable: LocationErrorStateable?
+    - networkErrorStateable: NetworkErrorStateable?
+    - normalStateable: NormalStateable?
+    - currentStatus: StatusColors = off
+    - disposeBag: DisposeBag
+    + init(viewModel: LightsVM, coordinator: MainCoordinator)
+    + loadView()
+    + pushRulesPage()
+    + setupGeneralBindings()
+    + setupErrorBindings()
+    + setupNavigationBindings()
+    + setupStates()
+    + setLocationErrorState(error: LocationError)
+    + setNetworkErrorState(error: NetworkError)
+    + setNormalState()
+}
+
+    package "View" {
+        class LightsView {
+            - lightsUIManager: LightManageable
+            - currentOnlineLight: StatusColors = off
+            + init()
+            + viewSetups()
+            + changeDescriptionLabel()
+            + handleStackViewGesture()
+            + addLightsToStackView()
+        }
+
+        ' ========== UI Utilities ==========
+        package "UI Utilities" {
+            interface LightManageable
+
+            class LightsUIManager {
+                + currentOnlineLight: StatusColors = off
+                + lights: [Light] = []
+                + init()
+                + makeLights()
+                + turnOn(statusColors: StatusColors)
+                + blinkAllLights()
+            }
+        }
+    }
+
+    package "State" {
+        interface LocationErrorStateable
+
+        class LocationErrorState {
+            - lightsView: LightsView
+            - localizedErrorMessage: String?
+            - locationError: LocationError?
+            + init(lightsView: LightsView)
+            + setLocationErrorState(error: LocationError)
+            - handleGeneralViews()
+            - handleButtons()
+            - sendMessageView()
+            - setupState(error: LocationError)
+        }
+
+        interface NetworkErrorStateable
+
+        class NetworkErrorState {
+            - lightsView: LightsView
+            - localizedErrorMessage: String?
+            - locationError: NetworkError?
+            + init(lightsView: LightsView)
+            + setNetworkErrorState(error: NetworkError)
+            - handleGeneralViews()
+            - handleButtons()
+            - sendMessageView()
+            - setupState(error: NetworkError)
+        }
+
+        interface NormalStateable
+
+        class NormalState {
+            - lightsView: LightsView
+            + init(lightsView: LightsView)
+            + setNormalState()
+            - handleGeneralViews()
+        }
+    }
+}
+
+
+' ========== Relationships Between Packages ==========
+' Define inheritance and uses AFTER all classes are defined to prevent duplicates.
+
+' Notification relations
+Notificationable <|-- NotificationManager
+
+' Location relations
+Locationable <|-- LocationManager
+
+' Network relations
+CoronaNetworkable <|-- CoronaNetworking
+CoronaNetworking ..> CoronaServiceAdaptable
+CoronaServiceAdaptable <|-- CoronaAPI
+CoronaAPI ..> Moya
+
+' ViewModel relations
+LightsVM --> Notificationable
+LightsVM --> Locationable
+LightsVM --> CoronaNetworkable
+
+' Coordinator -> View
+MainCoordinator "owns" --> LightsVC
+
+' View -> State
+LightsVC --> LocationErrorStateable
+LightsVC --> NetworkErrorStateable
+LightsVC --> NormalStateable
+
+' View composition
+LightsVC "owns" --> LightsView
+LightsVC "owns" --> LightsVM
+LightsView "owns" --> LightsUIManager
+
+' State relations
+LocationErrorStateable <|-- LocationErrorState
+NetworkErrorStateable <|-- NetworkErrorState
+NormalStateable <|-- NormalState
+
+' Manager relations
+LightManageable <|-- LightsUIManager
+
+@enduml
